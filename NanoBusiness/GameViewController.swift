@@ -10,19 +10,20 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    
+    var scene: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+            scene = SKScene(fileNamed: "GameScene") as? GameScene
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            // Present the scene
+            view.presentScene(scene)
             
             view.ignoresSiblingOrder = true
             
@@ -45,5 +46,15 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    @IBAction func BtnPunchPressed(_ sender: Any) {
+        scene.PunchPressed()
+    }
+    @IBAction func BtnFootPressed(_ sender: Any) {
+    }
+    @IBAction func BtnUpPressed(_ sender: Any) {
+    }
+    @IBAction func BtnDownPressed(_ sender: Any) {
     }
 }

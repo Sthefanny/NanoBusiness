@@ -20,7 +20,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: Player!
     var obstacleManager: ObstacleManager!
     
-    
     var lastUpdate = TimeInterval(0)
     
     var status: GameStatus = .intro
@@ -53,11 +52,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg4 = self.childNode(withName: "bg4")!
         bg5 = self.childNode(withName: "bg5")!
         
-        bg1.run(getBgLoop(timeInterval: TimeInterval(10)))
-        bg2.run(getBgLoop(timeInterval: TimeInterval(20)))
+        bg1.run(getBgLoop(timeInterval: TimeInterval(50)))
+        bg2.run(getBgLoop(timeInterval: TimeInterval(40)))
         bg3.run(getBgLoop(timeInterval: TimeInterval(30)))
-        bg4.run(getBgLoop(timeInterval: TimeInterval(40)))
-        bg5.run(getBgLoop(timeInterval: TimeInterval(50)))
+        bg4.run(getBgLoop(timeInterval: TimeInterval(20)))
+        bg5.run(getBgLoop(timeInterval: TimeInterval(10)))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -100,5 +99,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         print("contato = \(contact)")
+    }
+    
+    func PunchPressed() {
+        print("punch")
+    }
+    func FootPressed() {
+    }
+    func UpPressed() {
+    }
+    func DownPressed() {
     }
 }
