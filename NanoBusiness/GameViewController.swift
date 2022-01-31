@@ -16,6 +16,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AppUtility.lockOrientation(.landscape)
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
@@ -52,9 +54,12 @@ class GameViewController: UIViewController {
         scene.PunchPressed()
     }
     @IBAction func BtnFootPressed(_ sender: Any) {
+        scene.FootPressed()
     }
     @IBAction func BtnUpPressed(_ sender: Any) {
+        scene.UpPressed()
     }
     @IBAction func BtnDownPressed(_ sender: Any) {
+        scene.DownPressed()
     }
 }

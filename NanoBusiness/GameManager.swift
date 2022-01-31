@@ -8,6 +8,5 @@
 import SpriteKit
 
 class GameManager {
-    static var bgSpeed = CGFloat(100)
     static var obstacleSpeed = CGFloat(150)
 }

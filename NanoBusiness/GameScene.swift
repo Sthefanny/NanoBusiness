@@ -19,6 +19,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player!
     var obstacleManager: ObstacleManager!
+    var introNode: SKSpriteNode!
+    var gameOverNode: SKSpriteNode!
     
     var lastUpdate = TimeInterval(0)
     
@@ -27,8 +29,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
+//        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
+//        view.showsPhysics = true
         
         createBackground()
+        
+        introNode = childNode(withName: "intro") as? SKSpriteNode
+        gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
+        gameOverNode.removeFromParent()
         
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
         player = Player(node: playerNode)
@@ -51,7 +59,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg3 = self.childNode(withName: "bg3")!
         bg4 = self.childNode(withName: "bg4")!
         bg5 = self.childNode(withName: "bg5")!
-        
+    }
+    
+    func startBackground() {
         bg1.run(getBgLoop(timeInterval: TimeInterval(50)))
         bg2.run(getBgLoop(timeInterval: TimeInterval(40)))
         bg3.run(getBgLoop(timeInterval: TimeInterval(30)))
@@ -59,17 +69,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg5.run(getBgLoop(timeInterval: TimeInterval(10)))
     }
     
+    func stopBackground() {
+        bg1.removeAllActions()
+        bg2.removeAllActions()
+        bg3.removeAllActions()
+        bg4.removeAllActions()
+        bg5.removeAllActions()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch status {
         case .intro:
-            break
+            start()
         case .playing:
             break
         case .gameOver:
-            break
+            reset()
         }
     }
     
+    func start() {
+        player.start()
+        introNode.removeFromParent()
+        status = .playing
+        startBackground()
+    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
@@ -83,11 +107,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch status {
         case .intro:
-            playingUpdate(deltaTime: deltaTime)
-            
+            break
 //            scrollBackground(deltaTime: deltaTime)
         case .playing:
-            break
+            playingUpdate(deltaTime: deltaTime)
         case .gameOver:
             break
         }
@@ -98,16 +121,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contato = \(contact)")
+        gameOver()
+    }
+    
+    func gameOver() {
+        if status == .playing {
+            status = .gameOver
+            player.die()
+            self.addChild(gameOverNode)
+            stopBackground()
+        }
+        
+    }
+    
+    func reset() {
+        status = .intro
+        gameOverNode.removeFromParent()
+        self.addChild(introNode)
+        player.reset()
+        obstacleManager.reset()
     }
     
     func PunchPressed() {
         print("punch")
     }
     func FootPressed() {
+        print("Foot")
     }
     func UpPressed() {
+        player.jump()
     }
     func DownPressed() {
+        print("Down")
     }
 }

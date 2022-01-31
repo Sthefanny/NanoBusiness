@@ -11,7 +11,7 @@ import SpriteKit
 class Player {
     
     private var node: SKSpriteNode
-    private let jumpForce = CGFloat(500)
+    private let jumpForce = CGFloat(800)
     private let startPosition: CGPoint
     private var animation: SKAction!
     
@@ -19,17 +19,16 @@ class Player {
         self.node = node
         startPosition = node.position
         physicsSetup()
-        animationSetup()
     }
     
     func physicsSetup() {
-        let body = SKPhysicsBody(circleOfRadius: 12)
-        body.isDynamic = false
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: 52, height: 142), center: CGPoint(x: 0, y: -8))
+        body.isDynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
         body.categoryBitMask = 1
         body.collisionBitMask = 2
-        body.contactTestBitMask = 2
+        body.contactTestBitMask = 4
         
         node.physicsBody = body
     }
@@ -53,7 +52,7 @@ class Player {
     
     func start() {
         node.physicsBody?.isDynamic = true
-        jump()
+        animationSetup()
     }
     
     func jump() {
@@ -70,7 +69,6 @@ class Player {
         node.yScale = 1
         node.position = startPosition
         node.physicsBody?.isDynamic = false
-        node.run(animation)
     }
     
 }

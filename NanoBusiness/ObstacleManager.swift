@@ -35,7 +35,7 @@ class ObstacleManager {
         }
         
         if let firstPipe = obstacles.first {
-            if firstPipe.position.x <= -180 {
+            if firstPipe.position.x <= -1788 {
                 firstPipe.removeFromParent()
                 obstacles.removeFirst()
             }
