@@ -14,6 +14,7 @@ class Player {
     private let jumpForce = CGFloat(800)
     private let startPosition: CGPoint
     private var animation: SKAction!
+    private var jumping: Bool = false
     
     init(node: SKSpriteNode) {
         self.node = node
@@ -28,7 +29,8 @@ class Player {
         body.allowsRotation = false
         body.categoryBitMask = 1
         body.collisionBitMask = 2
-        body.contactTestBitMask = 4
+        body.contactTestBitMask = 6
+        body.restitution = 0
         
         node.physicsBody = body
     }
@@ -56,12 +58,28 @@ class Player {
     }
     
     func jump() {
+        if jumping {
+            return
+        }
+        
+        jumping = true
+        node.removeAllActions()
+        node.texture = SKTexture(imageNamed: "player4")
         node.physicsBody?.velocity.dy = jumpForce
+    }
+    
+    func land() {
+        if jumping {
+            node.texture = SKTexture(imageNamed: "player1")
+            animationSetup()
+        }
+        
+        jumping = false
     }
     
     func die() {
         node.yScale = -1
-        jump()
+        node.physicsBody?.velocity.dy = jumpForce
         node.removeAllActions()
     }
     
