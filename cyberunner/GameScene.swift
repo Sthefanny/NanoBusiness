@@ -123,11 +123,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "player" {
-            playerHasContact(other: contact.bodyB.node!)
-        }
-        else if contact.bodyB.node?.name == "player" {
-            playerHasContact(other: contact.bodyA.node!)
+        if status == .playing {
+            if contact.bodyA.node?.name == "player" {
+                playerHasContact(other: contact.bodyB.node!)
+            }
+            else if contact.bodyB.node?.name == "player" {
+                playerHasContact(other: contact.bodyA.node!)
+            }
         }
     }
     
@@ -176,14 +178,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("Foot")
     }
     func UpPressed() {
-        if status == .playing {
-            gameViewController.setButton(button: .down, status: .untap)
+        if status == .playing && player.status == .running {
             gameViewController.setButton(button: .up, status: .tap)
             player.jump()
         }
     }
     func DownPressed() {
-        if status == .playing {
+        if status == .playing && player.status == .running || player.status == .crouching {
             gameViewController.setButton(button: .down, status: player.status == .crouching ? .untap : .tap)
             player.toggleCrouch()
         }

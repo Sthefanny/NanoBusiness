@@ -59,7 +59,7 @@ class Player {
     }
     
     func jump() {
-        if status == .jumping {
+        if status == .jumping || status == .crouching {
             return
         }
         
@@ -99,10 +99,10 @@ class Player {
         if status == .crouching {
             return
         }
-        if status == .jumping {
-            node.texture = SKTexture(imageNamed: "player1")
-            animationSetup()
-        }
+        
+        node.texture = SKTexture(imageNamed: "player1")
+        animationSetup()
+        
         
         status = .running
     }
