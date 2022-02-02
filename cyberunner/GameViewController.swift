@@ -15,7 +15,9 @@ class GameViewController: UIViewController {
     
     var check = true
 
+    @IBOutlet weak var btnUpView: UIImageView!
     @IBOutlet weak var btnUp: UIButton!
+    @IBOutlet weak var btnDownView: UIImageView!
     @IBOutlet weak var btnDown: UIButton!
     @IBOutlet weak var btnKick: UIButton!
     @IBOutlet weak var btnPunch: UIButton!
@@ -32,6 +34,7 @@ class GameViewController: UIViewController {
             scene = SKScene(fileNamed: "GameScene") as? GameScene
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
+            scene.gameViewController = self
             
             // Present the scene
             view.presentScene(scene)
@@ -61,32 +64,38 @@ class GameViewController: UIViewController {
     
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
-        
     }
     @IBAction func BtnFootPressed(_ sender: Any) {
         scene.FootPressed()
     }
     @IBAction func BtnUpPressed(_ sender: Any) {
         scene.UpPressed()
-//        bntUp.alpha = 0
-
-//        bntUp.image = UIImage(named: "btnUpTap")
-  
-//        if let image = UIImage(named:"btnUpTap") {
-//            sender.setImage(image, forControlState: .normal)
-//
-//        }
-        check = !check
-
-        if check {
-            btnUp.setBackgroundImage(UIImage(named: "btnUp"), for: .normal)
-        } else {
-            btnUp.setBackgroundImage(UIImage(named: "btnUpTap"), for: .normal)
-        }
-
-        
     }
     @IBAction func BtnDownPressed(_ sender: Any) {
         scene.DownPressed()
     }
+    
+    func setButton(button: ScreenButtons, status: TapStatus){
+        switch button {
+        case .up:
+            btnUpView.image = UIImage(named: status == .tap ? "btnUpTap" : "btnUp")
+        case .down:
+            btnDownView.image = UIImage(named: status == .tap ? "btnDownTap" : "btnDown")
+        default:
+            break
+        }
+    }
+}
+
+
+enum ScreenButtons {
+    case up
+    case down
+    case punch
+    case kick
+}
+
+enum TapStatus {
+    case tap
+    case untap
 }

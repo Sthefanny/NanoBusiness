@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdate = TimeInterval(0)
     
     var status: GameStatus = .intro
+    weak var gameViewController: GameViewController!
     
     override func didMove(to view: SKView) {
         
@@ -134,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //4 - obstaculo
         if other.physicsBody?.categoryBitMask == 2 {
             player.land()
+            gameViewController.setButton(button: .up, status: .untap)
         }
         else if other.physicsBody?.categoryBitMask == 4 {
             other.parent?.removeFromParent()
@@ -167,6 +169,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func UpPressed() {
         if status == .playing {
+            gameViewController.setButton(button: .up, status: .tap)
             player.jump()
         }
     }

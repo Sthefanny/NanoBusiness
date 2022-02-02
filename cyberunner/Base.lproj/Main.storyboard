@@ -26,12 +26,15 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <backgroundConfiguration key="background" image="btnUp"/>
+                                            <backgroundConfiguration key="background"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="BtnUpPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Hde-b1-ceb"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnUp" translatesAutoresizingMaskIntoConstraints="NO" id="PaE-1k-Vre">
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="51"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGv-ZS-eZj" userLabel="Btn Down">
                                         <rect key="frame" x="62.333333333333329" y="31.333333333333314" width="51" height="51"/>
                                         <constraints>
@@ -39,21 +42,32 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain">
-                                            <backgroundConfiguration key="background" image="btnDown"/>
+                                            <backgroundConfiguration key="background" image="btnDow"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="BtnDownPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Bo5-iU-pkX"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnDown" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-De-X2i" userLabel="Btn Down View">
+                                        <rect key="frame" x="62.333333333333329" y="31.333333333333314" width="51" height="51"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="GpM-6M-qPB" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" multiplier="0.45" id="3sA-BB-Dqz"/>
                                     <constraint firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="height" multiplier="62:45" id="48s-Bz-tuk"/>
+                                    <constraint firstItem="gN9-De-X2i" firstAttribute="centerX" secondItem="BGv-ZS-eZj" secondAttribute="centerX" id="4h2-lL-xEc"/>
                                     <constraint firstItem="GpM-6M-qPB" firstAttribute="leading" secondItem="IHI-JN-9aw" secondAttribute="leading" id="9el-av-NXz"/>
+                                    <constraint firstItem="gN9-De-X2i" firstAttribute="centerY" secondItem="BGv-ZS-eZj" secondAttribute="centerY" id="H7o-vo-w0W"/>
                                     <constraint firstItem="BGv-ZS-eZj" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="JAE-Qu-Z7R"/>
                                     <constraint firstAttribute="bottom" secondItem="BGv-ZS-eZj" secondAttribute="bottom" id="Nkx-4e-fF7"/>
                                     <constraint firstItem="GpM-6M-qPB" firstAttribute="top" secondItem="IHI-JN-9aw" secondAttribute="top" id="ezd-7F-VRy"/>
+                                    <constraint firstItem="PaE-1k-Vre" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="h18-Mc-mx2"/>
+                                    <constraint firstItem="PaE-1k-Vre" firstAttribute="centerY" secondItem="GpM-6M-qPB" secondAttribute="centerY" id="lYD-eC-MXD"/>
+                                    <constraint firstItem="PaE-1k-Vre" firstAttribute="centerX" secondItem="GpM-6M-qPB" secondAttribute="centerX" id="muV-Gp-bXl"/>
+                                    <constraint firstItem="PaE-1k-Vre" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="oMv-Vy-XPr"/>
                                     <constraint firstAttribute="trailing" secondItem="BGv-ZS-eZj" secondAttribute="trailing" id="ru7-wg-v53"/>
+                                    <constraint firstItem="gN9-De-X2i" firstAttribute="height" secondItem="BGv-ZS-eZj" secondAttribute="height" id="uhc-7X-Hdc"/>
+                                    <constraint firstItem="gN9-De-X2i" firstAttribute="width" secondItem="BGv-ZS-eZj" secondAttribute="width" id="xvG-rC-6wz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQM-en-e5J">
@@ -106,9 +120,11 @@
                     </view>
                     <connections>
                         <outlet property="btnDown" destination="BGv-ZS-eZj" id="H5e-3z-xTm"/>
+                        <outlet property="btnDownView" destination="gN9-De-X2i" id="QV1-lS-ZNw"/>
                         <outlet property="btnKick" destination="Jjb-t0-G1j" id="chL-Gz-z91"/>
                         <outlet property="btnPunch" destination="qHt-uT-FOp" id="9d9-5W-8U0"/>
                         <outlet property="btnUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
+                        <outlet property="btnUpView" destination="PaE-1k-Vre" id="Nb6-Mk-iML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
@@ -117,6 +133,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnDow" width="128" height="128"/>
         <image name="btnDown" width="64" height="64"/>
         <image name="btnFoot" width="64" height="64"/>
         <image name="btnPunch" width="64" height="64"/>
