@@ -11,7 +11,7 @@ import SpriteKit
 class Player {
     
     private var node: SKSpriteNode
-    private let jumpForce = CGFloat(800)
+    private let jumpForce = CGFloat(500)
     private let startPosition: CGPoint
     private var animation: SKAction!
     private var jumping: Bool = false
@@ -23,7 +23,7 @@ class Player {
     }
     
     func physicsSetup() {
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: 52, height: 142), center: CGPoint(x: 0, y: -8))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 77), center: CGPoint(x: 0, y: -3))
         body.isDynamic = true
         body.affectedByGravity = true
         body.allowsRotation = false
@@ -78,13 +78,15 @@ class Player {
     }
     
     func die() {
-        node.yScale = -1
+        node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 30), center: CGPoint(x: 0, y: 0))
         node.physicsBody?.velocity.dy = jumpForce
+        node.texture = SKTexture(imageNamed: "playerDead")
         node.removeAllActions()
     }
     
     func reset() {
-        node.yScale = 1
+        physicsSetup()
+        node.texture = SKTexture(imageNamed: "player1")
         node.position = startPosition
         node.physicsBody?.isDynamic = false
     }

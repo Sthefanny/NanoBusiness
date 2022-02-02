@@ -46,8 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func getBgLoop(timeInterval: TimeInterval) -> SKAction {
-        let moveLeft = SKAction.moveBy(x: -3576, y: 0, duration: timeInterval)
-        let moveBack = SKAction.moveBy(x: 3576, y: 0, duration: 0)
+        let moveLeft = SKAction.moveBy(x: -1192, y: 0, duration: timeInterval)
+        let moveBack = SKAction.moveBy(x: 1192, y: 0, duration: 0)
         let sequence = SKAction.sequence([moveLeft, moveBack])
         
         return SKAction.repeatForever(sequence)
@@ -136,6 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.land()
         }
         else if other.physicsBody?.categoryBitMask == 4 {
+            other.parent?.removeFromParent()
             gameOver()
         }
     }
@@ -165,7 +166,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("Foot")
     }
     func UpPressed() {
-        player.jump()
+        if status == .playing {
+            player.jump()
+        }
     }
     func DownPressed() {
         print("Down")
