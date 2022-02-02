@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,66 +13,146 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="cyberunner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NNN-L1-T7X">
-                                <rect key="frame" x="54" y="310" width="788" height="83"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1m-mL-8vD">
+                                <rect key="frame" x="44" y="278.33333333333331" width="124" height="90.666666666666686"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCS-w9-Aoa">
-                                        <rect key="frame" x="0.0" y="0.0" width="197" height="83"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHI-JN-9aw">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="90.666666666666671"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-t0-eyq">
-                                                <rect key="frame" x="61" y="4" width="75" height="75"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpM-6M-qPB">
+                                                <rect key="frame" x="0.0" y="0.0" width="52.666666666666664" height="52.666666666666664"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="nsn-t0-eyq" secondAttribute="height" multiplier="1:1" id="sF8-R0-BiJ"/>
+                                                    <constraint firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="height" multiplier="1:1" id="U8L-Ke-bkf"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain">
                                                     <backgroundConfiguration key="background" image="btnUp"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="BtnUpPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="386-wd-yK8"/>
+                                                    <action selector="BtnUpPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Hde-b1-ceb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="nsn-t0-eyq" firstAttribute="top" secondItem="bCS-w9-Aoa" secondAttribute="top" constant="4" id="Ni8-Vm-XWr"/>
-                                            <constraint firstItem="nsn-t0-eyq" firstAttribute="centerX" secondItem="bCS-w9-Aoa" secondAttribute="centerX" id="Vga-7f-Agv"/>
-                                            <constraint firstItem="nsn-t0-eyq" firstAttribute="centerY" secondItem="bCS-w9-Aoa" secondAttribute="centerY" id="ziw-gf-x4D"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GpM-6M-qPB" secondAttribute="trailing" constant="20" symbolic="YES" id="2qf-La-b8w"/>
+                                            <constraint firstItem="GpM-6M-qPB" firstAttribute="leading" secondItem="IHI-JN-9aw" secondAttribute="leading" id="lEz-qj-xC8"/>
+                                            <constraint firstItem="GpM-6M-qPB" firstAttribute="top" secondItem="IHI-JN-9aw" secondAttribute="top" id="txL-Ix-LYG"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baT-7Z-JSR">
-                                        <rect key="frame" x="197" y="0.0" width="197" height="83"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5U-ef-MLZ">
-                                        <rect key="frame" x="394" y="0.0" width="197" height="83"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8BZ-Kh-Bhm">
-                                        <rect key="frame" x="591" y="0.0" width="197" height="83"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-qJ-gEH">
+                                        <rect key="frame" x="74" y="0.0" width="50" height="90.666666666666671"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGv-ZS-eZj">
+                                                <rect key="frame" x="0.0" y="38" width="53" height="52.666666666666657"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="BGv-ZS-eZj" secondAttribute="height" multiplier="1:1" id="boV-Zj-1uf"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="btnDown"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="BtnDownPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Bo5-iU-pkX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BGv-ZS-eZj" firstAttribute="top" secondItem="TAs-qJ-gEH" secondAttribute="top" constant="38" id="553-W0-6iB"/>
+                                            <constraint firstItem="BGv-ZS-eZj" firstAttribute="leading" secondItem="TAs-qJ-gEH" secondAttribute="leading" id="9C8-gA-CfX"/>
+                                            <constraint firstAttribute="bottom" secondItem="BGv-ZS-eZj" secondAttribute="bottom" id="QwK-EZ-sbQ"/>
+                                            <constraint firstItem="BGv-ZS-eZj" firstAttribute="width" secondItem="BGv-ZS-eZj" secondAttribute="height" multiplier="1:1" id="ZM5-dg-9r6"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="NNN-L1-T7X" secondAttribute="height" multiplier="4:1" id="DQD-4e-zsI"/>
+                                    <constraint firstItem="IHI-JN-9aw" firstAttribute="leading" secondItem="k1m-mL-8vD" secondAttribute="leading" id="7hC-I8-glG"/>
+                                    <constraint firstItem="BGv-ZS-eZj" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" multiplier="0.711712" id="G3a-zn-kcE"/>
+                                    <constraint firstItem="BGv-ZS-eZj" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="NeM-zP-CkQ"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pb-F1-Si5">
+                                <rect key="frame" x="719" y="278.33333333333331" width="132.33333333333337" height="90.666666666666686"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uPN-Fk-wiX">
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="90.666666666666671"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjb-t0-G1j">
+                                                <rect key="frame" x="0.0" y="38" width="52.666666666666664" height="52.666666666666657"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Jjb-t0-G1j" secondAttribute="height" multiplier="1:1" id="jgK-Ky-Ddp"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="btnFoot"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="BtnFootPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="j9V-Vk-CY0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Jjb-t0-G1j" secondAttribute="bottom" constant="1.4210854715202004e-14" id="Uwr-Hk-bfI"/>
+                                            <constraint firstItem="Jjb-t0-G1j" firstAttribute="leading" secondItem="uPN-Fk-wiX" secondAttribute="leading" id="YGK-pF-uCK"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jjb-t0-G1j" secondAttribute="trailing" constant="20" symbolic="YES" id="qyo-CF-yTb"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MQM-en-e5J">
+                                        <rect key="frame" x="76" y="0.0" width="56.333333333333343" height="90.666666666666671"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHt-uT-FOp">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="52.666666666666664"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="qHt-uT-FOp" secondAttribute="height" multiplier="1:1" id="uhJ-cs-HgT"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="btnPunch"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="BtnPunchPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="aa7-F6-1pZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="qHt-uT-FOp" firstAttribute="top" secondItem="MQM-en-e5J" secondAttribute="top" id="GpW-Dj-6Ck"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="uPN-Fk-wiX" firstAttribute="width" secondItem="MQM-en-e5J" secondAttribute="width" multiplier="1.34513" id="RoV-yy-6A5"/>
+                                    <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="qHt-uT-FOp" secondAttribute="width" id="qar-fm-KTe"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NNN-L1-T7X" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="10" id="M6q-aU-xV9"/>
-                            <constraint firstItem="NNN-L1-T7X" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="Vn7-5N-Hb4"/>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="NNN-L1-T7X" secondAttribute="bottom" id="WCP-kw-bhN"/>
-                            <constraint firstItem="NNN-L1-T7X" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.2" id="lD8-4a-9Ya"/>
+                            <constraint firstItem="GpM-6M-qPB" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" multiplier="0.0625" id="26q-14-Ten"/>
+                            <constraint firstItem="4pb-F1-Si5" firstAttribute="bottom" secondItem="k1m-mL-8vD" secondAttribute="bottom" id="Eff-GW-faw"/>
+                            <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" multiplier="0.0625" id="aXk-gh-5S6"/>
+                            <constraint firstItem="4pb-F1-Si5" firstAttribute="trailing" secondItem="4qk-I5-YsI" secondAttribute="trailing" id="cfp-OC-wWl"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="k1m-mL-8vD" secondAttribute="bottom" id="hkn-5R-eWr"/>
+                            <constraint firstItem="k1m-mL-8vD" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" multiplier="0.146919" id="ozZ-Ep-pe6"/>
+                            <constraint firstItem="k1m-mL-8vD" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="xhB-Et-ylp"/>
+                            <constraint firstItem="4pb-F1-Si5" firstAttribute="top" secondItem="k1m-mL-8vD" secondAttribute="top" id="yvo-Lq-iHM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bntUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="91"/>
+            <point key="canvasLocation" x="137.91469194312796" y="89.230769230769226"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btnDown" width="64" height="64"/>
+        <image name="btnFoot" width="64" height="64"/>
+        <image name="btnPunch" width="64" height="64"/>
         <image name="btnUp" width="64" height="64"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

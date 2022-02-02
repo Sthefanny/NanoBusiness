@@ -12,9 +12,15 @@ import GameplayKit
 class GameViewController: UIViewController {
     
     var scene: GameScene!
+    
+    var check = true
 
+    @IBOutlet weak var bntUp: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         AppUtility.lockOrientation(.landscape)
         
@@ -52,12 +58,30 @@ class GameViewController: UIViewController {
     
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
+        
     }
     @IBAction func BtnFootPressed(_ sender: Any) {
         scene.FootPressed()
     }
     @IBAction func BtnUpPressed(_ sender: Any) {
         scene.UpPressed()
+//        bntUp.alpha = 0
+
+//        bntUp.image = UIImage(named: "btnUpTap")
+  
+//        if let image = UIImage(named:"btnUpTap") {
+//            sender.setImage(image, forControlState: .normal)
+//
+//        }
+        check = !check
+
+        if check {
+            bntUp.setImage(UIImage(named: "btnUp"), for: .normal)
+        } else {
+            bntUp.setImage(UIImage(named: "btnUpTap"), for: .normal)
+        }
+
+        
     }
     @IBAction func BtnDownPressed(_ sender: Any) {
         scene.DownPressed()
