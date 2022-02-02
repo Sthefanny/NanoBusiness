@@ -15,7 +15,10 @@ class GameViewController: UIViewController {
     
     var check = true
 
-    @IBOutlet weak var bntUp: UIButton!
+    @IBOutlet weak var btnUp: UIButton!
+    @IBOutlet weak var btnDown: UIButton!
+    @IBOutlet weak var btnKick: UIButton!
+    @IBOutlet weak var btnPunch: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,9 +79,9 @@ class GameViewController: UIViewController {
         check = !check
 
         if check {
-            bntUp.setImage(UIImage(named: "btnUp"), for: .normal)
+            btnUp.setBackgroundImage(UIImage(named: "btnUp"), for: .normal)
         } else {
-            bntUp.setImage(UIImage(named: "btnUpTap"), for: .normal)
+            btnUp.setBackgroundImage(UIImage(named: "btnUpTap"), for: .normal)
         }
 
         
