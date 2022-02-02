@@ -14,7 +14,7 @@ class Player {
     private let jumpForce = CGFloat(500)
     private let startPosition: CGPoint
     private var animation: SKAction!
-    private var jumping: Bool = false
+    var status: PlayerStatus = .stopped
     
     init(node: SKSpriteNode) {
         self.node = node
@@ -53,31 +53,62 @@ class Player {
     }
     
     func start() {
+        status = .running
         node.physicsBody?.isDynamic = true
         animationSetup()
     }
     
     func jump() {
-        if jumping {
+        if status == .jumping {
             return
         }
         
-        jumping = true
+        status = .jumping
         node.removeAllActions()
         node.texture = SKTexture(imageNamed: "player4")
         node.physicsBody?.velocity.dy = jumpForce
     }
     
+    func toggleCrouch() {
+        if status == .crouching {
+            status = .running
+            node.texture = SKTexture(imageNamed: "player1")
+            physicsSetup()
+            animationSetup()
+            return
+        }
+        
+        status = .crouching
+        node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 55), center: CGPoint(x: 0, y: -15))
+        node.removeAllActions()
+        node.texture = SKTexture(imageNamed: "player3Down")
+        var textures = [SKTexture]()
+        
+        textures.append(SKTexture(imageNamed: "player3Down"))
+        textures.append(SKTexture(imageNamed: "player4Down"))
+        textures.append(SKTexture(imageNamed: "player5Weapon"))
+        
+        let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: false)
+        
+        animation = SKAction.repeatForever(frames)
+        
+        node.run(animation)
+    }
+    
     func land() {
-        if jumping {
+        if status == .crouching {
+            return
+        }
+        if status == .jumping {
             node.texture = SKTexture(imageNamed: "player1")
             animationSetup()
         }
         
-        jumping = false
+        status = .running
     }
     
     func die() {
+        status = .dead
         node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 30), center: CGPoint(x: 0, y: 0))
         node.physicsBody?.velocity.dy = jumpForce
         node.texture = SKTexture(imageNamed: "playerDead")
@@ -85,10 +116,19 @@ class Player {
     }
     
     func reset() {
+        status = .stopped
         physicsSetup()
         node.texture = SKTexture(imageNamed: "player1")
         node.position = startPosition
         node.physicsBody?.isDynamic = false
     }
     
+}
+
+enum PlayerStatus {
+    case stopped
+    case running
+    case jumping
+    case crouching
+    case dead
 }

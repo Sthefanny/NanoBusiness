@@ -9,16 +9,18 @@ import SpriteKit
 
 class ObstacleManager {
     
-    private var obstacleModel: SKNode
+    private var obstacleGround: SKNode
+    private var obstacleCeiling: SKNode
     private var parent: SKNode
     
-    private let interval = TimeInterval(10)
+    private let interval = TimeInterval(5)
     private var currentTime = TimeInterval(0)
     
     private var obstacles = [SKNode]()
     
-    init(obstacleModel: SKNode, parent: SKNode) {
-        self.obstacleModel = obstacleModel
+    init(obstacleGround: SKNode, obstacleCeiling: SKNode, parent: SKNode) {
+        self.obstacleGround = obstacleGround
+        self.obstacleCeiling = obstacleCeiling
         self.parent = parent
         currentTime = interval
     }
@@ -34,16 +36,17 @@ class ObstacleManager {
             obstacle.position.x -= GameManager.obstacleSpeed * deltaTime
         }
         
-        if let firstPipe = obstacles.first {
-            if firstPipe.position.x <= -1788 {
-                firstPipe.removeFromParent()
+        if let firstObstacle = obstacles.first {
+            if firstObstacle.position.x <= -596 {
+                firstObstacle.removeFromParent()
                 obstacles.removeFirst()
             }
         }
     }
     
     func spawn() {
-        let new = obstacleModel.copy() as! SKNode
+        let obstacleOptions = [obstacleGround, obstacleCeiling]
+        let new = obstacleOptions.randomElement()?.copy() as! SKNode
         parent.addChild(new)
         obstacles.append(new)
     }
@@ -56,4 +59,12 @@ class ObstacleManager {
         currentTime = interval
     }
     
+}
+
+enum Obstacles {
+    case ground
+    case platform
+    case ceiling
+    case wall
+    case rat
 }

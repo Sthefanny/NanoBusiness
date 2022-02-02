@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
 //        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
-//        view.showsPhysics = true
+        view.showsPhysics = true
         
         createBackground()
         
@@ -42,8 +42,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
         player = Player(node: playerNode)
         
-        let obstacleModel = childNode(withName: "obstacleGround")!
-        obstacleManager = ObstacleManager(obstacleModel: obstacleModel, parent: self)
+        let obstacleGround = childNode(withName: "obstacleGround")!
+        let obstacleCeiling = childNode(withName: "obstacleCeiling")!
+        obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, parent: self)
     }
     
     func getBgLoop(timeInterval: TimeInterval) -> SKAction {
@@ -133,13 +134,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playerHasContact(other: SKNode) {
         //2 - ground
         //4 - obstaculo
-        if other.physicsBody?.categoryBitMask == 2 {
+        let obstacleName = other.physicsBody?.node?.userData?["obstacleName"] as! String
+        
+        switch obstacleName {
+        case "ground":
             player.land()
             gameViewController.setButton(button: .up, status: .untap)
-        }
-        else if other.physicsBody?.categoryBitMask == 4 {
+        case "platform":
             other.parent?.removeFromParent()
             gameOver()
+        case "ceiling":
+            gameOver()
+        default:
+            player.land()
+            gameViewController.setButton(button: .up, status: .untap)
         }
     }
     
@@ -169,11 +177,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func UpPressed() {
         if status == .playing {
+            gameViewController.setButton(button: .down, status: .untap)
             gameViewController.setButton(button: .up, status: .tap)
             player.jump()
         }
     }
     func DownPressed() {
-        print("Down")
+        if status == .playing {
+            gameViewController.setButton(button: .down, status: player.status == .crouching ? .untap : .tap)
+            player.toggleCrouch()
+        }
     }
 }
