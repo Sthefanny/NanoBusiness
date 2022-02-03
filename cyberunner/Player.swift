@@ -95,8 +95,26 @@ class Player {
         node.run(animation)
     }
     
+    func punch() {
+        if status == .punching {
+            return
+        }
+        
+        status = .punching
+        node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 77), center: CGPoint(x: 0, y: -3))
+        node.removeAllActions()
+        node.texture = SKTexture(imageNamed: "player3Punch")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 77), center: CGPoint(x: 0, y: -3))
+            self.node.texture = SKTexture(imageNamed: "player1")
+            self.animationSetup()
+            self.status = .running
+        }
+    }
+    
     func land() {
-        if status == .crouching {
+        if status == .crouching || status == .punching {
             return
         }
         
@@ -129,6 +147,7 @@ enum PlayerStatus {
     case stopped
     case running
     case jumping
+    case punching
     case crouching
     case dead
 }

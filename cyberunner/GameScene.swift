@@ -44,7 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let obstacleGround = childNode(withName: "obstacleGround")!
         let obstacleCeiling = childNode(withName: "obstacleCeiling")!
-        obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, parent: self)
+        let obstacleWall = childNode(withName: "obstacleWall")!
+        obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, parent: self)
     }
     
     func getBgLoop(timeInterval: TimeInterval) -> SKAction {
@@ -147,6 +148,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver()
         case "ceiling":
             gameOver()
+        case "wall":
+            if player.status == .punching {
+                obstacleManager.breakWall()
+                obstacleManager.obstacleStatus = .inactive
+            }
+            else if obstacleManager.obstacleStatus == .active {
+                gameOver()
+            }
         default:
             player.land()
             gameViewController.setButton(button: .up, status: .untap)
@@ -172,7 +181,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func PunchPressed() {
-        print("punch")
+        player.punch()
     }
     func FootPressed() {
         print("Foot")
