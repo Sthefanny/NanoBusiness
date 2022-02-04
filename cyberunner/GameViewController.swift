@@ -14,7 +14,8 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     
     var check = true
-
+    var gameIsOn = false
+    
     @IBOutlet weak var btnUpView: UIImageView!
     @IBOutlet weak var btnUp: UIButton!
     @IBOutlet weak var btnDownView: UIImageView!
@@ -22,10 +23,27 @@ class GameViewController: UIViewController {
     @IBOutlet weak var btnKick: UIButton!
     @IBOutlet weak var btnPunch: UIButton!
     
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showGameSettings()
+
         
+        for family: String in UIFont.familyNames
+        {
+            print(family)
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+        
+//        scoreLabel.layer.cornerRadius = 16
+//        scoreLabel.layer.borderWidth = 2
+//        scoreLabel.layer.borderColor = UIColor(named: "appBlue")?.cgColor
+        scoreLabel.font = UIFont(name: "NicoMoji-Regular", size: 15)
         
         AppUtility.lockOrientation(.landscape)
         
@@ -74,6 +92,9 @@ class GameViewController: UIViewController {
     @IBAction func BtnDownPressed(_ sender: Any) {
         scene.DownPressed()
     }
+    @IBAction func BtnDownRealesed(_ sender: Any) {
+        scene.DownPressed()
+    }
     
     func setButton(button: ScreenButtons, status: TapStatus){
         switch button {
@@ -85,6 +106,39 @@ class GameViewController: UIViewController {
             break
         }
     }
+    func showGameSettings(){
+        if gameIsOn {
+            btnUpView.alpha = 1
+            btnUp.alpha = 1
+            btnDownView.alpha = 1
+            btnDown.alpha = 1
+            btnKick.alpha = 1
+            btnPunch.alpha = 1
+            
+            scoreLabel.alpha = 1
+            
+        } else {
+            btnUpView.alpha = 0
+            btnUp.alpha = 0
+            btnDownView.alpha = 0
+            btnDown.alpha = 0
+            btnKick.alpha = 0
+            btnPunch.alpha = 0
+            
+            scoreLabel.alpha = 0
+        }
+    }
+    
+      
+//          for family: String in UIFont.familyNames
+//          {
+//              print(family)
+//              for names: String in UIFont.fontNames(forFamilyName: family)
+//              {
+//                  print("== \(names)")
+//              }
+//          }
+
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8530D1F127AD457200A6991A /* NicoMoji-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8530D1F027AD44DA00A6991A /* NicoMoji-Regular.ttf */; };
 		E504E57327A7F09E00253E54 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E504E57227A7F09E00253E54 /* AppUtility.swift */; };
 		E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E506443527A32CA40075EC5B /* AppDelegate.swift */; };
 		E506443827A32CA40075EC5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E506443727A32CA40075EC5B /* GameScene.sks */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8530D1F027AD44DA00A6991A /* NicoMoji-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NicoMoji-Regular.ttf"; sourceTree = "<group>"; };
+		8530D1F227AD99DA00A6991A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E504E57227A7F09E00253E54 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		E506443227A32CA40075EC5B /* cyberunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyberunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E506443527A32CA40075EC5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8530D1EF27AD44C100A6991A /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				8530D1F027AD44DA00A6991A /* NicoMoji-Regular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		E506442927A32CA40075EC5B = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +80,8 @@
 		E506443427A32CA40075EC5B /* cyberunner */ = {
 			isa = PBXGroup;
 			children = (
+				8530D1F227AD99DA00A6991A /* Info.plist */,
+				8530D1EF27AD44C100A6991A /* Font */,
 				E506443527A32CA40075EC5B /* AppDelegate.swift */,
 				E506443727A32CA40075EC5B /* GameScene.sks */,
 				E506443927A32CA40075EC5B /* Actions.sks */,
@@ -144,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8530D1F127AD457200A6991A /* NicoMoji-Regular.ttf in Resources */,
 				E506444127A32CA40075EC5B /* Main.storyboard in Resources */,
 				E506443827A32CA40075EC5B /* GameScene.sks in Resources */,
 				E506444327A32CA60075EC5B /* Assets.xcassets in Resources */,
@@ -317,6 +331,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cyberunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -347,6 +362,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = cyberunner/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
