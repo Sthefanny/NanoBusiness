@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
 //        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
-        view.showsPhysics = true
+//        view.showsPhysics = true
         
         createBackground()
         
@@ -40,12 +40,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOverNode.removeFromParent()
         
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
-        player = Player(node: playerNode)
+        player = Player(node: playerNode, scene: self)
         
         let obstacleGround = childNode(withName: "obstacleGround")!
         let obstacleCeiling = childNode(withName: "obstacleCeiling")!
         let obstacleWall = childNode(withName: "obstacleWall")!
-        obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, parent: self)
+        let obstacleRat = childNode(withName: "obstacleRat")!
+        obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, obstacleRat: obstacleRat, parent: self)
     }
     
     func getBgLoop(timeInterval: TimeInterval) -> SKAction {
@@ -72,6 +73,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bg5.run(getBgLoop(timeInterval: TimeInterval(10)))
     }
     
+    func resetBackgroundPosition() {
+        let resetPosition = SKAction.moveTo(x: 0, duration: 0)
+        bg1.run(resetPosition)
+        bg2.run(resetPosition)
+        bg3.run(resetPosition)
+        bg4.run(resetPosition)
+        bg5.run(resetPosition)
+    }
+    
     func stopBackground() {
         bg1.removeAllActions()
         bg2.removeAllActions()
@@ -92,9 +102,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func start() {
+        gameViewController.showGameSettings()
         player.start()
         introNode.removeFromParent()
         status = .playing
+        createBackground()
         startBackground()
     }
     
@@ -146,11 +158,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "platform":
             other.parent?.removeFromParent()
             gameOver()
+        case "platformLand":
+            player.land()
+            resetAllButton()
         case "ceiling":
             gameOver()
         case "wall":
             if player.status == .punching {
                 obstacleManager.breakWall()
+                obstacleManager.obstacleStatus = .inactive
+            }
+            else if obstacleManager.obstacleStatus == .active {
+                gameOver()
+            }
+        case "rat":
+            if player.status == .kicking {
+                obstacleManager.killRat()
                 obstacleManager.obstacleStatus = .inactive
             }
             else if obstacleManager.obstacleStatus == .active {
@@ -165,6 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOver() {
         if status == .playing {
             status = .gameOver
+            gameViewController.hideGameSettings()
             player.die()
             self.addChild(gameOverNode)
             stopBackground()
@@ -173,18 +197,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func reset() {
-        status = .intro
-        gameOverNode.removeFromParent()
-        self.addChild(introNode)
-        player.reset()
-        obstacleManager.reset()
+        if player.status == .dead {
+            status = .intro
+            gameOverNode.removeFromParent()
+            self.addChild(introNode)
+            player.reset()
+            obstacleManager.reset()
+            resetAllButton()
+            resetBackgroundPosition()
+        }
+    }
+    
+    func resetAllButton() {
+        gameViewController.setButton(button: .up, status: .untap)
+        gameViewController.setButton(button: .down, status: .untap)
+        gameViewController.setButton(button: .punch, status: .untap)
+        gameViewController.setButton(button: .kick, status: .untap)
     }
     
     func PunchPressed() {
-        player.punch()
+        if status == .playing && player.status == .running {
+            gameViewController.setButton(button: .punch, status: .tap)
+            player.punch()
+        }
     }
-    func FootPressed() {
-        print("Foot")
+    func KickPressed() {
+        if status == .playing && player.status == .running {
+            gameViewController.setButton(button: .kick, status: .tap)
+            player.kick()
+        }
     }
     func UpPressed() {
         if status == .playing && player.status == .running {

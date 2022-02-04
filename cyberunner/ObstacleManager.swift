@@ -12,6 +12,7 @@ class ObstacleManager {
     private var obstacleGround: SKNode
     private var obstacleCeiling: SKNode
     private var obstacleWall: SKNode
+    private var obstacleRat: SKNode
     private var parent: SKNode
     
     private let interval = TimeInterval(5)
@@ -19,11 +20,13 @@ class ObstacleManager {
     
     private var obstacles = [SKNode]()
     var obstacleStatus: ObstacleStatus = .active
+    private var ratAnimationList = [SKAction]()
     
-    init(obstacleGround: SKNode, obstacleCeiling: SKNode, obstacleWall: SKNode, parent: SKNode) {
+    init(obstacleGround: SKNode, obstacleCeiling: SKNode, obstacleWall: SKNode, obstacleRat: SKNode, parent: SKNode) {
         self.obstacleGround = obstacleGround
         self.obstacleCeiling = obstacleCeiling
         self.obstacleWall = obstacleWall
+        self.obstacleRat = obstacleRat
         self.parent = parent
         currentTime = interval
     }
@@ -48,11 +51,14 @@ class ObstacleManager {
     }
     
     func spawn() {
-        let obstacleOptions = [obstacleGround, obstacleCeiling, obstacleWall]
+        let obstacleOptions = [obstacleGround, obstacleCeiling, obstacleWall, obstacleRat]
         let new = obstacleOptions.randomElement()?.copy() as! SKNode
         parent.addChild(new)
         obstacles.append(new)
         obstacleStatus = .active
+        if new.isEqual(to: obstacleRat) {
+            animateRat(ratNode: new)
+        }
     }
     
     func reset() {
@@ -61,6 +67,59 @@ class ObstacleManager {
         }
         obstacles.removeAll()
         currentTime = interval
+    }
+    
+    func animateRat(ratNode: SKNode) {
+        var walking = [SKTexture]()
+        
+        walking.append(SKTexture(imageNamed: "rat1"))
+        walking.append(SKTexture(imageNamed: "rat2"))
+        
+        let frames = SKAction.animate(with: walking, timePerFrame: 0.05, resize: false, restore: false)
+        let repeatFrames = SKAction.repeat(frames, count: Int(0.5 / 0.05))
+        let rightMove = SKAction.moveBy(x: 50, y: 0, duration: 0.5)
+        let rightGroup = SKAction.group([repeatFrames, rightMove])
+        
+        ratAnimationList.append(rightGroup)
+        
+        var walkingLeft = [SKTexture]()
+        
+        walkingLeft.append(SKTexture(imageNamed: "ratLeft1"))
+        walkingLeft.append(SKTexture(imageNamed: "ratLeft2"))
+        
+        let framesLeft = SKAction.animate(with: walkingLeft, timePerFrame: 0.05, resize: false, restore: false)
+        let repeatFramesLeft = SKAction.repeat(framesLeft, count: Int(0.5 / 0.05))
+        let leftMove = SKAction.moveBy(x: -50, y: 0, duration: 0.5)
+        let leftGroup = SKAction.group([repeatFramesLeft, leftMove])
+        
+        ratAnimationList.append(leftGroup)
+        
+        
+        let stopped = SKTexture(imageNamed: "ratFront")
+        let stoppedAction = SKAction.setTexture(stopped)
+        let wait = SKAction.wait(forDuration: 0.5)
+        let stoppedGroup = SKAction.group([stoppedAction, wait])
+        ratAnimationList.append(stoppedGroup)
+        
+        startRatAnimation(ratNode: ratNode.childNode(withName: "rat")!)
+    }
+    
+    func startRatAnimation(ratNode: SKNode) {
+        ratNode.removeAllActions()
+        ratNode.run(ratAnimationList.randomElement()!) {
+            self.startRatAnimation(ratNode: ratNode)
+        }
+    }
+    
+    func killRat() {
+        let ratSprite = obstacles.first?.childNode(withName: "rat") as! SKSpriteNode
+        ratSprite.removeAllActions()
+        ratSprite.texture = SKTexture(imageNamed: "ratDead")
+        ratSprite.physicsBody?.velocity.dy = CGFloat(400)
+        ratSprite.physicsBody?.categoryBitMask = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            ratSprite.removeFromParent()
+        }
     }
     
     func breakWall() {

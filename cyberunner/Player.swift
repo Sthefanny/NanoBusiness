@@ -15,9 +15,11 @@ class Player {
     private let startPosition: CGPoint
     private var animation: SKAction!
     var status: PlayerStatus = .stopped
+    var scene: GameScene!
     
-    init(node: SKSpriteNode) {
+    init(node: SKSpriteNode, scene: GameScene) {
         self.node = node
+        self.scene = scene
         startPosition = node.position
         physicsSetup()
     }
@@ -33,6 +35,7 @@ class Player {
         body.restitution = 0
         
         node.physicsBody = body
+        node.yScale = 1
     }
     
     func animationSetup() {
@@ -56,6 +59,14 @@ class Player {
         status = .running
         node.physicsBody?.isDynamic = true
         animationSetup()
+    }
+    
+    func reset() {
+        status = .stopped
+        physicsSetup()
+        node.texture = SKTexture(imageNamed: "player1")
+        node.position = startPosition
+        node.physicsBody?.isDynamic = false
     }
     
     func jump() {
@@ -106,21 +117,44 @@ class Player {
         node.texture = SKTexture(imageNamed: "player3Punch")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 77), center: CGPoint(x: 0, y: -3))
-            self.node.texture = SKTexture(imageNamed: "player1")
-            self.animationSetup()
-            self.status = .running
+            if self.scene.status == .playing {
+                self.physicsSetup()
+                self.node.texture = SKTexture(imageNamed: "player1")
+                self.animationSetup()
+                self.status = .running
+                self.scene.resetAllButton()
+            }
+        }
+    }
+    
+    func kick() {
+        if status == .kicking {
+            return
+        }
+        
+        status = .kicking
+        node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 77), center: CGPoint(x: 0, y: -3))
+        node.removeAllActions()
+        node.texture = SKTexture(imageNamed: "player2Kick")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if self.scene.status == .playing {
+                self.physicsSetup()
+                self.node.texture = SKTexture(imageNamed: "player1")
+                self.animationSetup()
+                self.status = .running
+                self.scene.resetAllButton()
+            }
         }
     }
     
     func land() {
-        if status == .crouching || status == .punching {
+        if status == .crouching || status == .punching || status == .kicking {
             return
         }
         
         node.texture = SKTexture(imageNamed: "player1")
         animationSetup()
-        
         
         status = .running
     }
@@ -133,14 +167,6 @@ class Player {
         node.removeAllActions()
     }
     
-    func reset() {
-        status = .stopped
-        physicsSetup()
-        node.texture = SKTexture(imageNamed: "player1")
-        node.position = startPosition
-        node.physicsBody?.isDynamic = false
-    }
-    
 }
 
 enum PlayerStatus {
@@ -148,6 +174,7 @@ enum PlayerStatus {
     case running
     case jumping
     case punching
+    case kicking
     case crouching
     case dead
 }

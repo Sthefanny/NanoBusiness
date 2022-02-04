@@ -14,31 +14,22 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     
     var check = true
-    var gameIsOn = false
     
     @IBOutlet weak var btnUpView: UIImageView!
     @IBOutlet weak var btnUp: UIButton!
     @IBOutlet weak var btnDownView: UIImageView!
     @IBOutlet weak var btnDown: UIButton!
     @IBOutlet weak var btnKick: UIButton!
+    @IBOutlet weak var btnKickView: UIImageView!
     @IBOutlet weak var btnPunch: UIButton!
+    @IBOutlet weak var btnPunchView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showGameSettings()
-
-        
-        for family: String in UIFont.familyNames
-        {
-            print(family)
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
-            }
-        }
+        hideGameSettings()
         
 //        scoreLabel.layer.cornerRadius = 16
 //        scoreLabel.layer.borderWidth = 2
@@ -84,7 +75,7 @@ class GameViewController: UIViewController {
         scene.PunchPressed()
     }
     @IBAction func BtnFootPressed(_ sender: Any) {
-        scene.FootPressed()
+        scene.KickPressed()
     }
     @IBAction func BtnUpPressed(_ sender: Any) {
         scene.UpPressed()
@@ -102,42 +93,42 @@ class GameViewController: UIViewController {
             btnUpView.image = UIImage(named: status == .tap ? "btnUpTap" : "btnUp")
         case .down:
             btnDownView.image = UIImage(named: status == .tap ? "btnDownTap" : "btnDown")
-        default:
-            break
-        }
-    }
-    func showGameSettings(){
-        if gameIsOn {
-            btnUpView.alpha = 1
-            btnUp.alpha = 1
-            btnDownView.alpha = 1
-            btnDown.alpha = 1
-            btnKick.alpha = 1
-            btnPunch.alpha = 1
-            
-            scoreLabel.alpha = 1
-            
-        } else {
-            btnUpView.alpha = 0
-            btnUp.alpha = 0
-            btnDownView.alpha = 0
-            btnDown.alpha = 0
-            btnKick.alpha = 0
-            btnPunch.alpha = 0
-            
-            scoreLabel.alpha = 0
+        case .punch:
+            btnPunchView.image = UIImage(named: status == .tap ? "btnPunchTap" : "btnPunch")
+        case .kick:
+            btnKickView.image = UIImage(named: status == .tap ? "btnKickTap" : "btnKick")
         }
     }
     
-      
-//          for family: String in UIFont.familyNames
-//          {
-//              print(family)
-//              for names: String in UIFont.fontNames(forFamilyName: family)
-//              {
-//                  print("== \(names)")
-//              }
-//          }
+    func showGameSettings() {
+        btnUpView.alpha = 1
+        btnUp.alpha = 1
+        btnDownView.alpha = 1
+        btnDown.alpha = 1
+        btnKick.alpha = 1
+        btnKickView.alpha = 1
+        btnPunch.alpha = 1
+        btnPunchView.alpha = 1
+        
+        scoreLabel.alpha = 1
+    }
+    
+    func hideGameSettings() {
+        btnUpView.alpha = 0
+        btnUp.alpha = 0
+        btnDownView.alpha = 0
+        btnDown.alpha = 0
+        btnKick.alpha = 0
+        btnKickView.alpha = 0
+        btnPunch.alpha = 0
+        btnPunchView.alpha = 0
+        
+        scoreLabel.alpha = 0
+    }
+    
+    func setScore(score: Int) {
+        scoreLabel.text
+    }
 
 }
 
