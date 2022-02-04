@@ -167,6 +167,10 @@ class Player {
         node.removeAllActions()
     }
     
+    func update() {
+        node.zRotation = 0
+    }
+    
 }
 
 enum PlayerStatus {

@@ -132,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func playingUpdate(deltaTime: TimeInterval) {
+        player.update()
         obstacleManager.update(deltaTime: deltaTime)
     }
     

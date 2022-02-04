@@ -117,6 +117,7 @@ class ObstacleManager {
         ratSprite.texture = SKTexture(imageNamed: "ratDead")
         ratSprite.physicsBody?.velocity.dy = CGFloat(400)
         ratSprite.physicsBody?.categoryBitMask = 0
+        ratSprite.physicsBody?.collisionBitMask = 2
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             ratSprite.removeFromParent()
         }
