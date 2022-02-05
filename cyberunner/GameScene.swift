@@ -19,7 +19,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player!
     var obstacleManager: ObstacleManager!
-    var gameOverNode: SKSpriteNode!
     
     var lastUpdate = TimeInterval(0)
     
@@ -33,9 +32,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        view.showsPhysics = true
         
         createBackground()
-        
-        gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
-        gameOverNode.removeFromParent()
         
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
         player = Player(node: playerNode, scene: self)
@@ -125,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
-            break
+            gameViewController.updateScore()
         }
     }
     
@@ -189,9 +185,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if status == .playing {
             status = .gameOver
             player.die()
-            self.addChild(gameOverNode)
+            gameViewController.showEndView()
             stopBackground()
-            gameViewController.updateScore(self)
         }
         
     }
@@ -200,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player.status == .dead {
             gameViewController.hideGameSettings()
             status = .intro
-            gameOverNode.removeFromParent()
+            gameViewController.hideEndView()
             gameViewController.showIntroView()
             player.reset()
             obstacleManager.reset()

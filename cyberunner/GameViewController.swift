@@ -28,10 +28,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnPlayAgain: UIButton!
     @IBOutlet weak var btnLeaderboard: UIButton!
     @IBOutlet weak var leftBtnsView: UIView!
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
+    @IBOutlet weak var endView: UIView!
     
     var score = CGFloat(0.0)
     
@@ -43,6 +45,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         super.viewDidLoad()
         
         showIntroView()
+        
+        hideEndView()
         
         hideGameSettings()
         
@@ -96,7 +100,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         }
     }
     
-    @IBAction func updateScore(_ sender: AnyObject) {
+    func updateScore() {
 
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
@@ -133,6 +137,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func BtnPlayPressed(_ sender: Any) {
         scene.start()
+    }
+    
+    @IBAction func BtnPlayAgainPressed(_ sender: Any) {
+        scene.reset()
     }
     
     @IBAction func BtnLeaderboardPressed(_ sender: Any) {
@@ -177,6 +185,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func hideIntroView () {
         introView.alpha = 0
+    }
+    
+    func showEndView () {
+        endView.alpha = 1
+    }
+    
+    func hideEndView () {
+        endView.alpha = 0
     }
     
     func showGameSettings() {

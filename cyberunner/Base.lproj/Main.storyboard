@@ -134,7 +134,7 @@
                                     <constraint firstItem="Rhf-pO-sni" firstAttribute="centerY" secondItem="OEc-gn-UAy" secondAttribute="centerY" id="NHN-xs-FVI"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9R-VV-1gf" userLabel="introView">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9R-VV-1gf" userLabel="introView">
                                 <rect key="frame" x="127.66666666666669" y="40.666666666666657" width="670.66666666666652" height="325.66666666666674"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="introTitle" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-UC-LDB" userLabel="Intro Name">
@@ -182,13 +182,46 @@
                                     <constraint firstItem="xZc-uN-lEs" firstAttribute="centerX" secondItem="glU-Xs-htm" secondAttribute="centerX" id="yr1-iU-qwJ"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0H-oe-hBi" userLabel="endView">
+                                <rect key="frame" x="127.66666666666669" y="40.666666666666657" width="670.66666666666652" height="325.66666666666674"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameOverTitle" translatesAutoresizingMaskIntoConstraints="NO" id="p2X-Id-cXo">
+                                        <rect key="frame" x="0.0" y="0.0" width="670.66666666666663" height="57.333333333333336"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VST-Q5-Lht" userLabel="Btn Play Again">
+                                        <rect key="frame" x="172.6666666666666" y="111" width="325.33333333333326" height="104"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="BtnPlayAgainPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Wba-ib-S3K"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlayAgain" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-mw-U6g">
+                                        <rect key="frame" x="172.6666666666666" y="111" width="325.33333333333326" height="104"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xHC-mw-U6g" firstAttribute="height" secondItem="VST-Q5-Lht" secondAttribute="height" id="1Zo-x1-hIj"/>
+                                    <constraint firstItem="xHC-mw-U6g" firstAttribute="centerY" secondItem="VST-Q5-Lht" secondAttribute="centerY" id="Bw8-f5-EhW"/>
+                                    <constraint firstItem="VST-Q5-Lht" firstAttribute="centerY" secondItem="Y0H-oe-hBi" secondAttribute="centerY" id="O9X-qf-thI"/>
+                                    <constraint firstItem="xHC-mw-U6g" firstAttribute="centerX" secondItem="VST-Q5-Lht" secondAttribute="centerX" id="ZiT-GC-3Wm"/>
+                                    <constraint firstItem="xHC-mw-U6g" firstAttribute="width" secondItem="VST-Q5-Lht" secondAttribute="width" id="c73-cb-oLV"/>
+                                    <constraint firstItem="p2X-Id-cXo" firstAttribute="top" secondItem="Y0H-oe-hBi" secondAttribute="top" id="jlC-d9-4Sc"/>
+                                    <constraint firstItem="p2X-Id-cXo" firstAttribute="width" secondItem="Y0H-oe-hBi" secondAttribute="width" id="kzO-78-2ly"/>
+                                    <constraint firstItem="p2X-Id-cXo" firstAttribute="centerX" secondItem="Y0H-oe-hBi" secondAttribute="centerX" id="pXO-y8-sY0"/>
+                                    <constraint firstItem="VST-Q5-Lht" firstAttribute="centerX" secondItem="Y0H-oe-hBi" secondAttribute="centerX" id="skp-iT-qLc"/>
+                                    <constraint firstItem="VST-Q5-Lht" firstAttribute="width" secondItem="Y0H-oe-hBi" secondAttribute="height" multiplier="1:1" id="ude-Cb-CSE"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Y0H-oe-hBi" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="0g0-8M-nFt"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="5" id="3Zm-bB-Lm5"/>
+                            <constraint firstItem="Y0H-oe-hBi" firstAttribute="centerY" secondItem="4qk-I5-YsI" secondAttribute="centerY" id="6xr-iC-Ldd"/>
                             <constraint firstAttribute="bottom" secondItem="MQM-en-e5J" secondAttribute="bottom" constant="21" id="7aX-Cf-NBs"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="BM5-mw-EyV"/>
+                            <constraint firstItem="Y0H-oe-hBi" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.8" id="DaR-jk-oe2"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="HQK-7V-hgC"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="Hgr-ah-Qf6"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.15" id="J4x-Og-efK"/>
@@ -197,6 +230,7 @@
                             <constraint firstAttribute="trailing" secondItem="OEc-gn-UAy" secondAttribute="trailing" id="SCQ-KA-Gu0"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="height" secondItem="IHI-JN-9aw" secondAttribute="height" id="Viw-IT-y8r"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="44" id="aAD-5f-sJg"/>
+                            <constraint firstItem="Y0H-oe-hBi" firstAttribute="height" secondItem="4qk-I5-YsI" secondAttribute="height" multiplier="0.8" id="hGj-Ls-gA6"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.8" id="jEF-eR-S4V"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="centerY" secondItem="4qk-I5-YsI" secondAttribute="centerY" id="jXV-Ll-f5e"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.1" id="kif-LC-7QI"/>
@@ -214,10 +248,12 @@
                         <outlet property="btnKickView" destination="8Q1-qI-cyS" id="Erp-oT-6aJ"/>
                         <outlet property="btnLeaderboard" destination="glU-Xs-htm" id="KSs-MR-jHE"/>
                         <outlet property="btnPlay" destination="glU-Xs-htm" id="VkP-Q6-fUt"/>
+                        <outlet property="btnPlayAgain" destination="VST-Q5-Lht" id="6HT-8d-ALk"/>
                         <outlet property="btnPunch" destination="qHt-uT-FOp" id="9d9-5W-8U0"/>
                         <outlet property="btnPunchView" destination="vws-mx-XQ6" id="oAO-1a-AfB"/>
                         <outlet property="btnUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
                         <outlet property="btnUpView" destination="PaE-1k-Vre" id="Nb6-Mk-iML"/>
+                        <outlet property="endView" destination="Y0H-oe-hBi" id="iW9-1g-kRi"/>
                         <outlet property="introView" destination="z9R-VV-1gf" id="a0t-fl-AaI"/>
                         <outlet property="leftBtnsView" destination="IHI-JN-9aw" id="S85-Bq-gBe"/>
                         <outlet property="rightBtnsView" destination="MQM-en-e5J" id="lBg-Di-zFq"/>
@@ -227,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="101"/>
+            <point key="canvasLocation" x="529" y="100"/>
         </scene>
     </scenes>
     <resources>
@@ -237,8 +273,10 @@
         <image name="btnKick" width="64" height="64"/>
         <image name="btnLeaderboard" width="328" height="104"/>
         <image name="btnPlay" width="328" height="104"/>
+        <image name="btnPlayAgain" width="328" height="104"/>
         <image name="btnPunch" width="64" height="64"/>
         <image name="btnUp" width="64" height="64"/>
+        <image name="gameOverTitle" width="413.33334350585938" height="57.333332061767578"/>
         <image name="introTitle" width="524.33331298828125" height="63"/>
         <namedColor name="appBlue">
             <color red="0.22400000691413879" green="0.65499997138977051" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
