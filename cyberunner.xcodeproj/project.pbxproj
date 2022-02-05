@@ -96,7 +96,6 @@
 				E51744CF27A40E0100F8910C /* Player.swift */,
 				E51744D127A414D200F8910C /* ObstacleManager.swift */,
 				E504E57227A7F09E00253E54 /* AppUtility.swift */,
-				E59EDE9027ADC96E00298249 /* GameCenterManager.swift */,
 			);
 			path = cyberunner;
 			sourceTree = "<group>";
@@ -104,7 +103,6 @@
 		E59EDE8D27ADBC7400298249 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E59EDE8E27ADBC7400298249 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

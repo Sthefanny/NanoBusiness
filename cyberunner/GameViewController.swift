@@ -8,8 +8,9 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GameKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     var scene: GameScene!
     
@@ -25,15 +26,26 @@ class GameViewController: UIViewController {
     @IBOutlet weak var btnPunchView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var introView: UIView!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnLeaderboard: UIButton!
+    @IBOutlet weak var leftBtnsView: UIView!
+    @IBOutlet weak var rightBtnsView: UIView!
+    @IBOutlet weak var scoreView: UIView!
+    
+    var score = CGFloat(0.0)
+    
+    var gcEnabled = Bool()
+    var gcDefaultLeaderBoard = String()
+    let LEADERBOARD_ID = "CyberunnerLeaderboard"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showIntroView()
+        
         hideGameSettings()
         
-//        scoreLabel.layer.cornerRadius = 16
-//        scoreLabel.layer.borderWidth = 2
-//        scoreLabel.layer.borderColor = UIColor(named: "appBlue")?.cgColor
         scoreLabel.font = UIFont(name: "NicoMoji-Regular", size: 15)
         
         AppUtility.lockOrientation(.landscape)
@@ -52,8 +64,56 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+//            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
+            authenticateLocalPlayer()
         }
     }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer = GKLocalPlayer.local
+            
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1. Show login if player is not logged in
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
+                // 2. Player is already authenticated & logged in, load game center
+                self.gcEnabled = true
+                    
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
+                    if error != nil { print(error)
+                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
+                })
+                
+            } else {
+                // 3. Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated!")
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func updateScore(_ sender: AnyObject) {
+
+        // Submit score to GC leaderboard
+        let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
+        bestScoreInt.value = Int64(score)
+        GKScore.report([bestScoreInt]) { (error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Best Score submitted to your Leaderboard!")
+            }
+        }
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
+    }
+
 
     override var shouldAutorotate: Bool {
         return true
@@ -71,6 +131,17 @@ class GameViewController: UIViewController {
         return true
     }
     
+    @IBAction func BtnPlayPressed(_ sender: Any) {
+        scene.start()
+    }
+    
+    @IBAction func BtnLeaderboardPressed(_ sender: Any) {
+        let gcVC = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = .leaderboards
+        gcVC.leaderboardIdentifier = LEADERBOARD_ID
+        present(gcVC, animated: true, completion: nil)
+    }
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
     }
@@ -100,34 +171,39 @@ class GameViewController: UIViewController {
         }
     }
     
+    func showIntroView () {
+        introView.alpha = 1
+    }
+    
+    func hideIntroView () {
+        introView.alpha = 0
+    }
+    
     func showGameSettings() {
-        btnUpView.alpha = 1
-        btnUp.alpha = 1
-        btnDownView.alpha = 1
-        btnDown.alpha = 1
-        btnKick.alpha = 1
-        btnKickView.alpha = 1
-        btnPunch.alpha = 1
-        btnPunchView.alpha = 1
-        
-        scoreLabel.alpha = 1
+        leftBtnsView.alpha = 1
+        rightBtnsView.alpha = 1
+        scoreView.alpha = 1
     }
     
     func hideGameSettings() {
-        btnUpView.alpha = 0
-        btnUp.alpha = 0
-        btnDownView.alpha = 0
-        btnDown.alpha = 0
-        btnKick.alpha = 0
-        btnKickView.alpha = 0
-        btnPunch.alpha = 0
-        btnPunchView.alpha = 0
-        
-        scoreLabel.alpha = 0
+        leftBtnsView.alpha = 0
+        rightBtnsView.alpha = 0
+        scoreView.alpha = 0
     }
     
-    func setScore(score: Int) {
-        scoreLabel.text
+    func setScore(deltaTime: TimeInterval) {
+        self.score += GameManager.scoreMultiplier * deltaTime
+        updateScoreLabel()
+    }
+    
+    func resetScore() {
+        self.score  = 0
+        updateScoreLabel()
+    }
+    
+    func updateScoreLabel() {
+        let scoreText = "SCORE: \(String(format: "%.0f", self.score)) | BEST SCORE: 0"
+        scoreLabel.text = scoreText
     }
 
 }

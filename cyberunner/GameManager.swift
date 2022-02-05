@@ -8,5 +8,6 @@
 import SpriteKit
 
 class GameManager {
+    static var scoreMultiplier = CGFloat(3)
     static var obstacleSpeed = CGFloat(150)
 }

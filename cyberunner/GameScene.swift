@@ -19,7 +19,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player!
     var obstacleManager: ObstacleManager!
-    var introNode: SKSpriteNode!
     var gameOverNode: SKSpriteNode!
     
     var lastUpdate = TimeInterval(0)
@@ -35,7 +34,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         createBackground()
         
-        introNode = childNode(withName: "intro") as? SKSpriteNode
         gameOverNode = childNode(withName: "gameOver") as? SKSpriteNode
         gameOverNode.removeFromParent()
         
@@ -93,7 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch status {
         case .intro:
-            start()
+            break
         case .playing:
             break
         case .gameOver:
@@ -102,9 +100,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func start() {
+        gameViewController.hideIntroView()
         gameViewController.showGameSettings()
         player.start()
-        introNode.removeFromParent()
         status = .playing
         createBackground()
         startBackground()
@@ -134,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playingUpdate(deltaTime: TimeInterval) {
         player.update()
         obstacleManager.update(deltaTime: deltaTime)
+        gameViewController.setScore(deltaTime: deltaTime)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -189,23 +188,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOver() {
         if status == .playing {
             status = .gameOver
-            gameViewController.hideGameSettings()
             player.die()
             self.addChild(gameOverNode)
             stopBackground()
+            gameViewController.updateScore(self)
         }
         
     }
     
     func reset() {
         if player.status == .dead {
+            gameViewController.hideGameSettings()
             status = .intro
             gameOverNode.removeFromParent()
-            self.addChild(introNode)
+            gameViewController.showIntroView()
             player.reset()
             obstacleManager.reset()
             resetAllButton()
             resetBackgroundPosition()
+            gameViewController.resetScore()
         }
     }
     
