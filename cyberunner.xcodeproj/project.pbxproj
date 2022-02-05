@@ -21,6 +21,7 @@
 		E51744CE27A34B0200F8910C /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744CD27A34B0200F8910C /* GameStatus.swift */; };
 		E51744D027A40E0100F8910C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744CF27A40E0100F8910C /* Player.swift */; };
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
+		E5923D7227AEB4720035BEDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5923D7127AEB4720035BEDE /* UserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		E51744CD27A34B0200F8910C /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		E51744CF27A40E0100F8910C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
+		E5923D7127AEB4720035BEDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				E51744CF27A40E0100F8910C /* Player.swift */,
 				E51744D127A414D200F8910C /* ObstacleManager.swift */,
 				E504E57227A7F09E00253E54 /* AppUtility.swift */,
+				E5923D7127AEB4720035BEDE /* UserData.swift */,
 			);
 			path = cyberunner;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				E504E57327A7F09E00253E54 /* AppUtility.swift in Sources */,
 				E506443C27A32CA40075EC5B /* GameScene.swift in Sources */,
 				E51744CE27A34B0200F8910C /* GameStatus.swift in Sources */,
+				E5923D7227AEB4720035BEDE /* UserData.swift in Sources */,
 				E506444D27A32FF20075EC5B /* GameManager.swift in Sources */,
 				E506443E27A32CA40075EC5B /* GameViewController.swift in Sources */,
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,

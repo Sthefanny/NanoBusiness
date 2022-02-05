@@ -40,6 +40,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     var gcEnabled = Bool()
     var gcDefaultLeaderBoard = String()
     let LEADERBOARD_ID = "CyberunnerLeaderboard"
+    let userData = UserData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +102,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func updateScore() {
+        userData.saveBestScore(score: Int(score))
+        updateScoreLabel()
 
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
@@ -218,7 +221,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func updateScoreLabel() {
-        let scoreText = "SCORE: \(String(format: "%.0f", self.score)) | BEST SCORE: 0"
+        let bestScore = userData.getBestScore()
+        let scoreText = "SCORE: \(String(format: "%.0f", self.score)) | BEST SCORE: \(bestScore)"
         scoreLabel.text = scoreText
     }
 
