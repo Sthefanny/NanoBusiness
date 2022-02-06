@@ -108,13 +108,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
         bestScoreInt.value = Int64(score)
-        GKScore.report([bestScoreInt]) { (error) in
-            if error != nil {
-                print(error!.localizedDescription)
-            } else {
-                print("Best Score submitted to your Leaderboard!")
-            }
-        }
+        GKScore.report([bestScoreInt])
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {

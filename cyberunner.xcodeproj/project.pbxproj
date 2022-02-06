@@ -22,6 +22,7 @@
 		E51744D027A40E0100F8910C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744CF27A40E0100F8910C /* Player.swift */; };
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
 		E5923D7227AEB4720035BEDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5923D7127AEB4720035BEDE /* UserData.swift */; };
+		E5B0B12427B0657B00F2599C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0B12327B0657B00F2599C /* Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		E51744CF27A40E0100F8910C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		E5923D7127AEB4720035BEDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		E5B0B12327B0657B00F2599C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				E51744D127A414D200F8910C /* ObstacleManager.swift */,
 				E504E57227A7F09E00253E54 /* AppUtility.swift */,
 				E5923D7127AEB4720035BEDE /* UserData.swift */,
+				E5B0B12327B0657B00F2599C /* Background.swift */,
 			);
 			path = cyberunner;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
 				E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */,
 				E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */,
+				E5B0B12427B0657B00F2599C /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cyberunner/Info.plist;
@@ -372,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cyberunner/Info.plist;

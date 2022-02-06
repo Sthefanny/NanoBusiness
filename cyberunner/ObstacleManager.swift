@@ -15,7 +15,7 @@ class ObstacleManager {
     private var obstacleRat: SKNode
     private var parent: SKNode
     
-    private let interval = TimeInterval(5)
+    private let interval = TimeInterval(6)
     private var currentTime = TimeInterval(0)
     
     private var obstacles = [SKNode]()
@@ -39,7 +39,7 @@ class ObstacleManager {
         }
         
         for obstacle in obstacles {
-            obstacle.position.x -= GameManager.obstacleSpeed * deltaTime
+            obstacle.position.x -= GameManager.speed * deltaTime
         }
         
         if let firstObstacle = obstacles.first {

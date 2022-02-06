@@ -10,15 +10,9 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var bg1: SKNode!
-    var bg2: SKNode!
-    var bg3: SKNode!
-    var bg4: SKNode!
-    var bg5: SKNode!
-    var bgLoop: SKAction!
-    
     var player: Player!
     var obstacleManager: ObstacleManager!
+    var background: Background!
     
     var lastUpdate = TimeInterval(0)
     
@@ -31,10 +25,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
 //        view.showsPhysics = true
         
-        createBackground()
-        
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
         player = Player(node: playerNode, scene: self)
+        
+        background = Background(parent: self)
         
         let obstacleGround = childNode(withName: "obstacleGround")!
         let obstacleCeiling = childNode(withName: "obstacleCeiling")!
@@ -42,48 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let obstacleRat = childNode(withName: "obstacleRat")!
         obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, obstacleRat: obstacleRat, parent: self)
     }
-    
-    func getBgLoop(timeInterval: TimeInterval) -> SKAction {
-        let moveLeft = SKAction.moveBy(x: -1192, y: 0, duration: timeInterval)
-        let moveBack = SKAction.moveBy(x: 1192, y: 0, duration: 0)
-        let sequence = SKAction.sequence([moveLeft, moveBack])
         
-        return SKAction.repeatForever(sequence)
-    }
-    
-    func createBackground() {
-        bg1 = self.childNode(withName: "bg1")!
-        bg2 = self.childNode(withName: "bg2")!
-        bg3 = self.childNode(withName: "bg3")!
-        bg4 = self.childNode(withName: "bg4")!
-        bg5 = self.childNode(withName: "bg5")!
-    }
-    
-    func startBackground() {
-        bg1.run(getBgLoop(timeInterval: TimeInterval(50)))
-        bg2.run(getBgLoop(timeInterval: TimeInterval(40)))
-        bg3.run(getBgLoop(timeInterval: TimeInterval(30)))
-        bg4.run(getBgLoop(timeInterval: TimeInterval(20)))
-        bg5.run(getBgLoop(timeInterval: TimeInterval(10)))
-    }
-    
-    func resetBackgroundPosition() {
-        let resetPosition = SKAction.moveTo(x: 0, duration: 0)
-        bg1.run(resetPosition)
-        bg2.run(resetPosition)
-        bg3.run(resetPosition)
-        bg4.run(resetPosition)
-        bg5.run(resetPosition)
-    }
-    
-    func stopBackground() {
-        bg1.removeAllActions()
-        bg2.removeAllActions()
-        bg3.removeAllActions()
-        bg4.removeAllActions()
-        bg5.removeAllActions()
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch status {
         case .intro:
@@ -100,8 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameViewController.showGameSettings()
         player.start()
         status = .playing
-        createBackground()
-        startBackground()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -116,8 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch status {
         case .intro:
-            break
-//            scrollBackground(deltaTime: deltaTime)
+            GameManager.speed = CGFloat(100)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
@@ -126,9 +76,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func playingUpdate(deltaTime: TimeInterval) {
+        GameManager.speed += GameManager.speedUpdater
         player.update()
         obstacleManager.update(deltaTime: deltaTime)
         gameViewController.setScore(deltaTime: deltaTime)
+        background.update(deltaTime: deltaTime)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -186,7 +138,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             status = .gameOver
             player.die()
             gameViewController.showEndView()
-            stopBackground()
         }
         
     }
@@ -200,7 +151,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             player.reset()
             obstacleManager.reset()
             resetAllButton()
-            resetBackgroundPosition()
             gameViewController.resetScore()
         }
     }

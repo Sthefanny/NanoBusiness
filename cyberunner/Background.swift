@@ -2,7 +2,7 @@
 //  Background.swift
 //  cyberunner
 //
-//  Created by Sthefanny Gonzaga on 27/01/22.
+//  Created by Sthefanny Gonzaga on 06/02/22.
 //
 
 import Foundation
@@ -10,42 +10,45 @@ import SpriteKit
 
 class Background {
     
-    var node: SKNode
+    private var parent: SKNode
     
-    init(node: SKNode) {
-        self.node = node
+    private var bg1: SKNode!
+    private var bg2: SKNode!
+    private var bg3: SKNode!
+    private var bg4: SKNode!
+    private var bg5: SKNode!
+    
+    init(parent: SKNode) {
+        self.parent = parent
+        
+        bg1 = parent.childNode(withName: "bg1") as! SKSpriteNode
+        bg2 = parent.childNode(withName: "bg2") as! SKSpriteNode
+        bg3 = parent.childNode(withName: "bg3") as! SKSpriteNode
+        bg4 = parent.childNode(withName: "bg4") as! SKSpriteNode
+        bg5 = parent.childNode(withName: "bg5") as! SKSpriteNode
     }
     
-    func update(sizeWidth: CGFloat, deltaTime: TimeInterval) {
+    func update(deltaTime: TimeInterval) {
+        bg1.position.x -= GameManager.speed * deltaTime + 0.0
+        bg2.position.x -= GameManager.speed * deltaTime + 0.4
+        bg3.position.x -= GameManager.speed * deltaTime + 0.8
+        bg4.position.x -= GameManager.speed * deltaTime + 1.2
+        bg5.position.x -= GameManager.speed * deltaTime + 1.6
         
-        let moveLeft = SKAction.moveBy(x: -sizeWidth, y: 0, duration: deltaTime)
-        let moveBack = SKAction.moveBy(x: sizeWidth, y: 0, duration: 0)
-        let sequence = SKAction.sequence([moveLeft, moveBack])
-        
-        let loop = SKAction.repeatForever(sequence)
-        
-        node.run(loop)
-        
-        
-//        var count = 0
-//        var aditional = CGFloat(10)
-//
-//        for node in bgNodes {
-//            node.position.x -= GameManager.bgSpeed + aditional * deltaTime
-//
-//            if node.position.x <= 0 {
-//                node.position.x += 24
-//            }
-//
-//            count += 1
-//            aditional += CGFloat(10)
-//        }
-        
-//        node.position.x -= GameManager.bgSpeed * deltaTime
-//
-//        if node.position.x <= 0 {
-//            node.position.x += 1334
-//        }
+        if bg1.position.x <= -1192 {
+            bg1.position.x += 1192
+        }
+        if bg2.position.x <= -1192 {
+            bg2.position.x += 1192
+        }
+        if bg3.position.x <= -1192 {
+            bg3.position.x += 1192
+        }
+        if bg4.position.x <= -1192 {
+            bg4.position.x += 1192
+        }
+        if bg5.position.x <= -1192 {
+            bg5.position.x += 1192
+        }
     }
-    
 }
