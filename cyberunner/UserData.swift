@@ -9,6 +9,7 @@ import Foundation
 
 class UserData {
     let bestScore = "bestScore"
+    let soundSettings = "soundSettings"
     let defaults = UserDefaults.standard
     
     func saveBestScore(score: Int) {

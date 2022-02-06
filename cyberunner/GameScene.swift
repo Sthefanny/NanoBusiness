@@ -19,11 +19,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var status: GameStatus = .intro
     weak var gameViewController: GameViewController!
     
+    var audioPlayer = AudioManager.instance
+    
     override func didMove(to view: SKView) {
         
         physicsWorld.contactDelegate = self
 //        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
 //        view.showsPhysics = true
+        
+        audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
         
         let playerNode = self.childNode(withName: "player") as! SKSpriteNode
         player = Player(node: playerNode, scene: self)
@@ -177,6 +181,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func UpPressed() {
         if status == .playing && player.status == .running {
             gameViewController.setButton(button: .up, status: .tap)
+            
+            audioPlayer.playSound(sound: .jump)
             player.jump()
         }
     }

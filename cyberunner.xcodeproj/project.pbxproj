@@ -23,6 +23,14 @@
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
 		E5923D7227AEB4720035BEDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5923D7127AEB4720035BEDE /* UserData.swift */; };
 		E5B0B12427B0657B00F2599C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0B12327B0657B00F2599C /* Background.swift */; };
+		E5B0B12D27B07D9300F2599C /* punchWall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12627B07D9300F2599C /* punchWall.mp3 */; };
+		E5B0B12E27B07D9300F2599C /* walkingDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12727B07D9300F2599C /* walkingDown.mp3 */; };
+		E5B0B12F27B07D9300F2599C /* punchRat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12827B07D9300F2599C /* punchRat.mp3 */; };
+		E5B0B13027B07D9300F2599C /* rat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12927B07D9300F2599C /* rat.mp3 */; };
+		E5B0B13127B07D9300F2599C /* power.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12A27B07D9300F2599C /* power.mp3 */; };
+		E5B0B13227B07D9300F2599C /* backgroundSoundLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12B27B07D9300F2599C /* backgroundSoundLoop.mp3 */; };
+		E5B0B13327B07D9300F2599C /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12C27B07D9300F2599C /* jump.mp3 */; };
+		E5B0B13527B07DE200F2599C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0B13427B07DE200F2599C /* AudioManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +52,14 @@
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		E5923D7127AEB4720035BEDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E5B0B12327B0657B00F2599C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		E5B0B12627B07D9300F2599C /* punchWall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = punchWall.mp3; sourceTree = "<group>"; };
+		E5B0B12727B07D9300F2599C /* walkingDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walkingDown.mp3; sourceTree = "<group>"; };
+		E5B0B12827B07D9300F2599C /* punchRat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = punchRat.mp3; sourceTree = "<group>"; };
+		E5B0B12927B07D9300F2599C /* rat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rat.mp3; sourceTree = "<group>"; };
+		E5B0B12A27B07D9300F2599C /* power.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = power.mp3; sourceTree = "<group>"; };
+		E5B0B12B27B07D9300F2599C /* backgroundSoundLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSoundLoop.mp3; sourceTree = "<group>"; };
+		E5B0B12C27B07D9300F2599C /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		E5B0B13427B07DE200F2599C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +101,7 @@
 		E506443427A32CA40075EC5B /* cyberunner */ = {
 			isa = PBXGroup;
 			children = (
+				E5B0B12527B07D4000F2599C /* Audios */,
 				8530D1F227AD99DA00A6991A /* Info.plist */,
 				8530D1EF27AD44C100A6991A /* Font */,
 				E506443527A32CA40075EC5B /* AppDelegate.swift */,
@@ -102,6 +119,7 @@
 				E504E57227A7F09E00253E54 /* AppUtility.swift */,
 				E5923D7127AEB4720035BEDE /* UserData.swift */,
 				E5B0B12327B0657B00F2599C /* Background.swift */,
+				E5B0B13427B07DE200F2599C /* AudioManager.swift */,
 			);
 			path = cyberunner;
 			sourceTree = "<group>";
@@ -111,6 +129,20 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5B0B12527B07D4000F2599C /* Audios */ = {
+			isa = PBXGroup;
+			children = (
+				E5B0B12B27B07D9300F2599C /* backgroundSoundLoop.mp3 */,
+				E5B0B12C27B07D9300F2599C /* jump.mp3 */,
+				E5B0B12A27B07D9300F2599C /* power.mp3 */,
+				E5B0B12827B07D9300F2599C /* punchRat.mp3 */,
+				E5B0B12627B07D9300F2599C /* punchWall.mp3 */,
+				E5B0B12927B07D9300F2599C /* rat.mp3 */,
+				E5B0B12727B07D9300F2599C /* walkingDown.mp3 */,
+			);
+			path = Audios;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,12 +203,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B0B13227B07D9300F2599C /* backgroundSoundLoop.mp3 in Resources */,
+				E5B0B13027B07D9300F2599C /* rat.mp3 in Resources */,
 				8530D1F127AD457200A6991A /* NicoMoji-Regular.ttf in Resources */,
+				E5B0B12D27B07D9300F2599C /* punchWall.mp3 in Resources */,
+				E5B0B12E27B07D9300F2599C /* walkingDown.mp3 in Resources */,
+				E5B0B12F27B07D9300F2599C /* punchRat.mp3 in Resources */,
 				E506444127A32CA40075EC5B /* Main.storyboard in Resources */,
 				E506443827A32CA40075EC5B /* GameScene.sks in Resources */,
+				E5B0B13327B07D9300F2599C /* jump.mp3 in Resources */,
 				E506444327A32CA60075EC5B /* Assets.xcassets in Resources */,
 				E506444627A32CA60075EC5B /* LaunchScreen.storyboard in Resources */,
 				E506443A27A32CA40075EC5B /* Actions.sks in Resources */,
+				E5B0B13127B07D9300F2599C /* power.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +235,7 @@
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
 				E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */,
 				E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */,
+				E5B0B13527B07DE200F2599C /* AudioManager.swift in Sources */,
 				E5B0B12427B0657B00F2599C /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

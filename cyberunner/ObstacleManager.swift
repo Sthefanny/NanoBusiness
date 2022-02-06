@@ -22,6 +22,8 @@ class ObstacleManager {
     var obstacleStatus: ObstacleStatus = .active
     private var ratAnimationList = [SKAction]()
     
+    var audioPlayer = AudioManager.instance
+    
     init(obstacleGround: SKNode, obstacleCeiling: SKNode, obstacleWall: SKNode, obstacleRat: SKNode, parent: SKNode) {
         self.obstacleGround = obstacleGround
         self.obstacleCeiling = obstacleCeiling
@@ -70,6 +72,8 @@ class ObstacleManager {
     }
     
     func animateRat(ratNode: SKNode) {
+        audioPlayer.playSound(sound: .rat)
+        
         var walking = [SKTexture]()
         
         walking.append(SKTexture(imageNamed: "rat1"))
@@ -112,6 +116,9 @@ class ObstacleManager {
     }
     
     func killRat() {
+        
+        audioPlayer.playSound(sound: .punchRat)
+        
         let ratSprite = obstacles.first?.childNode(withName: "rat") as! SKSpriteNode
         ratSprite.removeAllActions()
         ratSprite.texture = SKTexture(imageNamed: "ratDead")
@@ -124,6 +131,8 @@ class ObstacleManager {
     }
     
     func breakWall() {
+        
+        audioPlayer.playSound(sound: .punchWall)
         
         obstacles.first?.physicsBody?.categoryBitMask = 0
         

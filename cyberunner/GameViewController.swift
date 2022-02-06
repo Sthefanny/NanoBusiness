@@ -34,6 +34,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
     @IBOutlet weak var endView: UIView!
+    @IBOutlet weak var btnSound: UIButton!
+    @IBOutlet weak var btnSoundView: UIImageView!
+    
+    var audioPlayer = AudioManager.instance
     
     var score = CGFloat(0.0)
     
@@ -42,8 +46,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     let LEADERBOARD_ID = "CyberunnerLeaderboard"
     let userData = UserData()
     
+    var soundOn = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        verifySoundSettings()
         
         showIntroView()
         
@@ -158,9 +166,33 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     @IBAction func BtnDownPressed(_ sender: Any) {
         scene.DownPressed()
+        audioPlayer.playSound(sound: .walkingDown)
     }
     @IBAction func BtnDownRealesed(_ sender: Any) {
         scene.DownPressed()
+        audioPlayer.stopSound()
+    }
+    
+    @IBAction func BtnSoundPressed(_ sender: Any) {
+        if soundOn {
+            audioPlayer.stopBgSound()
+            audioPlayer.stopSound()
+            btnSoundView.image = UIImage(named:"soundOff")
+        }
+        else {
+            audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
+            btnSoundView.image = UIImage(named:"soundOn")
+        }
+        soundOn = !soundOn
+    }
+    
+    func verifySoundSettings() {
+        if soundOn {
+            btnSoundView.image = UIImage(named:"soundOn")
+        }
+        else {
+            btnSoundView.image = UIImage(named:"soundOff")
+        }
     }
     
     func setButton(button: ScreenButtons, status: TapStatus){

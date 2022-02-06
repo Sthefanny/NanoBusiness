@@ -212,6 +212,29 @@
                                     <constraint firstItem="VST-Q5-Lht" firstAttribute="width" secondItem="Y0H-oe-hBi" secondAttribute="height" multiplier="1:1" id="ude-Cb-CSE"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atx-tG-Jhc" userLabel="soundButtonView">
+                                <rect key="frame" x="54.000000000000007" y="19.999999999999996" width="92.666666666666686" height="42.666666666666657"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HL-Bz-eff" userLabel="btnSound">
+                                        <rect key="frame" x="0.0" y="0.0" width="92.666666666666671" height="42.666666666666664"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="BtnSoundPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rw3-Oh-8Nv"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundOn" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-LC-VgK" userLabel="btnSoundImage">
+                                        <rect key="frame" x="20.333333333333329" y="-4.6666666666666643" width="52" height="52"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8HL-Bz-eff" firstAttribute="centerY" secondItem="atx-tG-Jhc" secondAttribute="centerY" id="3s1-O7-5l2"/>
+                                    <constraint firstItem="8HL-Bz-eff" firstAttribute="height" secondItem="atx-tG-Jhc" secondAttribute="height" id="KHZ-FY-w6u"/>
+                                    <constraint firstItem="8HL-Bz-eff" firstAttribute="width" secondItem="atx-tG-Jhc" secondAttribute="width" id="QoB-0E-DqY"/>
+                                    <constraint firstItem="JJ3-LC-VgK" firstAttribute="centerY" secondItem="8HL-Bz-eff" secondAttribute="centerY" id="VWP-4A-asA"/>
+                                    <constraint firstItem="JJ3-LC-VgK" firstAttribute="centerX" secondItem="8HL-Bz-eff" secondAttribute="centerX" id="Zwo-bp-L32"/>
+                                    <constraint firstItem="8HL-Bz-eff" firstAttribute="centerX" secondItem="atx-tG-Jhc" secondAttribute="centerX" id="kdc-56-0KD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -222,6 +245,8 @@
                             <constraint firstAttribute="bottom" secondItem="MQM-en-e5J" secondAttribute="bottom" constant="21" id="7aX-Cf-NBs"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="BM5-mw-EyV"/>
                             <constraint firstItem="Y0H-oe-hBi" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.8" id="DaR-jk-oe2"/>
+                            <constraint firstItem="atx-tG-Jhc" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.1" id="F7T-sp-GTi"/>
+                            <constraint firstItem="atx-tG-Jhc" firstAttribute="width" secondItem="3se-qz-xqx" secondAttribute="width" multiplier="0.1" id="FzW-nw-N7l"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="HQK-7V-hgC"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="Hgr-ah-Qf6"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.15" id="J4x-Og-efK"/>
@@ -233,8 +258,10 @@
                             <constraint firstItem="Y0H-oe-hBi" firstAttribute="height" secondItem="4qk-I5-YsI" secondAttribute="height" multiplier="0.8" id="hGj-Ls-gA6"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.8" id="jEF-eR-S4V"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="centerY" secondItem="4qk-I5-YsI" secondAttribute="centerY" id="jXV-Ll-f5e"/>
+                            <constraint firstItem="atx-tG-Jhc" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="kS1-el-Tgm"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.1" id="kif-LC-7QI"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="height" secondItem="4qk-I5-YsI" secondAttribute="height" multiplier="0.8" id="r1u-0e-rN6"/>
+                            <constraint firstItem="atx-tG-Jhc" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="10" id="sae-7N-Znn"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="vPJ-SI-VDV"/>
                             <constraint firstItem="z9R-VV-1gf" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="wHV-Pj-4Qf"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" id="y91-Jc-Uc9"/>
@@ -251,6 +278,8 @@
                         <outlet property="btnPlayAgain" destination="VST-Q5-Lht" id="6HT-8d-ALk"/>
                         <outlet property="btnPunch" destination="qHt-uT-FOp" id="9d9-5W-8U0"/>
                         <outlet property="btnPunchView" destination="vws-mx-XQ6" id="oAO-1a-AfB"/>
+                        <outlet property="btnSound" destination="8HL-Bz-eff" id="uB2-hp-L7D"/>
+                        <outlet property="btnSoundView" destination="JJ3-LC-VgK" id="HJn-cz-u4G"/>
                         <outlet property="btnUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
                         <outlet property="btnUpView" destination="PaE-1k-Vre" id="Nb6-Mk-iML"/>
                         <outlet property="endView" destination="Y0H-oe-hBi" id="iW9-1g-kRi"/>
@@ -278,6 +307,7 @@
         <image name="btnUp" width="64" height="64"/>
         <image name="gameOverTitle" width="413.33334350585938" height="57.333332061767578"/>
         <image name="introTitle" width="524.33331298828125" height="63"/>
+        <image name="soundOn" width="52" height="52"/>
         <namedColor name="appBlue">
             <color red="0.22400000691413879" green="0.65499997138977051" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
