@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import FirebaseAnalytics
 
 class Player {
     
@@ -78,6 +79,8 @@ class Player {
         node.removeAllActions()
         node.texture = SKTexture(imageNamed: "player4")
         node.physicsBody?.velocity.dy = jumpForce
+        
+        Analytics.logEvent("player_jump", parameters: ["player_height": round(node.position.y) as NSNumber])
     }
     
     func toggleCrouch() {

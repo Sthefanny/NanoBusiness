@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import FirebaseAnalytics
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -15,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background: Background!
     
     var lastUpdate = TimeInterval(0)
+    var totalTime = TimeInterval(0)
     
     var status: GameStatus = .intro
     weak var gameViewController: GameViewController!
@@ -48,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             break
         case .gameOver:
-            reset()
+            break
         }
     }
     
@@ -57,6 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameViewController.showGameSettings()
         player.start()
         status = .playing
+        Analytics.logEvent("level_start", parameters: nil)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -68,6 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let deltaTime = currentTime - lastUpdate
         lastUpdate = currentTime
+        
+        totalTime += deltaTime
         
         switch status {
         case .intro:
@@ -142,6 +147,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             status = .gameOver
             player.die()
             gameViewController.showEndView()
+            Analytics.logEvent("level_end", parameters: nil)
+            
+            Analytics.setUserProperty("\(round(totalTime))", forName: "last_run_time")
         }
         
     }
@@ -156,6 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             obstacleManager.reset()
             resetAllButton()
             gameViewController.resetScore()
+            Analytics.logEvent("level_restart", parameters: nil)
         }
     }
     
