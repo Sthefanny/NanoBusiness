@@ -22,7 +22,7 @@ class ObstacleManager {
     var obstacleStatus: ObstacleStatus = .active
     private var ratAnimationList = [SKAction]()
     
-    var audioPlayer = AudioManager.instance
+    private var audioPlayer = AudioManager.instance
     
     init(obstacleGround: SKNode, obstacleCeiling: SKNode, obstacleWall: SKNode, obstacleRat: SKNode, parent: SKNode) {
         self.obstacleGround = obstacleGround

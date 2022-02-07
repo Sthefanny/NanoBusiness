@@ -28,8 +28,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var introView: UIView!
     @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnPlayView: UIImageView!
     @IBOutlet weak var btnPlayAgain: UIButton!
+    @IBOutlet weak var btnPlayAgainView: UIImageView!
     @IBOutlet weak var btnLeaderboard: UIButton!
+    @IBOutlet weak var btnLeaderboardView: UIImageView!
     @IBOutlet weak var leftBtnsView: UIView!
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
@@ -50,6 +53,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+//        notificationCenter.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         verifySoundSettings()
         
@@ -82,6 +89,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             authenticateLocalPlayer()
         }
     }
+    
+//    @objc func appMovedToBackground() {
+//        print("App moved to background!")
+//    }
+//
+//    @objc func appBecomeActive() {
+//        print("App become active!")
+//    }
     
     func authenticateLocalPlayer() {
         let localPlayer = GKLocalPlayer.local
@@ -141,19 +156,40 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     @IBAction func BtnPlayPressed(_ sender: Any) {
+        btnPlayView.image = UIImage(named: "btnPlayClicked")
         scene.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.btnPlayView.image = UIImage(named: "btnPlay")
+        }
+    }
+    @IBAction func BtnPlayReleased(_ sender: Any) {
+        btnPlayView.image = UIImage(named: "btnPlay")
     }
     
     @IBAction func BtnPlayAgainPressed(_ sender: Any) {
+        btnPlayAgainView.image = UIImage(named: "btnPlayAgainClicked")
         scene.reset()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
+        }
+    }
+    @IBAction func BtnPlayAgainReleased(_ sender: Any) {
+        btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
     }
     
     @IBAction func BtnLeaderboardPressed(_ sender: Any) {
+        btnLeaderboardView.image = UIImage(named: "btnLeaderboardClicked")
         let gcVC = GKGameCenterViewController()
         gcVC.gameCenterDelegate = self
         gcVC.viewState = .leaderboards
         gcVC.leaderboardIdentifier = LEADERBOARD_ID
         present(gcVC, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
+        }
+    }
+    @IBAction func BtnLeaderboardReleased(_ sender: Any) {
+        btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
     }
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()

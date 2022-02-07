@@ -144,7 +144,8 @@
                                         <rect key="frame" x="172.6666666666666" y="97.666666666666686" width="325.33333333333326" height="104"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="BtnPlayPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="AOM-Ai-EhN"/>
+                                            <action selector="BtnPlayPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="rDM-2O-lg4"/>
+                                            <action selector="BtnPlayReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="p6I-FJ-U8I"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlay" translatesAutoresizingMaskIntoConstraints="NO" id="51v-jY-E8r" userLabel="btnPlay">
@@ -155,7 +156,8 @@
                                         <fontDescription key="fontDescription" name="NicoMoji-Regular" family="Nico Moji" pointSize="30"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="BtnLeaderboardPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="yFf-9i-c1H"/>
+                                            <action selector="BtnLeaderboardPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="9N2-s4-yGF"/>
+                                            <action selector="BtnLeaderboardReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="KEi-yd-TBs"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnLeaderboard" translatesAutoresizingMaskIntoConstraints="NO" id="xZc-uN-lEs">
@@ -192,7 +194,8 @@
                                         <rect key="frame" x="172.6666666666666" y="111" width="325.33333333333326" height="104"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="BtnPlayAgainPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Wba-ib-S3K"/>
+                                            <action selector="BtnPlayAgainPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="VXG-2e-9vE"/>
+                                            <action selector="BtnPlayAgainReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="O4D-0y-Xxg"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlayAgain" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-mw-U6g">
@@ -274,8 +277,11 @@
                         <outlet property="btnKick" destination="Jjb-t0-G1j" id="chL-Gz-z91"/>
                         <outlet property="btnKickView" destination="8Q1-qI-cyS" id="Erp-oT-6aJ"/>
                         <outlet property="btnLeaderboard" destination="glU-Xs-htm" id="KSs-MR-jHE"/>
+                        <outlet property="btnLeaderboardView" destination="xZc-uN-lEs" id="YVQ-eR-1Uf"/>
                         <outlet property="btnPlay" destination="glU-Xs-htm" id="VkP-Q6-fUt"/>
                         <outlet property="btnPlayAgain" destination="VST-Q5-Lht" id="6HT-8d-ALk"/>
+                        <outlet property="btnPlayAgainView" destination="xHC-mw-U6g" id="z75-ru-Tu8"/>
+                        <outlet property="btnPlayView" destination="51v-jY-E8r" id="7eo-n6-ebY"/>
                         <outlet property="btnPunch" destination="qHt-uT-FOp" id="9d9-5W-8U0"/>
                         <outlet property="btnPunchView" destination="vws-mx-XQ6" id="oAO-1a-AfB"/>
                         <outlet property="btnSound" destination="8HL-Bz-eff" id="uB2-hp-L7D"/>
