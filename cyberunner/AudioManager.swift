@@ -29,6 +29,7 @@ class AudioManager {
         do {
             bgPlayer = try AVAudioPlayer(contentsOf: url)
             bgPlayer?.volume = 0.6
+            bgPlayer?.numberOfLoops = -1
             bgPlayer?.play()
         } catch let error {
             print("Error playing sound. \(error.localizedDescription)")

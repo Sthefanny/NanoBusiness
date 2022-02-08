@@ -9,10 +9,12 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GameKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADFullScreenContentDelegate {
     
     var scene: GameScene!
+    private var interstitial: GADInterstitialAd?
     
     var check = true
     
@@ -54,9 +56,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
-//        notificationCenter.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        //        let notificationCenter = NotificationCenter.default
+        //        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        //        notificationCenter.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         verifySoundSettings()
         
@@ -85,22 +87,64 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             view.showsFPS = true
             view.showsNodeCount = true
             
-//            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
+            //            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
             authenticateLocalPlayer()
+        }
+        
+        requestIntersticial()
+    }
+    
+    //    @objc func appMovedToBackground() {
+    //        print("App moved to background!")
+    //    }
+    //
+    //    @objc func appBecomeActive() {
+    //        print("App become active!")
+    //    }
+    
+    func showAd() {
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
         }
     }
     
-//    @objc func appMovedToBackground() {
-//        print("App moved to background!")
-//    }
-//
-//    @objc func appBecomeActive() {
-//        print("App become active!")
-//    }
+    /// Tells the delegate that the ad failed to present full screen content.
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+    
+    /// Tells the delegate that the ad dismissed full screen content.
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        requestIntersticial()
+        scene.reset()
+    }
+    
+    func requestIntersticial() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", //Mudar pro real
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
+    }
     
     func authenticateLocalPlayer() {
         let localPlayer = GKLocalPlayer.local
-            
+        
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
                 // 1. Show login if player is not logged in
@@ -108,7 +152,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             } else if (localPlayer.isAuthenticated) {
                 // 2. Player is already authenticated & logged in, load game center
                 self.gcEnabled = true
-                    
+                
                 // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
                     if error != nil { print(error)
@@ -127,7 +171,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     func updateScore() {
         userData.saveBestScore(score: Int(score))
         updateScoreLabel()
-
+        
         // Submit score to GC leaderboard
         let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
         bestScoreInt.value = Int64(score)
@@ -137,12 +181,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -150,7 +194,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -168,7 +212,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     @IBAction func BtnPlayAgainPressed(_ sender: Any) {
         btnPlayAgainView.image = UIImage(named: "btnPlayAgainClicked")
-        scene.reset()
+        showAd()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
         }
@@ -287,7 +331,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         let scoreText = "SCORE: \(String(format: "%.0f", self.score)) | BEST SCORE: \(bestScore)"
         scoreLabel.text = scoreText
     }
-
+    
 }
 
 
