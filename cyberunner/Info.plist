@@ -4,6 +4,8 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7234411944619676~4743925173</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>12.0</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

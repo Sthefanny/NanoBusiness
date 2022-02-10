@@ -15,7 +15,7 @@ class ObstacleManager {
     private var obstacleRat: SKNode
     private var parent: SKNode
     
-    private let interval = TimeInterval(6)
+    var interval = TimeInterval(6)
     private var currentTime = TimeInterval(0)
     
     private var obstacles = [SKNode]()
@@ -50,6 +50,7 @@ class ObstacleManager {
                 obstacles.removeFirst()
             }
         }
+        interval -= GameManager.obstacleUpdater
     }
     
     func spawn() {
@@ -115,26 +116,26 @@ class ObstacleManager {
         }
     }
     
-    func killRat() {
+    func killRat(rat: SKSpriteNode) {
         
         audioPlayer.playSound(sound: .punchRat)
         
-        let ratSprite = obstacles.first?.childNode(withName: "rat") as! SKSpriteNode
-        ratSprite.removeAllActions()
-        ratSprite.texture = SKTexture(imageNamed: "ratDead")
-        ratSprite.physicsBody?.velocity.dy = CGFloat(400)
-        ratSprite.physicsBody?.categoryBitMask = 0
-        ratSprite.physicsBody?.collisionBitMask = 2
+        rat.removeAllActions()
+        rat.texture = SKTexture(imageNamed: "ratDead")
+        rat.physicsBody?.velocity.dy = CGFloat(400)
+        rat.physicsBody?.contactTestBitMask = 0
+        rat.physicsBody?.categoryBitMask = 0
+        rat.physicsBody?.collisionBitMask = 2
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            ratSprite.removeFromParent()
+            rat.removeFromParent()
         }
     }
     
-    func breakWall() {
+    func breakWall(wall: SKSpriteNode) {
         
         audioPlayer.playSound(sound: .punchWall)
         
-        obstacles.first?.physicsBody?.categoryBitMask = 0
+        wall.physicsBody = nil
         
         var textures = [SKTexture]()
         
@@ -146,7 +147,7 @@ class ObstacleManager {
         
         let animation = SKAction.repeat(frames, count: 1)
         
-        obstacles.first?.run(animation)
+        wall.run(animation)
     }
     
 }

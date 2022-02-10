@@ -106,13 +106,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         if interstitial != nil {
             interstitial!.present(fromRootViewController: self)
         } else {
-            print("Ad wasn't ready")
+            scene.reset()
         }
     }
     
     /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
+        scene.reset()
     }
     
     /// Tells the delegate that the ad presented full screen content.
@@ -129,7 +129,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     
     func requestIntersticial() {
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910", //Mudar pro real
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7234411944619676/1348617408",
                                request: request,
                                completionHandler: { [self] ad, error in
             if let error = error {
@@ -169,13 +169,15 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     }
     
     func updateScore() {
-        userData.saveBestScore(score: Int(score))
-        updateScoreLabel()
-        
-        // Submit score to GC leaderboard
-        let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
-        bestScoreInt.value = Int64(score)
-        GKScore.report([bestScoreInt])
+        if gcEnabled {
+            userData.saveBestScore(score: Int(score))
+            updateScoreLabel()
+            
+            // Submit score to GC leaderboard
+            let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
+            bestScoreInt.value = Int64(score)
+            GKScore.report([bestScoreInt])
+        }
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -188,11 +190,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .landscape
     }
     
     override var prefersStatusBarHidden: Bool {

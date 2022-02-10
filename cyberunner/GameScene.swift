@@ -69,7 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let deltaTime = currentTime - lastUpdate
+        var deltaTime = currentTime - lastUpdate
+        deltaTime = min(deltaTime, 0.1)
+        
         lastUpdate = currentTime
         
         totalTime += deltaTime
@@ -77,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch status {
         case .intro:
             GameManager.speed = CGFloat(100)
+            obstacleManager.interval = TimeInterval(6)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
@@ -122,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver()
         case "wall":
             if player.status == .punching {
-                obstacleManager.breakWall()
+                obstacleManager.breakWall(wall: other as! SKSpriteNode)
                 obstacleManager.obstacleStatus = .inactive
             }
             else if obstacleManager.obstacleStatus == .active {
@@ -130,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case "rat":
             if player.status == .kicking {
-                obstacleManager.killRat()
+                obstacleManager.killRat(rat: other as! SKSpriteNode)
                 obstacleManager.obstacleStatus = .inactive
             }
             else if obstacleManager.obstacleStatus == .active {

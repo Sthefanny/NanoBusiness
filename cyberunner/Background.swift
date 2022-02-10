@@ -30,10 +30,10 @@ class Background {
     
     func update(deltaTime: TimeInterval) {
         bg1.position.x -= GameManager.speed * deltaTime + 0.0
-        bg2.position.x -= GameManager.speed * deltaTime + 0.4
-        bg3.position.x -= GameManager.speed * deltaTime + 0.8
-        bg4.position.x -= GameManager.speed * deltaTime + 1.2
-        bg5.position.x -= GameManager.speed * deltaTime + 1.6
+        bg2.position.x -= GameManager.speed * deltaTime + 0.1
+        bg3.position.x -= GameManager.speed * deltaTime + 0.2
+        bg4.position.x -= GameManager.speed * deltaTime + 0.3
+        bg5.position.x -= GameManager.speed * deltaTime + 0.5
         
         if bg1.position.x <= -1192 {
             bg1.position.x += 1192
