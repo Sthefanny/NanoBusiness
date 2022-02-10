@@ -46,9 +46,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     
     var score = CGFloat(0.0)
     
-    var gcEnabled = Bool()
-    var gcDefaultLeaderBoard = String()
-    let LEADERBOARD_ID = "CyberunnerLeaderboard"
     let userData = UserData()
     
     var soundOn = true
@@ -87,8 +84,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
             view.showsFPS = true
             view.showsNodeCount = true
             
-            //            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
-            authenticateLocalPlayer()
+            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
+            GameCenter.shared.gcVC.gameCenterDelegate = self
         }
         
         requestIntersticial()
@@ -116,7 +113,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     }
     
     /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
     }
     
@@ -142,42 +139,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         )
     }
     
-    func authenticateLocalPlayer() {
-        let localPlayer = GKLocalPlayer.local
-        
-        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
-            if((ViewController) != nil) {
-                // 1. Show login if player is not logged in
-                self.present(ViewController!, animated: true, completion: nil)
-            } else if (localPlayer.isAuthenticated) {
-                // 2. Player is already authenticated & logged in, load game center
-                self.gcEnabled = true
-                
-                // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer, error) in
-                    if error != nil { print(error)
-                    } else { self.gcDefaultLeaderBoard = leaderboardIdentifer! }
-                })
-                
-            } else {
-                // 3. Game center is not enabled on the users device
-                self.gcEnabled = false
-                print("Local player could not be authenticated!")
-                print(error)
-            }
-        }
-    }
-    
     func updateScore() {
-        if gcEnabled {
-            userData.saveBestScore(score: Int(score))
-            updateScoreLabel()
-            
-            // Submit score to GC leaderboard
-            let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
-            bestScoreInt.value = Int64(score)
-            GKScore.report([bestScoreInt])
-        }
+        userData.saveBestScore(score: Int(score))
+        updateScoreLabel()
+    
+        GameCenter.shared.updateScore(with: Int(score))
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -221,15 +187,19 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     
     @IBAction func BtnLeaderboardPressed(_ sender: Any) {
         btnLeaderboardView.image = UIImage(named: "btnLeaderboardClicked")
-        let gcVC = GKGameCenterViewController()
-        gcVC.gameCenterDelegate = self
-        gcVC.viewState = .leaderboards
-        gcVC.leaderboardIdentifier = LEADERBOARD_ID
-        present(gcVC, animated: true, completion: nil)
+        
+        showLeaderboard()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
         }
     }
+    func showLeaderboard() {
+        let gcVC = GKGameCenterViewController(leaderboardID: GameManager.leaderboardID, playerScope: .friendsOnly, timeScope: .today)
+        gcVC.gameCenterDelegate = self
+        present(gcVC, animated: true, completion: nil)
+    }
+    
     @IBAction func BtnLeaderboardReleased(_ sender: Any) {
         btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
     }

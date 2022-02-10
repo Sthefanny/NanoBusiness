@@ -23,6 +23,7 @@
 		E51744D027A40E0100F8910C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744CF27A40E0100F8910C /* Player.swift */; };
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
 		E5923D7227AEB4720035BEDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5923D7127AEB4720035BEDE /* UserData.swift */; };
+		E5ADCF5827B58F6D00722239 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ADCF5727B58F6D00722239 /* GameCenter.swift */; };
 		E5B0B12427B0657B00F2599C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0B12327B0657B00F2599C /* Background.swift */; };
 		E5B0B12D27B07D9300F2599C /* punchWall.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12627B07D9300F2599C /* punchWall.mp3 */; };
 		E5B0B12E27B07D9300F2599C /* walkingDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E5B0B12727B07D9300F2599C /* walkingDown.mp3 */; };
@@ -55,6 +56,7 @@
 		E51744CF27A40E0100F8910C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		E5923D7127AEB4720035BEDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		E5ADCF5727B58F6D00722239 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		E5B0B12327B0657B00F2599C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		E5B0B12627B07D9300F2599C /* punchWall.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = punchWall.mp3; sourceTree = "<group>"; };
 		E5B0B12727B07D9300F2599C /* walkingDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walkingDown.mp3; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				E506444227A32CA60075EC5B /* Assets.xcassets */,
 				E506444427A32CA60075EC5B /* LaunchScreen.storyboard */,
 				E506444C27A32FF20075EC5B /* GameManager.swift */,
+				E5ADCF5727B58F6D00722239 /* GameCenter.swift */,
 				E51744CD27A34B0200F8910C /* GameStatus.swift */,
 				E51744CF27A40E0100F8910C /* Player.swift */,
 				E51744D127A414D200F8910C /* ObstacleManager.swift */,
@@ -318,6 +321,7 @@
 				E506443E27A32CA40075EC5B /* GameViewController.swift in Sources */,
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
 				E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */,
+				E5ADCF5827B58F6D00722239 /* GameCenter.swift in Sources */,
 				E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */,
 				E5B0B13527B07DE200F2599C /* AudioManager.swift in Sources */,
 				E5B0B12427B0657B00F2599C /* Background.swift in Sources */,
@@ -469,7 +473,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -504,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cyberunner/Info.plist;

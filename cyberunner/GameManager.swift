@@ -12,4 +12,5 @@ class GameManager {
     static var speed = CGFloat(100)
     static var speedUpdater = CGFloat(0.02)
     static var obstacleUpdater = CGFloat(0.0006)
+    static let leaderboardID = "CyberunnerLeaderboard"
 }
