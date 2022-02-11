@@ -12,6 +12,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @IBAction func PlayPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "game")
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     /*
