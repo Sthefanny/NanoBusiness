@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import FirebaseAnalytics
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -15,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background: Background!
     
     var lastUpdate = TimeInterval(0)
+    var totalTime = TimeInterval(0)
     
     var status: GameStatus = .intro
     weak var gameViewController: GameViewController!
@@ -48,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             break
         case .gameOver:
-            reset()
+            break
         }
     }
     
@@ -57,6 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameViewController.showGameSettings()
         player.start()
         status = .playing
+        Analytics.logEvent("level_start", parameters: nil)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -66,12 +69,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
-        let deltaTime = currentTime - lastUpdate
+        var deltaTime = currentTime - lastUpdate
+        deltaTime = min(deltaTime, 0.1)
+        
         lastUpdate = currentTime
+        
+        totalTime += deltaTime
         
         switch status {
         case .intro:
             GameManager.speed = CGFloat(100)
+            obstacleManager.interval = TimeInterval(6)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
@@ -117,7 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameOver()
         case "wall":
             if player.status == .punching {
-                obstacleManager.breakWall()
+                obstacleManager.breakWall(wall: other as! SKSpriteNode)
                 obstacleManager.obstacleStatus = .inactive
             }
             else if obstacleManager.obstacleStatus == .active {
@@ -125,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         case "rat":
             if player.status == .kicking {
-                obstacleManager.killRat()
+                obstacleManager.killRat(rat: other as! SKSpriteNode)
                 obstacleManager.obstacleStatus = .inactive
             }
             else if obstacleManager.obstacleStatus == .active {
@@ -142,6 +150,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             status = .gameOver
             player.die()
             gameViewController.showEndView()
+            Analytics.logEvent("level_end", parameters: nil)
+            
+            Analytics.setUserProperty("\(round(totalTime))", forName: "last_run_time")
         }
         
     }
@@ -156,6 +167,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             obstacleManager.reset()
             resetAllButton()
             gameViewController.resetScore()
+            Analytics.logEvent("level_restart", parameters: nil)
         }
     }
     
