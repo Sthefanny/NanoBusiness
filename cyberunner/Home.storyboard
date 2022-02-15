@@ -104,8 +104,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="PlayPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2GP-y6-9Ex"/>
-                                            <action selector="buttonPlay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W5h-ET-Qh0"/>
+                                            <action selector="buttonPlay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eIV-J8-RHv"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnWinner" translatesAutoresizingMaskIntoConstraints="NO" id="PZD-ME-aFl">
@@ -119,7 +118,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="buttonStore:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S1O-8U-1Si"/>
+                                            <action selector="buttonStore:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="awp-AM-VY8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Nl-t2l">
@@ -127,7 +126,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="buttonWinner:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HnM-aF-w6O"/>
+                                            <action selector="buttonWinner:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="InM-85-Vo1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -187,9 +186,6 @@
                         <outlet property="btnPlayView" destination="QdL-nk-izk" id="4tJ-dd-GRI"/>
                         <outlet property="btnStoreView" destination="u4l-8Z-aCo" id="1BG-Tw-3ey"/>
                         <outlet property="btnWinnerView" destination="PZD-ME-aFl" id="aqu-cO-Uzr"/>
-                        <outlet property="buttonPlay" destination="a6p-Qs-ujO" id="Ad1-wX-1zd"/>
-                        <outlet property="buttonStore" destination="EA4-uv-xsf" id="L6u-TM-ne8"/>
-                        <outlet property="buttonWinner" destination="GDU-Nl-t2l" id="mc6-bJ-4gV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

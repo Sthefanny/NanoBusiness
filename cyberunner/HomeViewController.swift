@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
     
     func setButtonHome(button: ScreenButtonsHome, status: TapStatus){
         switch button {
-        case .play: btnPlayView.image = UIImage(named: status == .tap ? "btnPlayTap" : "btnPlayy")
+        case .play: btnPlayView.image = UIImage(named: status == .tap ? "btnPlayTap" : "btnPlay")
             
         case .store: btnStoreView.image = UIImage(named: status == .tap ? "btnStoreTap" : "btnStore")
             
