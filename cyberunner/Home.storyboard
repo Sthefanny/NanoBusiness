@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,17 +33,17 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aK9-UT-k5c">
-                                        <rect key="frame" x="152.5" y="24" width="503" height="186.5"/>
+                                        <rect key="frame" x="180.5" y="24" width="447" height="165.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newLogo" translatesAutoresizingMaskIntoConstraints="NO" id="vMl-ta-sGy">
-                                                <rect key="frame" x="1" y="108" width="501" height="78.5"/>
+                                                <rect key="frame" x="-10.5" y="86" width="468" height="79.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="vMl-ta-sGy" secondAttribute="height" multiplier="647:101" id="Acd-qh-RLM"/>
+                                                    <constraint firstAttribute="width" secondItem="vMl-ta-sGy" secondAttribute="height" multiplier="647:110" id="Acd-qh-RLM"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="vMl-ta-sGy" firstAttribute="height" secondItem="aK9-UT-k5c" secondAttribute="height" multiplier="0.42" id="0g1-kA-XSZ"/>
+                                            <constraint firstItem="vMl-ta-sGy" firstAttribute="height" secondItem="aK9-UT-k5c" secondAttribute="height" multiplier="0.48" id="0g1-kA-XSZ"/>
                                             <constraint firstAttribute="width" secondItem="aK9-UT-k5c" secondAttribute="height" multiplier="54:20" id="9qh-Av-sjM"/>
                                             <constraint firstAttribute="bottom" secondItem="vMl-ta-sGy" secondAttribute="bottom" id="Lku-WP-eth"/>
                                             <constraint firstItem="vMl-ta-sGy" firstAttribute="centerX" secondItem="aK9-UT-k5c" secondAttribute="centerX" id="kji-8B-Mti"/>
@@ -53,10 +54,14 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Nbs-p7-tWC" secondAttribute="height" multiplier="24:23" id="e2n-Rw-eYk"/>
                                         </constraints>
+                                        <color key="tintColor" name="appBlue"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="">
                                             <backgroundConfiguration key="background" image="gearshape.fill" catalog="system"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="settingsPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IYO-f5-heM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -97,9 +102,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6p-Qs-ujO">
                                         <rect key="frame" x="111" y="0.0" width="105" height="122"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
                                             <action selector="PlayPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2GP-y6-9Ex"/>
+                                            <action selector="buttonPlay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W5h-ET-Qh0"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnWinner" translatesAutoresizingMaskIntoConstraints="NO" id="PZD-ME-aFl">
@@ -108,12 +114,30 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnStore" translatesAutoresizingMaskIntoConstraints="NO" id="u4l-8Z-aCo">
                                         <rect key="frame" x="242" y="0.0" width="85" height="108"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-uv-xsf">
+                                        <rect key="frame" x="246.5" y="11" width="76" height="86"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="buttonStore:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S1O-8U-1Si"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Nl-t2l">
+                                        <rect key="frame" x="-0.5" y="5.5" width="85" height="97"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="buttonWinner:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HnM-aF-w6O"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8tI-HO-rHy" secondAttribute="height" multiplier="327:150" id="3iE-8z-i4h"/>
+                                    <constraint firstItem="EA4-uv-xsf" firstAttribute="centerY" secondItem="u4l-8Z-aCo" secondAttribute="centerY" id="7Gq-uf-Syc"/>
                                     <constraint firstItem="PZD-ME-aFl" firstAttribute="top" secondItem="8tI-HO-rHy" secondAttribute="top" id="8on-wD-ho5"/>
                                     <constraint firstItem="PZD-ME-aFl" firstAttribute="leading" secondItem="8tI-HO-rHy" secondAttribute="leading" constant="-0.5" id="9VR-Oa-hqN"/>
                                     <constraint firstItem="a6p-Qs-ujO" firstAttribute="height" secondItem="QdL-nk-izk" secondAttribute="height" id="ABh-rK-STx"/>
+                                    <constraint firstItem="EA4-uv-xsf" firstAttribute="centerX" secondItem="u4l-8Z-aCo" secondAttribute="centerX" id="DSX-bF-nSc"/>
                                     <constraint firstItem="a6p-Qs-ujO" firstAttribute="centerY" secondItem="QdL-nk-izk" secondAttribute="centerY" id="DlJ-Dj-Xdu"/>
                                     <constraint firstItem="a6p-Qs-ujO" firstAttribute="centerX" secondItem="QdL-nk-izk" secondAttribute="centerX" id="ENL-8F-pdC"/>
                                     <constraint firstAttribute="trailing" secondItem="u4l-8Z-aCo" secondAttribute="trailing" id="Ehs-OK-PCz"/>
@@ -121,11 +145,17 @@
                                     <constraint firstItem="QdL-nk-izk" firstAttribute="width" secondItem="8tI-HO-rHy" secondAttribute="width" multiplier="0.32" id="Jbm-C2-nMm"/>
                                     <constraint firstItem="u4l-8Z-aCo" firstAttribute="height" secondItem="8tI-HO-rHy" secondAttribute="height" multiplier="0.72" id="Njx-sA-UKV"/>
                                     <constraint firstItem="PZD-ME-aFl" firstAttribute="height" secondItem="8tI-HO-rHy" secondAttribute="height" multiplier="0.72" id="Oan-I9-zft"/>
+                                    <constraint firstItem="GDU-Nl-t2l" firstAttribute="centerY" secondItem="PZD-ME-aFl" secondAttribute="centerY" id="Qx7-LF-5tY"/>
+                                    <constraint firstItem="EA4-uv-xsf" firstAttribute="width" secondItem="u4l-8Z-aCo" secondAttribute="width" multiplier="0.893333" id="XaJ-wV-lh8"/>
+                                    <constraint firstItem="GDU-Nl-t2l" firstAttribute="width" secondItem="PZD-ME-aFl" secondAttribute="width" id="ZKq-Vn-BTQ"/>
                                     <constraint firstItem="QdL-nk-izk" firstAttribute="top" secondItem="8tI-HO-rHy" secondAttribute="top" id="bqA-Lz-VDh"/>
+                                    <constraint firstItem="EA4-uv-xsf" firstAttribute="height" secondItem="u4l-8Z-aCo" secondAttribute="height" multiplier="0.8" id="cYd-Ah-FFc"/>
                                     <constraint firstItem="a6p-Qs-ujO" firstAttribute="width" secondItem="QdL-nk-izk" secondAttribute="width" id="eD7-Ca-qI3"/>
+                                    <constraint firstItem="GDU-Nl-t2l" firstAttribute="height" secondItem="PZD-ME-aFl" secondAttribute="height" multiplier="0.9" id="fe6-NL-0OY"/>
                                     <constraint firstItem="u4l-8Z-aCo" firstAttribute="width" secondItem="8tI-HO-rHy" secondAttribute="width" multiplier="0.26" id="heq-VT-rJc"/>
                                     <constraint firstItem="QdL-nk-izk" firstAttribute="centerX" secondItem="8tI-HO-rHy" secondAttribute="centerX" id="hvh-zD-bpi"/>
                                     <constraint firstItem="PZD-ME-aFl" firstAttribute="width" secondItem="8tI-HO-rHy" secondAttribute="width" multiplier="0.26" id="idN-0d-Gbi"/>
+                                    <constraint firstItem="GDU-Nl-t2l" firstAttribute="centerX" secondItem="PZD-ME-aFl" secondAttribute="centerX" id="tmZ-ZO-HJS"/>
                                     <constraint firstItem="u4l-8Z-aCo" firstAttribute="top" secondItem="8tI-HO-rHy" secondAttribute="top" id="zwe-OJ-SNe"/>
                                 </constraints>
                             </view>
@@ -148,10 +178,19 @@
                             <constraint firstItem="fxE-Da-cGN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="20" id="jec-ZR-WQ2"/>
                             <constraint firstItem="aK9-UT-k5c" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="lrk-gj-UxZ"/>
                             <constraint firstItem="fxE-Da-cGN" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" constant="-44" id="rDn-AH-1eg"/>
-                            <constraint firstItem="aK9-UT-k5c" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.45" id="tWC-mJ-Zsx"/>
+                            <constraint firstItem="aK9-UT-k5c" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="tWC-mJ-Zsx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xlq-Yj-b5Z"/>
+                    <connections>
+                        <outlet property="ButtonSettings" destination="Nbs-p7-tWC" id="c76-X0-wbi"/>
+                        <outlet property="btnPlayView" destination="QdL-nk-izk" id="4tJ-dd-GRI"/>
+                        <outlet property="btnStoreView" destination="u4l-8Z-aCo" id="1BG-Tw-3ey"/>
+                        <outlet property="btnWinnerView" destination="PZD-ME-aFl" id="aqu-cO-Uzr"/>
+                        <outlet property="buttonPlay" destination="a6p-Qs-ujO" id="Ad1-wX-1zd"/>
+                        <outlet property="buttonStore" destination="EA4-uv-xsf" id="L6u-TM-ne8"/>
+                        <outlet property="buttonWinner" destination="GDU-Nl-t2l" id="mc6-bJ-4gV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,6 +223,9 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="lineDown" width="182" height="113"/>
         <image name="linesUp" width="765" height="202.5"/>
-        <image name="newLogo" width="421" height="79.5"/>
+        <image name="newLogo" width="665.5" height="117.5"/>
+        <namedColor name="appBlue">
+            <color red="0.22400000691413879" green="0.65499997138977051" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

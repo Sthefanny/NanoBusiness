@@ -161,5 +161,18 @@
 	<array>
 		<string>NicoMoji-Regular.ttf</string>
 	</array>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>fb633545894588412</string>
+      </array>
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>633545894588412</string>
+    <key>FacebookDisplayName</key>
+    <string>Cyberun</string>
 </dict>
 </plist>

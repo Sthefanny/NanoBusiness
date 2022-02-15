@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <device id="retina4_7" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -10,76 +10,119 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController modalPresentationStyle="currentContext" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" modalPresentationStyle="currentContext" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="cyberunner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixs-9D-iAw">
-                                <rect key="frame" x="75" y="43" width="746" height="307"/>
+                                <rect key="frame" x="75" y="43" width="517" height="289"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineUpSettings" translatesAutoresizingMaskIntoConstraints="NO" id="059-12-wp6">
-                                        <rect key="frame" x="8" y="12" width="730" height="127"/>
+                                        <rect key="frame" x="8" y="12" width="501" height="87.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="059-12-wp6" secondAttribute="height" multiplier="373:65" id="onJ-wb-0S0"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineDownSettings" translatesAutoresizingMaskIntoConstraints="NO" id="rEO-Jj-c40">
-                                        <rect key="frame" x="253" y="204" width="485" height="95"/>
+                                        <rect key="frame" x="173" y="215" width="336" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rEO-Jj-c40" secondAttribute="height" multiplier="153:30" id="zzZ-oq-9Ty"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-Um-qyk">
-                                        <rect key="frame" x="34" y="67" width="678" height="173"/>
+                                    <view contentMode="scaleToFill" restorationIdentifier="settings" translatesAutoresizingMaskIntoConstraints="NO" id="8WF-Um-qyk">
+                                        <rect key="frame" x="23.5" y="84.5" width="470" height="120"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kWs-ke-WoW">
-                                                <rect key="frame" x="32" y="22" width="318" height="31"/>
+                                                <rect key="frame" x="14" y="22" width="201.5" height="31"/>
                                                 <color key="minimumTrackTintColor" name="appRed"/>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-E9-n2W">
-                                                <rect key="frame" x="32" y="82" width="318" height="31"/>
+                                                <rect key="frame" x="14" y="82" width="201.5" height="31"/>
                                                 <color key="minimumTrackTintColor" name="appRed"/>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC BACKGORUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="hUw-Gf-LYp">
-                                                <rect key="frame" x="365" y="26.5" width="314" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC BACKGORUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUw-Gf-LYp">
+                                                <rect key="frame" x="259" y="24.5" width="197" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" name="appRed"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND EFFECTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" translatesAutoresizingMaskIntoConstraints="NO" id="I0W-YC-nmT">
-                                                <rect key="frame" x="365" y="86.5" width="314" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND EFFECTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0W-YC-nmT">
+                                                <rect key="frame" x="259" y="84.5" width="197" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" name="appRed"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VcM-5G-alb">
+                                                <rect key="frame" x="224.5" y="26" width="26.5" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="VcM-5G-alb" secondAttribute="height" multiplier="6:5" id="w25-Ym-3JS"/>
+                                                </constraints>
+                                                <color key="tintColor" name="appRed"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                                    <backgroundConfiguration key="background" image="music.note.list" catalog="system"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhs-3e-uet">
+                                                <rect key="frame" x="224.5" y="86" width="26.5" height="22"/>
+                                                <color key="tintColor" name="appRed"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                                    <backgroundConfiguration key="background" image="speaker.wave.2.fill" catalog="system"/>
+                                                </buttonConfiguration>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="I0W-YC-nmT" firstAttribute="width" secondItem="ADS-E9-n2W" secondAttribute="width" id="1or-ny-y41"/>
                                             <constraint firstItem="ADS-E9-n2W" firstAttribute="top" secondItem="kWs-ke-WoW" secondAttribute="bottom" constant="30" id="1ye-2f-rRY"/>
+                                            <constraint firstItem="uhs-3e-uet" firstAttribute="leading" secondItem="ADS-E9-n2W" secondAttribute="trailing" constant="11" id="3uj-ti-Qgh"/>
                                             <constraint firstItem="hUw-Gf-LYp" firstAttribute="width" secondItem="kWs-ke-WoW" secondAttribute="width" id="DJ7-ba-Ljz"/>
-                                            <constraint firstItem="kWs-ke-WoW" firstAttribute="leading" secondItem="8WF-Um-qyk" secondAttribute="leading" constant="34" id="JZ6-fB-UgB"/>
+                                            <constraint firstItem="uhs-3e-uet" firstAttribute="centerY" secondItem="ADS-E9-n2W" secondAttribute="centerY" id="Ij7-E8-77B"/>
+                                            <constraint firstItem="kWs-ke-WoW" firstAttribute="leading" secondItem="8WF-Um-qyk" secondAttribute="leading" constant="16" id="JZ6-fB-UgB"/>
+                                            <constraint firstAttribute="width" secondItem="8WF-Um-qyk" secondAttribute="height" multiplier="678:173" id="L74-2H-xGx"/>
                                             <constraint firstItem="ADS-E9-n2W" firstAttribute="centerX" secondItem="kWs-ke-WoW" secondAttribute="centerX" id="TvK-lf-V7F"/>
                                             <constraint firstItem="ADS-E9-n2W" firstAttribute="width" secondItem="kWs-ke-WoW" secondAttribute="width" id="UiZ-c9-VaB"/>
                                             <constraint firstItem="kWs-ke-WoW" firstAttribute="top" secondItem="8WF-Um-qyk" secondAttribute="top" constant="22" id="Uln-qA-kvq"/>
-                                            <constraint firstItem="I0W-YC-nmT" firstAttribute="leading" secondItem="ADS-E9-n2W" secondAttribute="trailing" constant="17" id="egT-uR-j4J"/>
-                                            <constraint firstItem="kWs-ke-WoW" firstAttribute="width" secondItem="8WF-Um-qyk" secondAttribute="width" multiplier="0.463127" id="ie3-Ok-RgQ"/>
+                                            <constraint firstItem="hUw-Gf-LYp" firstAttribute="leading" secondItem="VcM-5G-alb" secondAttribute="trailing" constant="8" id="dfi-Lg-dxt"/>
+                                            <constraint firstItem="kWs-ke-WoW" firstAttribute="width" secondItem="8WF-Um-qyk" secondAttribute="width" multiplier="0.42" id="ie3-Ok-RgQ"/>
+                                            <constraint firstItem="VcM-5G-alb" firstAttribute="width" secondItem="kWs-ke-WoW" secondAttribute="width" multiplier="0.133758" id="jbN-Gr-mqf"/>
+                                            <constraint firstItem="VcM-5G-alb" firstAttribute="centerY" secondItem="kWs-ke-WoW" secondAttribute="centerY" id="lyc-NT-YNx"/>
+                                            <constraint firstItem="uhs-3e-uet" firstAttribute="width" secondItem="uhs-3e-uet" secondAttribute="height" multiplier="6:5" id="r85-Zp-49H"/>
                                             <constraint firstItem="hUw-Gf-LYp" firstAttribute="centerY" secondItem="kWs-ke-WoW" secondAttribute="centerY" id="rXb-cz-GNJ"/>
-                                            <constraint firstItem="hUw-Gf-LYp" firstAttribute="leading" secondItem="kWs-ke-WoW" secondAttribute="trailing" constant="17" id="u7P-uE-aUA"/>
+                                            <constraint firstItem="VcM-5G-alb" firstAttribute="leading" secondItem="kWs-ke-WoW" secondAttribute="trailing" constant="11" id="vUn-wJ-5s3"/>
+                                            <constraint firstItem="I0W-YC-nmT" firstAttribute="leading" secondItem="uhs-3e-uet" secondAttribute="trailing" constant="8" id="yPz-A9-els"/>
                                             <constraint firstItem="I0W-YC-nmT" firstAttribute="centerY" secondItem="ADS-E9-n2W" secondAttribute="centerY" id="zJt-pL-pfb"/>
+                                            <constraint firstItem="uhs-3e-uet" firstAttribute="width" secondItem="ADS-E9-n2W" secondAttribute="width" multiplier="0.133758" id="zjG-IU-1d1"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5n-mL-w61">
+                                        <rect key="frame" x="-15.5" y="-15.5" width="31" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="q5n-mL-w61" secondAttribute="height" multiplier="1:1" id="tH4-yT-HC8"/>
+                                        </constraints>
+                                        <color key="tintColor" name="appPurple"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                            <backgroundConfiguration key="background" cornerRadius="32" image="xmark.circle.fill" catalog="system"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnClosePressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lbr-F2-qQP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rEO-Jj-c40" secondAttribute="bottom" constant="8" id="136-YC-mn3"/>
+                                    <constraint firstItem="q5n-mL-w61" firstAttribute="width" secondItem="Ixs-9D-iAw" secondAttribute="width" multiplier="0.06" id="2ZE-FB-P3c"/>
+                                    <constraint firstItem="q5n-mL-w61" firstAttribute="centerX" secondItem="Ixs-9D-iAw" secondAttribute="leading" id="7Ny-Td-I8d"/>
                                     <constraint firstItem="rEO-Jj-c40" firstAttribute="width" secondItem="Ixs-9D-iAw" secondAttribute="width" multiplier="0.65" id="AD6-wx-Bfw"/>
                                     <constraint firstAttribute="trailing" secondItem="059-12-wp6" secondAttribute="trailing" constant="8" id="CN3-8w-Ic5"/>
+                                    <constraint firstItem="q5n-mL-w61" firstAttribute="centerY" secondItem="Ixs-9D-iAw" secondAttribute="top" id="ID1-LJ-6P1"/>
                                     <constraint firstItem="059-12-wp6" firstAttribute="top" secondItem="Ixs-9D-iAw" secondAttribute="top" constant="12" id="J4s-LB-NQy"/>
-                                    <constraint firstItem="8WF-Um-qyk" firstAttribute="top" secondItem="Ixs-9D-iAw" secondAttribute="top" constant="67" id="TF7-hp-39a"/>
                                     <constraint firstAttribute="trailing" secondItem="rEO-Jj-c40" secondAttribute="trailing" constant="8" id="TSj-aY-2Ms"/>
                                     <constraint firstItem="059-12-wp6" firstAttribute="leading" secondItem="Ixs-9D-iAw" secondAttribute="leading" constant="8" id="UbR-5d-eND"/>
                                     <constraint firstItem="8WF-Um-qyk" firstAttribute="centerX" secondItem="Ixs-9D-iAw" secondAttribute="centerX" id="ViO-9K-S35"/>
@@ -98,15 +141,28 @@
                             <constraint firstAttribute="trailing" secondItem="Ixs-9D-iAw" secondAttribute="trailing" constant="75" id="xeo-e6-VUU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bom-Oh-Tzb"/>
+                    <connections>
+                        <outlet property="backgroundSettings" destination="Ixs-9D-iAw" id="8ZQ-zM-Gmo"/>
+                        <outlet property="buttonClose" destination="ID1-LJ-6P1" id="KpZ-xd-evo"/>
+                        <outlet property="musicLabel" destination="hUw-Gf-LYp" id="B5E-vS-WNy"/>
+                        <outlet property="soundLabel" destination="I0W-YC-nmT" id="Kmm-Ws-E1X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16.071428571428569" y="66.666666666666671"/>
+            <point key="canvasLocation" x="727.23214285714278" y="66.666666666666671"/>
         </scene>
     </scenes>
     <resources>
         <image name="lineDownSettings" width="379" height="67"/>
         <image name="lineUpSettings" width="698" height="124"/>
+        <image name="music.note.list" catalog="system" width="128" height="115"/>
+        <image name="speaker.wave.2.fill" catalog="system" width="128" height="90"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="appPurple">
+            <color red="0.22400000691413879" green="0.3880000114440918" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="appRed">
             <color red="1" green="0.19200000166893005" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
