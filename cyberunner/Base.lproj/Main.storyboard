@@ -9,11 +9,6 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="NicoMoji-Regular.ttf">
-            <string>NicoMoji-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -134,56 +129,6 @@
                                     <constraint firstItem="Rhf-pO-sni" firstAttribute="centerY" secondItem="OEc-gn-UAy" secondAttribute="centerY" id="NHN-xs-FVI"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9R-VV-1gf" userLabel="introView">
-                                <rect key="frame" x="127.66666666666669" y="40.666666666666657" width="670.66666666666652" height="325.66666666666674"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="introTitle" translatesAutoresizingMaskIntoConstraints="NO" id="fLX-UC-LDB" userLabel="Intro Name">
-                                        <rect key="frame" x="73" y="0.0" width="524.66666666666663" height="80.666666666666671"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpL-ed-PYZ" userLabel="Btn Play">
-                                        <rect key="frame" x="172.6666666666666" y="97.666666666666686" width="325.33333333333326" height="104"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="BtnPlayPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="rDM-2O-lg4"/>
-                                            <action selector="BtnPlayReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="p6I-FJ-U8I"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlay" translatesAutoresizingMaskIntoConstraints="NO" id="51v-jY-E8r" userLabel="btnPlay">
-                                        <rect key="frame" x="172.6666666666666" y="97.666666666666686" width="325.33333333333326" height="104"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glU-Xs-htm" userLabel="Btn Leaderboard">
-                                        <rect key="frame" x="172.6666666666666" y="201.66666666666669" width="325.33333333333326" height="104"/>
-                                        <fontDescription key="fontDescription" name="NicoMoji-Regular" family="Nico Moji" pointSize="30"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="BtnLeaderboardPressed:" destination="BV1-FR-VrT" eventType="touchDown" id="9N2-s4-yGF"/>
-                                            <action selector="BtnLeaderboardReleased:" destination="BV1-FR-VrT" eventType="touchUpInside" id="KEi-yd-TBs"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnLeaderboard" translatesAutoresizingMaskIntoConstraints="NO" id="xZc-uN-lEs">
-                                        <rect key="frame" x="172.6666666666666" y="201.66666666666669" width="325.33333333333326" height="104"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="xZc-uN-lEs" firstAttribute="width" secondItem="glU-Xs-htm" secondAttribute="width" id="6D4-ol-JPS"/>
-                                    <constraint firstItem="glU-Xs-htm" firstAttribute="top" secondItem="mpL-ed-PYZ" secondAttribute="bottom" id="6Lm-qv-Mhq"/>
-                                    <constraint firstItem="glU-Xs-htm" firstAttribute="width" secondItem="z9R-VV-1gf" secondAttribute="height" multiplier="1:1" id="ENB-Xf-1fv"/>
-                                    <constraint firstItem="glU-Xs-htm" firstAttribute="centerX" secondItem="z9R-VV-1gf" secondAttribute="centerX" id="GGw-Qh-OY5"/>
-                                    <constraint firstItem="51v-jY-E8r" firstAttribute="width" secondItem="mpL-ed-PYZ" secondAttribute="width" id="HN0-Q8-DAC"/>
-                                    <constraint firstItem="51v-jY-E8r" firstAttribute="height" secondItem="mpL-ed-PYZ" secondAttribute="height" id="HO1-W5-bd9"/>
-                                    <constraint firstItem="fLX-UC-LDB" firstAttribute="width" secondItem="z9R-VV-1gf" secondAttribute="height" multiplier="524:325" id="I36-li-cZV"/>
-                                    <constraint firstItem="mpL-ed-PYZ" firstAttribute="centerX" secondItem="z9R-VV-1gf" secondAttribute="centerX" id="RVv-nO-dXW"/>
-                                    <constraint firstItem="xZc-uN-lEs" firstAttribute="centerY" secondItem="glU-Xs-htm" secondAttribute="centerY" id="WtB-fp-kRO"/>
-                                    <constraint firstItem="mpL-ed-PYZ" firstAttribute="width" secondItem="z9R-VV-1gf" secondAttribute="height" multiplier="1:1" id="XrA-Rq-kNo"/>
-                                    <constraint firstItem="fLX-UC-LDB" firstAttribute="centerX" secondItem="z9R-VV-1gf" secondAttribute="centerX" id="ZM8-M5-RDk"/>
-                                    <constraint firstItem="51v-jY-E8r" firstAttribute="centerY" secondItem="mpL-ed-PYZ" secondAttribute="centerY" id="fgk-bp-jgf"/>
-                                    <constraint firstItem="51v-jY-E8r" firstAttribute="centerX" secondItem="mpL-ed-PYZ" secondAttribute="centerX" id="ht2-sM-hM5"/>
-                                    <constraint firstAttribute="bottom" secondItem="glU-Xs-htm" secondAttribute="bottom" constant="20" id="jbB-zo-wlZ"/>
-                                    <constraint firstItem="xZc-uN-lEs" firstAttribute="height" secondItem="glU-Xs-htm" secondAttribute="height" id="lTM-cS-uH0"/>
-                                    <constraint firstItem="fLX-UC-LDB" firstAttribute="top" secondItem="z9R-VV-1gf" secondAttribute="top" id="nbL-Ji-m7h"/>
-                                    <constraint firstItem="xZc-uN-lEs" firstAttribute="centerX" secondItem="glU-Xs-htm" secondAttribute="centerX" id="yr1-iU-qwJ"/>
-                                </constraints>
-                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0H-oe-hBi" userLabel="endView">
                                 <rect key="frame" x="127.66666666666669" y="40.666666666666657" width="670.66666666666652" height="325.66666666666674"/>
                                 <subviews>
@@ -222,7 +167,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="92.666666666666671" height="42.666666666666664"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="BtnSoundPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="rw3-Oh-8Nv"/>
+                                            <action selector="BtnSoundPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7Wj-ar-HuQ"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soundOn" translatesAutoresizingMaskIntoConstraints="NO" id="JJ3-LC-VgK" userLabel="btnSoundImage">
@@ -259,14 +204,10 @@
                             <constraint firstItem="MQM-en-e5J" firstAttribute="height" secondItem="IHI-JN-9aw" secondAttribute="height" id="Viw-IT-y8r"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="44" id="aAD-5f-sJg"/>
                             <constraint firstItem="Y0H-oe-hBi" firstAttribute="height" secondItem="4qk-I5-YsI" secondAttribute="height" multiplier="0.8" id="hGj-Ls-gA6"/>
-                            <constraint firstItem="z9R-VV-1gf" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.8" id="jEF-eR-S4V"/>
-                            <constraint firstItem="z9R-VV-1gf" firstAttribute="centerY" secondItem="4qk-I5-YsI" secondAttribute="centerY" id="jXV-Ll-f5e"/>
                             <constraint firstItem="atx-tG-Jhc" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="kS1-el-Tgm"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.1" id="kif-LC-7QI"/>
-                            <constraint firstItem="z9R-VV-1gf" firstAttribute="height" secondItem="4qk-I5-YsI" secondAttribute="height" multiplier="0.8" id="r1u-0e-rN6"/>
                             <constraint firstItem="atx-tG-Jhc" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="10" id="sae-7N-Znn"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="vPJ-SI-VDV"/>
-                            <constraint firstItem="z9R-VV-1gf" firstAttribute="centerX" secondItem="4qk-I5-YsI" secondAttribute="centerX" id="wHV-Pj-4Qf"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" id="y91-Jc-Uc9"/>
                             <constraint firstAttribute="trailing" secondItem="MQM-en-e5J" secondAttribute="trailing" constant="44" id="z7s-gM-eDk"/>
                         </constraints>
@@ -276,20 +217,15 @@
                         <outlet property="btnDownView" destination="gN9-De-X2i" id="QV1-lS-ZNw"/>
                         <outlet property="btnKick" destination="Jjb-t0-G1j" id="chL-Gz-z91"/>
                         <outlet property="btnKickView" destination="8Q1-qI-cyS" id="Erp-oT-6aJ"/>
-                        <outlet property="btnLeaderboard" destination="glU-Xs-htm" id="KSs-MR-jHE"/>
-                        <outlet property="btnLeaderboardView" destination="xZc-uN-lEs" id="YVQ-eR-1Uf"/>
-                        <outlet property="btnPlay" destination="glU-Xs-htm" id="VkP-Q6-fUt"/>
                         <outlet property="btnPlayAgain" destination="VST-Q5-Lht" id="6HT-8d-ALk"/>
                         <outlet property="btnPlayAgainView" destination="xHC-mw-U6g" id="z75-ru-Tu8"/>
-                        <outlet property="btnPlayView" destination="51v-jY-E8r" id="7eo-n6-ebY"/>
                         <outlet property="btnPunch" destination="qHt-uT-FOp" id="9d9-5W-8U0"/>
                         <outlet property="btnPunchView" destination="vws-mx-XQ6" id="oAO-1a-AfB"/>
-                        <outlet property="btnSound" destination="8HL-Bz-eff" id="uB2-hp-L7D"/>
-                        <outlet property="btnSoundView" destination="JJ3-LC-VgK" id="HJn-cz-u4G"/>
+                        <outlet property="btnSound" destination="8HL-Bz-eff" id="dqG-X8-TTx"/>
+                        <outlet property="btnSoundView" destination="JJ3-LC-VgK" id="Q7R-HB-lSL"/>
                         <outlet property="btnUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
                         <outlet property="btnUpView" destination="PaE-1k-Vre" id="Nb6-Mk-iML"/>
                         <outlet property="endView" destination="Y0H-oe-hBi" id="iW9-1g-kRi"/>
-                        <outlet property="introView" destination="z9R-VV-1gf" id="a0t-fl-AaI"/>
                         <outlet property="leftBtnsView" destination="IHI-JN-9aw" id="S85-Bq-gBe"/>
                         <outlet property="rightBtnsView" destination="MQM-en-e5J" id="lBg-Di-zFq"/>
                         <outlet property="scoreLabel" destination="Rhf-pO-sni" id="iJC-A0-Fnm"/>
@@ -306,13 +242,10 @@
         <image name="btnDown" width="64" height="64"/>
         <image name="btnFoot" width="128" height="128"/>
         <image name="btnKick" width="64" height="64"/>
-        <image name="btnLeaderboard" width="328" height="104"/>
-        <image name="btnPlay" width="328" height="104"/>
         <image name="btnPlayAgain" width="328" height="104"/>
         <image name="btnPunch" width="64" height="64"/>
         <image name="btnUp" width="64" height="64"/>
         <image name="gameOverTitle" width="413.33334350585938" height="57.333332061767578"/>
-        <image name="introTitle" width="431" height="80.666664123535156"/>
         <image name="soundOn" width="52" height="52"/>
         <namedColor name="appBlue">
             <color red="0.22400000691413879" green="0.65499997138977051" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

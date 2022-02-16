@@ -14,9 +14,17 @@ import GoogleMobileAds
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADFullScreenContentDelegate {
     
     var scene: GameScene!
-    private var interstitial: GADInterstitialAd?
+    var homeViewController: HomeViewController!
     
     var check = true
+    
+    var score = CGFloat(0.0)
+    
+    let userData = UserData()
+    
+    var soundOn = true
+    
+    var audioPlayer = AudioManager.instance
     
     @IBOutlet weak var btnUpView: UIImageView!
     @IBOutlet weak var btnUp: UIButton!
@@ -28,38 +36,17 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBOutlet weak var btnPunchView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var introView: UIView!
-    @IBOutlet weak var btnPlay: UIButton!
-    @IBOutlet weak var btnPlayView: UIImageView!
     @IBOutlet weak var btnPlayAgain: UIButton!
     @IBOutlet weak var btnPlayAgainView: UIImageView!
-    @IBOutlet weak var btnLeaderboard: UIButton!
-    @IBOutlet weak var btnLeaderboardView: UIImageView!
     @IBOutlet weak var leftBtnsView: UIView!
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
     @IBOutlet weak var endView: UIView!
-    @IBOutlet weak var btnSound: UIButton!
     @IBOutlet weak var btnSoundView: UIImageView!
-    
-    var audioPlayer = AudioManager.instance
-    
-    var score = CGFloat(0.0)
-    
-    let userData = UserData()
-    
-    var soundOn = true
+    @IBOutlet weak var btnSound: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        let notificationCenter = NotificationCenter.default
-        //        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
-        //        notificationCenter.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-        
-        verifySoundSettings()
-        
-        showIntroView()
         
         hideEndView()
         
@@ -81,35 +68,26 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            homeViewController = HomeViewController()
             
-            GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
-            GameCenter.shared.gcVC.gameCenterDelegate = self
+            scene.start()
+            
+//            view.showsFPS = true
+//            view.showsNodeCount = true
         }
-        
-        requestIntersticial()
     }
     
-    //    @objc func appMovedToBackground() {
-    //        print("App moved to background!")
-    //    }
-    //
-    //    @objc func appBecomeActive() {
-    //        print("App become active!")
-    //    }
-    
     func showAd() {
-        if interstitial != nil {
-            interstitial!.present(fromRootViewController: self)
+        if homeViewController.interstitial != nil {
+            homeViewController.interstitial!.present(fromRootViewController: self)
         } else {
-            scene.reset()
+            resetScene()
         }
     }
     
     /// Tells the delegate that the ad failed to present full screen content.
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        scene.reset()
+        resetScene()
     }
     
     /// Tells the delegate that the ad presented full screen content.
@@ -120,23 +98,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        requestIntersticial()
-        scene.reset()
+        homeViewController.requestIntersticial()
+        resetScene()
     }
     
-    func requestIntersticial() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7234411944619676/1348617408",
-                               request: request,
-                               completionHandler: { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        )
+    func resetScene() {
+        scene.reset()
+        scene.start()
     }
     
     func updateScore() {
@@ -150,7 +118,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -163,16 +130,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         return true
     }
     
-    @IBAction func BtnPlayPressed(_ sender: Any) {
-        btnPlayView.image = UIImage(named: "btnPlayClicked")
-        scene.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.btnPlayView.image = UIImage(named: "btnPlay")
-        }
-    }
-    @IBAction func BtnPlayReleased(_ sender: Any) {
-        btnPlayView.image = UIImage(named: "btnPlay")
-    }
     
     @IBAction func BtnPlayAgainPressed(_ sender: Any) {
         btnPlayAgainView.image = UIImage(named: "btnPlayAgainClicked")
@@ -184,25 +141,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBAction func BtnPlayAgainReleased(_ sender: Any) {
         btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
     }
-    
-    @IBAction func BtnLeaderboardPressed(_ sender: Any) {
-        btnLeaderboardView.image = UIImage(named: "btnLeaderboardClicked")
-        
-        showLeaderboard()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
-        }
-    }
-    func showLeaderboard() {
-        let gcVC = GKGameCenterViewController(leaderboardID: GameManager.leaderboardID, playerScope: .friendsOnly, timeScope: .today)
-        gcVC.gameCenterDelegate = self
-        present(gcVC, animated: true, completion: nil)
-    }
-    
-    @IBAction func BtnLeaderboardReleased(_ sender: Any) {
-        btnLeaderboardView.image = UIImage(named: "btnLeaderboard")
-    }
+
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
     }
@@ -220,7 +159,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         scene.DownPressed()
         audioPlayer.stopSound()
     }
-    
+
     @IBAction func BtnSoundPressed(_ sender: Any) {
         if soundOn {
             audioPlayer.stopBgSound()
@@ -234,15 +173,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         soundOn = !soundOn
     }
     
-    func verifySoundSettings() {
-        if soundOn {
-            btnSoundView.image = UIImage(named:"soundOn")
-        }
-        else {
-            btnSoundView.image = UIImage(named:"soundOff")
-        }
-    }
-    
     func setButton(button: ScreenButtons, status: TapStatus){
         switch button {
         case .up:
@@ -254,14 +184,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         case .kick:
             btnKickView.image = UIImage(named: status == .tap ? "btnKickTap" : "btnKick")
         }
-    }
-    
-    func showIntroView () {
-        introView.alpha = 1
-    }
-    
-    func hideIntroView () {
-        introView.alpha = 0
     }
     
     func showEndView () {

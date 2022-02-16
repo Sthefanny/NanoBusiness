@@ -21,7 +21,6 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
         
         backgroundSettings.layer.cornerRadius = 24
         backgroundSettings.layer.borderWidth = 2
@@ -35,15 +34,9 @@ class SettingsViewController: UIViewController {
         soundLabel.minimumScaleFactor = 0.01
         soundLabel.adjustsFontSizeToFitWidth = true
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    
     @IBAction func btnClosePressed(_ sender: Any) {
-        
+        navigationController?.popViewController(animated: false)
     }
     
 }

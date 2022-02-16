@@ -60,7 +60,7 @@
                                             <backgroundConfiguration key="background" image="gearshape.fill" catalog="system"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="settingsPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IYO-f5-heM"/>
+                                            <action selector="settingsPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lpn-lX-ZJJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -96,15 +96,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tI-HO-rHy">
                                 <rect key="frame" x="284.5" y="230" width="327" height="150"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlayy" translatesAutoresizingMaskIntoConstraints="NO" id="QdL-nk-izk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPlay" translatesAutoresizingMaskIntoConstraints="NO" id="QdL-nk-izk">
                                         <rect key="frame" x="111" y="0.0" width="105" height="122"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6p-Qs-ujO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6p-Qs-ujO" userLabel="Btn Play">
                                         <rect key="frame" x="111" y="0.0" width="105" height="122"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="buttonPlay:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eIV-J8-RHv"/>
+                                            <action selector="buttonPlayPressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="jlf-xl-n20"/>
+                                            <action selector="buttonPlayReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CQO-bx-jm0"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnWinner" translatesAutoresizingMaskIntoConstraints="NO" id="PZD-ME-aFl">
@@ -113,20 +114,22 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnStore" translatesAutoresizingMaskIntoConstraints="NO" id="u4l-8Z-aCo">
                                         <rect key="frame" x="242" y="0.0" width="85" height="108"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-uv-xsf">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-uv-xsf" userLabel="Btn Store">
                                         <rect key="frame" x="246.5" y="11" width="76" height="86"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="buttonStore:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="awp-AM-VY8"/>
+                                            <action selector="buttonStorePressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="3Wu-cq-YgH"/>
+                                            <action selector="buttonStoreReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pOw-dU-Ryn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Nl-t2l">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Nl-t2l" userLabel="Btn Winner">
                                         <rect key="frame" x="-0.5" y="5.5" width="85" height="97"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
-                                            <action selector="buttonWinner:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="InM-85-Vo1"/>
+                                            <action selector="buttonWinnerPressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="tLX-sK-sXk"/>
+                                            <action selector="buttonWinnerReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="s1q-0R-MiB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -182,8 +185,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="xlq-Yj-b5Z"/>
                     <connections>
-                        <outlet property="ButtonSettings" destination="Nbs-p7-tWC" id="c76-X0-wbi"/>
                         <outlet property="btnPlayView" destination="QdL-nk-izk" id="4tJ-dd-GRI"/>
+                        <outlet property="btnSettings" destination="Nbs-p7-tWC" id="c76-X0-wbi"/>
                         <outlet property="btnStoreView" destination="u4l-8Z-aCo" id="1BG-Tw-3ey"/>
                         <outlet property="btnWinnerView" destination="PZD-ME-aFl" id="aqu-cO-Uzr"/>
                     </connections>
@@ -213,7 +216,7 @@
     </scenes>
     <resources>
         <image name="backgroungHome" width="844" height="503"/>
-        <image name="btnPlayy" width="101" height="122"/>
+        <image name="btnPlay" width="101" height="122"/>
         <image name="btnStore" width="87" height="108"/>
         <image name="btnWinner" width="87" height="108"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>

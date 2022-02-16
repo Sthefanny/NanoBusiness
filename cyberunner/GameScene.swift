@@ -55,7 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func start() {
-        gameViewController.hideIntroView()
+//        gameViewController.hideIntroView()
         gameViewController.showGameSettings()
         player.start()
         status = .playing
@@ -162,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameViewController.hideGameSettings()
             status = .intro
             gameViewController.hideEndView()
-            gameViewController.showIntroView()
+//            gameViewController.showIntroView()
             player.reset()
             obstacleManager.reset()
             resetAllButton()

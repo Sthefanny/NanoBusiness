@@ -6,67 +6,96 @@
 //
 
 import UIKit
+import GameplayKit
+import GameKit
+import GoogleMobileAds
 
-class HomeViewController: UIViewController {
-   
+class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADFullScreenContentDelegate {
+    var interstitial: GADInterstitialAd?
+    
+    var audioPlayer = AudioManager.instance
+    
+    let userData = UserData()
+    
+    var soundOn = true
+    
     @IBOutlet weak var btnPlayView: UIImageView!
     @IBOutlet weak var btnWinnerView: UIImageView!
     @IBOutlet weak var btnStoreView: UIImageView!
+    @IBOutlet weak var btnSettings: UIButton!
     
-    
-    @IBOutlet weak var ButtonSettings: UIButton!
     override func viewDidLoad() {
         
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        
+        GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
+        GameCenter.shared.gcVC.gameCenterDelegate = self
+        
+        requestIntersticial()
     }
     
-    @IBAction func PlayPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "game")
-        navigationController?.pushViewController(vc, animated: false)
+    func requestIntersticial() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7234411944619676/1348617408",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
+    }
+    
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func settingsPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "settings")
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    @IBAction func buttonPlayPressed(_ sender: Any) {
+        btnPlayView.image = UIImage(named: "btnPlayTap")
+    }
+    
+    @IBAction func buttonPlayReleased(_ sender: Any) {
         
-        ButtonSettings.backgroundColor = .white
-           
-    }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    @IBAction func buttonPlay(_ sender: Any) {
-//        setButtonHome(button: .play, status: .tap)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "game")
+        navigationController?.pushViewController(vc, animated: false)
         
+        self.btnPlayView.image = UIImage(named: "btnPlay")
     }
     
-    @IBAction func buttonStore(_ sender: Any) {
-//        setButtonHome(button: .store, status: .tap)
+    @IBAction func buttonStorePressed(_ sender: Any) {
+        btnStoreView.image = UIImage(named: "btnStoreTap")
     }
     
-    @IBAction func buttonWinner(_ sender: Any) {
-//        setButtonHome(button: .winner, status: .tap)
+    @IBAction func buttonStoreReleased(_ sender: Any) {
+        btnStoreView.image = UIImage(named: "btnStore")
     }
     
-    func setButtonHome(button: ScreenButtonsHome, status: TapStatus){
-        switch button {
-        case .play: btnPlayView.image = UIImage(named: status == .tap ? "btnPlayTap" : "btnPlay")
-            
-        case .store: btnStoreView.image = UIImage(named: status == .tap ? "btnStoreTap" : "btnStore")
-            
-        case .winner: btnWinnerView.image = UIImage(named: status == .tap ? "btnWinnerTap" : "btnWinner")
-
-        }
+    @IBAction func buttonWinnerPressed(_ sender: Any) {
+        showLeaderboard()
+        btnWinnerView.image = UIImage(named: "btnWinnerTap")
     }
-
+    
+    @IBAction func buttonWinnerReleased(_ sender: Any) {
+        btnWinnerView.image = UIImage(named: "btnWinner")
+    }
+    
+    func showLeaderboard() {
+        let gcVC = GKGameCenterViewController(leaderboardID: GameManager.leaderboardID, playerScope: .friendsOnly, timeScope: .today)
+        gcVC.gameCenterDelegate = self
+        present(gcVC, animated: true, completion: nil)
+    }
+    
 }
 
 
