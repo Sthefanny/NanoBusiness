@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game Over View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="gameover" modalPresentationStyle="overCurrentContext" id="Y6W-OH-hqX" customClass="GameOverViewController" customModule="cyberunner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameOverTitle" translatesAutoresizingMaskIntoConstraints="NO" id="XMn-VE-dEw">
+                                <rect key="frame" x="241.5" y="80" width="413.5" height="57.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRH-7G-1bN" userLabel="Button Play Again">
+                                <rect key="frame" x="272" y="148" width="352" height="118"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="btnPlayAgain"/>
+                                <buttonConfiguration key="configuration" style="plain" image="btnPlayAgain"/>
+                                <connections>
+                                    <action selector="PlayAgainPressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="iam-Ci-84P"/>
+                                    <action selector="PlayAgainReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XOb-V2-9fa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yx1-od-t0v" userLabel="Button Back Home">
+                                <rect key="frame" x="272" y="248" width="352" height="118"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="btnBackHome"/>
+                                <buttonConfiguration key="configuration" style="plain" image="btnBackHome"/>
+                                <connections>
+                                    <action selector="BackHomePressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="VEZ-3a-XV6"/>
+                                    <action selector="BackHomeReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EZ5-By-6A6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <constraints>
+                            <constraint firstItem="XMn-VE-dEw" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="EP8-fE-mTL"/>
+                            <constraint firstItem="pRH-7G-1bN" firstAttribute="centerX" secondItem="XMn-VE-dEw" secondAttribute="centerX" id="cUn-eD-BEI"/>
+                            <constraint firstItem="pRH-7G-1bN" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kog-ra-NeL"/>
+                            <constraint firstItem="yx1-od-t0v" firstAttribute="top" secondItem="pRH-7G-1bN" secondAttribute="top" constant="100" id="psm-Uo-RzO"/>
+                            <constraint firstItem="XMn-VE-dEw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="qha-Dk-FrV"/>
+                            <constraint firstItem="yx1-od-t0v" firstAttribute="centerX" secondItem="pRH-7G-1bN" secondAttribute="centerX" id="r0s-zh-1Vw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnBackHome" destination="yx1-od-t0v" id="D6z-vC-WEn"/>
+                        <outlet property="btnPlayAgain" destination="pRH-7G-1bN" id="JaS-fL-ciF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="70"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btnBackHome" width="328" height="104"/>
+        <image name="btnPlayAgain" width="328" height="104"/>
+        <image name="gameOverTitle" width="413.5" height="57.5"/>
+    </resources>
+</document>

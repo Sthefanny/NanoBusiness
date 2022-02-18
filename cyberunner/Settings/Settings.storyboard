@@ -13,12 +13,12 @@
         <!--Settings View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="settings" modalPresentationStyle="currentContext" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="cyberunner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settings" modalPresentationStyle="overCurrentContext" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="cyberunner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixs-9D-iAw">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixs-9D-iAw">
                                 <rect key="frame" x="75" y="43" width="517" height="289"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lineUpSettings" translatesAutoresizingMaskIntoConstraints="NO" id="059-12-wp6">
@@ -44,8 +44,8 @@
                                                 <rect key="frame" x="14" y="82" width="201.5" height="31"/>
                                                 <color key="minimumTrackTintColor" name="appRed"/>
                                             </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC BACKGORUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUw-Gf-LYp">
-                                                <rect key="frame" x="259" y="24.5" width="197" height="25.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC BACKGROUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUw-Gf-LYp">
+                                                <rect key="frame" x="259" y="24" width="197" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <color key="textColor" name="appRed"/>
                                                 <nil key="highlightedColor"/>

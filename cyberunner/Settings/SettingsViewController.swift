@@ -9,8 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var sz = [1...21]
-    
+    var callbackClosure: (() -> Void)?
     
     @IBOutlet weak var backgroundSettings: UIView!
     
@@ -35,8 +34,13 @@ class SettingsViewController: UIViewController {
         soundLabel.adjustsFontSizeToFitWidth = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        callbackClosure?()
+    }
+    
     @IBAction func btnClosePressed(_ sender: Any) {
-        navigationController?.popViewController(animated: false)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

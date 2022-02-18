@@ -42,17 +42,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let obstacleRat = childNode(withName: "obstacleRat")!
         obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, obstacleRat: obstacleRat, parent: self)
     }
-        
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        switch status {
-        case .intro:
-            break
-        case .playing:
-            break
-        case .gameOver:
-            break
-        }
-    }
     
     func start() {
 //        gameViewController.hideIntroView()
@@ -84,6 +73,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
             gameViewController.updateScore()
+        case .paused:
+            break
         }
     }
     
@@ -157,8 +148,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func pause() {
+        status = .paused
+    }
+    
+    func unpause() {
+        status = .playing
+    }
+    
     func reset() {
-        if player.status == .dead {
+        if player?.status == .dead {
             gameViewController.hideGameSettings()
             status = .intro
             gameViewController.hideEndView()

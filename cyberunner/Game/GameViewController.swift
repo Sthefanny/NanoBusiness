@@ -41,14 +41,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBOutlet weak var leftBtnsView: UIView!
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
-    @IBOutlet weak var endView: UIView!
-    @IBOutlet weak var btnSoundView: UIImageView!
-    @IBOutlet weak var btnSound: UIButton!
+    @IBOutlet weak var btnSettings: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        hideEndView()
         
         hideGameSettings()
         
@@ -72,13 +68,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
             
             scene.start()
             
-//            view.showsFPS = true
-//            view.showsNodeCount = true
+            //            view.showsFPS = true
+            //            view.showsNodeCount = true
         }
     }
     
     func showAd() {
-        if homeViewController.interstitial != nil {
+        if homeViewController?.interstitial != nil {
             homeViewController.interstitial!.present(fromRootViewController: self)
         } else {
             resetScene()
@@ -110,7 +106,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     func updateScore() {
         userData.saveBestScore(score: Int(score))
         updateScoreLabel()
-    
+        
         GameCenter.shared.updateScore(with: Int(score))
     }
     
@@ -141,7 +137,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBAction func BtnPlayAgainReleased(_ sender: Any) {
         btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
     }
-
+    
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
     }
@@ -159,19 +155,34 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         scene.DownPressed()
         audioPlayer.stopSound()
     }
-
-    @IBAction func BtnSoundPressed(_ sender: Any) {
-        if soundOn {
-            audioPlayer.stopBgSound()
-            audioPlayer.stopSound()
-            btnSoundView.image = UIImage(named:"soundOff")
-        }
-        else {
-            audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
-            btnSoundView.image = UIImage(named:"soundOn")
-        }
-        soundOn = !soundOn
+    @IBAction func BtnSettingsPressed(_ sender: Any) {
+        btnSettings.tintColor = .white
+        scene.pause()
     }
+    @IBAction func BtnSettingsReleased(_ sender: Any) {
+        btnSettings.tintColor = UIColor(named: "appBlue")
+        
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "settings") as! SettingsViewController
+        vc.callbackClosure = {
+            self.scene.unpause()
+        }
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //    @IBAction func BtnSoundPressed(_ sender: Any) {
+    //        if soundOn {
+    //            audioPlayer.stopBgSound()
+    //            audioPlayer.stopSound()
+    //            btnSoundView.image = UIImage(named:"soundOff")
+    //        }
+    //        else {
+    //            audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
+    //            btnSoundView.image = UIImage(named:"soundOn")
+    //        }
+    //        soundOn = !soundOn
+    //    }
     
     func setButton(button: ScreenButtons, status: TapStatus){
         switch button {
@@ -187,11 +198,25 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     }
     
     func showEndView () {
-        endView.alpha = 1
+        
+        let storyboard = UIStoryboard(name: "GameOver", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "gameover") as! GameOverViewController
+        
+        vc.callbackClosure = { btnClicked in
+            switch btnClicked {
+            case .playAgain:
+                self.showAd()
+            case .backHome:
+                self.navigationController?.popViewController(animated: false)
+            }
+        }
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
     }
     
     func hideEndView () {
-        endView.alpha = 0
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func showGameSettings() {

@@ -57,7 +57,8 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBAction func settingsPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "settings")
-        navigationController?.pushViewController(vc, animated: false)
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func buttonPlayPressed(_ sender: Any) {

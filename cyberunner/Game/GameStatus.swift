@@ -11,4 +11,5 @@ enum GameStatus {
     case intro
     case playing
     case gameOver
+    case paused
 }
