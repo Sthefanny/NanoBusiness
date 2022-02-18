@@ -39,10 +39,16 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kWs-ke-WoW">
                                                 <rect key="frame" x="14" y="22" width="201.5" height="31"/>
                                                 <color key="minimumTrackTintColor" name="appRed"/>
+                                                <connections>
+                                                    <action selector="SliderMusicChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="vKK-Pe-vT6"/>
+                                                </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-E9-n2W">
                                                 <rect key="frame" x="14" y="82" width="201.5" height="31"/>
                                                 <color key="minimumTrackTintColor" name="appRed"/>
+                                                <connections>
+                                                    <action selector="SliderSoundChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="7de-Hy-zNR"/>
+                                                </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC BACKGROUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUw-Gf-LYp">
                                                 <rect key="frame" x="259" y="24" width="197" height="26"/>
@@ -146,6 +152,8 @@
                         <outlet property="backgroundSettings" destination="Ixs-9D-iAw" id="8ZQ-zM-Gmo"/>
                         <outlet property="buttonClose" destination="ID1-LJ-6P1" id="KpZ-xd-evo"/>
                         <outlet property="musicLabel" destination="hUw-Gf-LYp" id="B5E-vS-WNy"/>
+                        <outlet property="sliderMusic" destination="kWs-ke-WoW" id="xeZ-X0-peN"/>
+                        <outlet property="sliderSound" destination="ADS-E9-n2W" id="HMv-Rk-2ZJ"/>
                         <outlet property="soundLabel" destination="I0W-YC-nmT" id="Kmm-Ws-E1X"/>
                     </connections>
                 </viewController>

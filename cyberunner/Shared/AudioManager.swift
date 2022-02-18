@@ -20,6 +20,7 @@ enum SoundOption: String {
 class AudioManager {
     var bgPlayer: AVAudioPlayer?
     var player: AVAudioPlayer?
+    let userData = UserData()
     
     static let instance = AudioManager()
     
@@ -28,7 +29,7 @@ class AudioManager {
         
         do {
             bgPlayer = try AVAudioPlayer(contentsOf: url)
-            bgPlayer?.volume = 0.6
+            bgPlayer?.volume = userData.getMusicVolume()
             bgPlayer?.numberOfLoops = -1
             bgPlayer?.play()
         } catch let error {
@@ -44,6 +45,7 @@ class AudioManager {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             stopSound()
+            player?.volume = userData.getSoundVolume()
             player?.play()
         } catch let error {
             print("Error playing sound. \(error.localizedDescription)")
@@ -57,5 +59,13 @@ class AudioManager {
     
     func stopBgSound() {
         bgPlayer?.stop()
+    }
+    
+    func changeMusicVolume(volume: Float) {
+        bgPlayer?.volume = volume
+    }
+    
+    func changeSoundVolume(volume: Float) {
+        player?.volume = volume
     }
 }

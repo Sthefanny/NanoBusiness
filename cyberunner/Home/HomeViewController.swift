@@ -29,8 +29,12 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         
+        btnStoreView.alpha = 0 //Remover quando tivre store funcionando
+        
         GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
         GameCenter.shared.gcVC.gameCenterDelegate = self
+        
+        audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
         
         requestIntersticial()
     }
@@ -83,12 +87,12 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     }
     
     @IBAction func buttonWinnerPressed(_ sender: Any) {
-        showLeaderboard()
         btnWinnerView.image = UIImage(named: "btnWinnerTap")
     }
     
     @IBAction func buttonWinnerReleased(_ sender: Any) {
         btnWinnerView.image = UIImage(named: "btnWinner")
+        showLeaderboard()
     }
     
     func showLeaderboard() {

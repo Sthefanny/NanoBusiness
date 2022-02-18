@@ -16,13 +16,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     var scene: GameScene!
     var homeViewController: HomeViewController!
     
-    var check = true
-    
     var score = CGFloat(0.0)
     
     let userData = UserData()
-    
-    var soundOn = true
     
     var audioPlayer = AudioManager.instance
     
@@ -36,8 +32,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBOutlet weak var btnPunchView: UIImageView!
     
     @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var btnPlayAgain: UIButton!
-    @IBOutlet weak var btnPlayAgainView: UIImageView!
     @IBOutlet weak var leftBtnsView: UIView!
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
@@ -126,18 +120,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         return true
     }
     
-    
-    @IBAction func BtnPlayAgainPressed(_ sender: Any) {
-        btnPlayAgainView.image = UIImage(named: "btnPlayAgainClicked")
-        showAd()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
-        }
-    }
-    @IBAction func BtnPlayAgainReleased(_ sender: Any) {
-        btnPlayAgainView.image = UIImage(named: "btnPlayAgain")
-    }
-    
     @IBAction func BtnPunchPressed(_ sender: Any) {
         scene.PunchPressed()
     }
@@ -170,19 +152,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true, completion: nil)
     }
-    
-    //    @IBAction func BtnSoundPressed(_ sender: Any) {
-    //        if soundOn {
-    //            audioPlayer.stopBgSound()
-    //            audioPlayer.stopSound()
-    //            btnSoundView.image = UIImage(named:"soundOff")
-    //        }
-    //        else {
-    //            audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
-    //            btnSoundView.image = UIImage(named:"soundOn")
-    //        }
-    //        soundOn = !soundOn
-    //    }
     
     func setButton(button: ScreenButtons, status: TapStatus){
         switch button {
