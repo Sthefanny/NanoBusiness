@@ -2,8 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb633545894588412</string>
+			</array>
+		</dict>
+	</array>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<false/>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<false/>
+	<key>FacebookAppID</key>
+	<string>633545894588412</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<false/>
+	<key>FacebookClientToken</key>
+	<string>724d2ef6dd712bb9d110546552585a31</string>
+	<key>FacebookDisplayName</key>
+	<string>Cyberun</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-7234411944619676~4743925173</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>SKAdNetworkItems</key>
