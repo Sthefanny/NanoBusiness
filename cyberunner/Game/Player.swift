@@ -17,12 +17,14 @@ class Player {
     private var animation: SKAction!
     var status: PlayerStatus = .stopped
     var scene: GameScene!
+    private var character: String!
     
     init(node: SKSpriteNode, scene: GameScene) {
         self.node = node
         self.scene = scene
         startPosition = node.position
         physicsSetup()
+        character = UserData().getCharacter()
     }
     
     func physicsSetup() {
@@ -42,12 +44,12 @@ class Player {
     func animationSetup() {
         var textures = [SKTexture]()
         
-        textures.append(SKTexture(imageNamed: "player1"))
-        textures.append(SKTexture(imageNamed: "player2"))
-        textures.append(SKTexture(imageNamed: "player3"))
-        textures.append(SKTexture(imageNamed: "player4"))
-        textures.append(SKTexture(imageNamed: "player5"))
-        textures.append(SKTexture(imageNamed: "player6"))
+        textures.append(SKTexture(imageNamed: self.character + "1"))
+        textures.append(SKTexture(imageNamed: self.character + "2"))
+        textures.append(SKTexture(imageNamed: self.character + "3"))
+        textures.append(SKTexture(imageNamed: self.character + "4"))
+        textures.append(SKTexture(imageNamed: self.character + "5"))
+        textures.append(SKTexture(imageNamed: self.character + "6"))
         
         let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: false)
         
@@ -65,7 +67,7 @@ class Player {
     func reset() {
         status = .stopped
         physicsSetup()
-        node.texture = SKTexture(imageNamed: "player1")
+        node.texture = SKTexture(imageNamed: self.character + "1")
         node.position = startPosition
         node.physicsBody?.isDynamic = false
     }
@@ -77,7 +79,7 @@ class Player {
         
         status = .jumping
         node.removeAllActions()
-        node.texture = SKTexture(imageNamed: "player4")
+        node.texture = SKTexture(imageNamed: self.character + "4")
         node.physicsBody?.velocity.dy = jumpForce
         
         Analytics.logEvent("player_jump", parameters: ["player_height": round(node.position.y) as NSNumber])
@@ -86,7 +88,7 @@ class Player {
     func toggleCrouch() {
         if status == .crouching {
             status = .running
-            node.texture = SKTexture(imageNamed: "player1")
+            node.texture = SKTexture(imageNamed: self.character + "1")
             physicsSetup()
             animationSetup()
             return
@@ -95,12 +97,12 @@ class Player {
         status = .crouching
         node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 25, height: 55), center: CGPoint(x: 0, y: -15))
         node.removeAllActions()
-        node.texture = SKTexture(imageNamed: "player3Down")
+        node.texture = SKTexture(imageNamed: self.character + "3Down")
         var textures = [SKTexture]()
         
-        textures.append(SKTexture(imageNamed: "player3Down"))
-        textures.append(SKTexture(imageNamed: "player4Down"))
-        textures.append(SKTexture(imageNamed: "player5Weapon"))
+        textures.append(SKTexture(imageNamed: self.character + "3Down"))
+        textures.append(SKTexture(imageNamed: self.character + "4Down"))
+        textures.append(SKTexture(imageNamed: self.character + "5Down"))
         
         let frames = SKAction.animate(with: textures, timePerFrame: 0.1, resize: false, restore: false)
         
@@ -117,12 +119,12 @@ class Player {
         status = .punching
         node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 77), center: CGPoint(x: 0, y: -3))
         node.removeAllActions()
-        node.texture = SKTexture(imageNamed: "player3Punch")
+        node.texture = SKTexture(imageNamed: self.character + "3Punch")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.scene.status == .playing {
                 self.physicsSetup()
-                self.node.texture = SKTexture(imageNamed: "player1")
+                self.node.texture = SKTexture(imageNamed: self.character + "1")
                 self.animationSetup()
                 self.status = .running
                 self.scene.resetAllButton()
@@ -138,12 +140,12 @@ class Player {
         status = .kicking
         node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 77), center: CGPoint(x: 0, y: -3))
         node.removeAllActions()
-        node.texture = SKTexture(imageNamed: "player2Kick")
+        node.texture = SKTexture(imageNamed: self.character + "2Kick")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.scene.status == .playing {
                 self.physicsSetup()
-                self.node.texture = SKTexture(imageNamed: "player1")
+                self.node.texture = SKTexture(imageNamed: self.character + "1")
                 self.animationSetup()
                 self.status = .running
                 self.scene.resetAllButton()
@@ -156,7 +158,7 @@ class Player {
             return
         }
         
-        node.texture = SKTexture(imageNamed: "player1")
+        node.texture = SKTexture(imageNamed: self.character + "1")
         animationSetup()
         
         status = .running
@@ -166,7 +168,7 @@ class Player {
         status = .dead
         node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 30), center: CGPoint(x: 0, y: 0))
         node.physicsBody?.velocity.dy = jumpForce
-        node.texture = SKTexture(imageNamed: "playerDead")
+        node.texture = SKTexture(imageNamed: self.character + "Dead")
         node.removeAllActions()
     }
     

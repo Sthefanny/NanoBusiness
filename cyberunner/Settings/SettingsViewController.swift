@@ -56,6 +56,7 @@ class SettingsViewController: UIViewController {
         self.modalTransitionStyle = .crossDissolve
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func SliderMusicChanged(_ sender: Any) {
         audioPlayer.changeMusicVolume(volume: sliderMusic.value)
         userData.setMusicVolume(volume: sliderMusic.value)

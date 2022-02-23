@@ -121,6 +121,7 @@
                                         <connections>
                                             <action selector="buttonStorePressed:" destination="Y6W-OH-hqX" eventType="touchDown" id="3Wu-cq-YgH"/>
                                             <action selector="buttonStoreReleased:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pOw-dU-Ryn"/>
+                                            <action selector="storePressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8pi-rg-FWQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDU-Nl-t2l" userLabel="Btn Winner">

@@ -11,7 +11,6 @@ import GameKit
 import GoogleMobileAds
 
 class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADFullScreenContentDelegate {
-    var interstitial: GADInterstitialAd?
     
     var audioPlayer = AudioManager.instance
     
@@ -29,29 +28,11 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         
-        btnStoreView.alpha = 0 //Remover quando tivre store funcionando
-        
         GameCenter.shared.authenticateLocalPlayer(presentingVC: self)
         GameCenter.shared.gcVC.gameCenterDelegate = self
         
         audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
-        
-        requestIntersticial()
-    }
-    
-    func requestIntersticial() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7234411944619676/1348617408",
-                               request: request,
-                               completionHandler: { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        )
+        userData.setCharacter(char: .pam)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -61,6 +42,13 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBAction func settingsPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "settings")
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func storePressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Store", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "store")
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true, completion: nil)
     }

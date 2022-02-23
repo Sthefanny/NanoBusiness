@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHI-JN-9aw" userLabel="leftBtnsView">
-                                <rect key="frame" x="44.000000000000007" y="315.66666666666669" width="125.66666666666669" height="91.333333333333314"/>
+                                <rect key="frame" x="44" y="317.33333333333331" width="134" height="92.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpM-6M-qPB" userLabel="Btn Up">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="56.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="60.333333333333336"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="height" multiplier="1:1" id="U0A-AG-W43"/>
                                         </constraints>
@@ -32,10 +32,10 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnUp" translatesAutoresizingMaskIntoConstraints="NO" id="PaE-1k-Vre">
-                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="56.666666666666664"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="60.333333333333336" height="60.333333333333336"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGv-ZS-eZj" userLabel="Btn Down">
-                                        <rect key="frame" x="69" y="34.666666666666629" width="56.666666666666657" height="56.666666666666657"/>
+                                        <rect key="frame" x="73.666666666666671" y="32.333333333333371" width="60.333333333333329" height="60.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="BGv-ZS-eZj" secondAttribute="height" multiplier="1:1" id="boV-Zj-1uf"/>
                                         </constraints>
@@ -47,12 +47,12 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnDown" translatesAutoresizingMaskIntoConstraints="NO" id="gN9-De-X2i" userLabel="Btn Down View">
-                                        <rect key="frame" x="69" y="34.666666666666629" width="56.666666666666657" height="56.666666666666657"/>
+                                        <rect key="frame" x="73.666666666666671" y="32.333333333333371" width="60.333333333333329" height="60.333333333333343"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="GpM-6M-qPB" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" multiplier="0.45" id="3sA-BB-Dqz"/>
-                                    <constraint firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="height" multiplier="62:45" id="48s-Bz-tuk"/>
+                                    <constraint firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="height" multiplier="65:45" id="48s-Bz-tuk"/>
                                     <constraint firstItem="gN9-De-X2i" firstAttribute="centerX" secondItem="BGv-ZS-eZj" secondAttribute="centerX" id="4h2-lL-xEc"/>
                                     <constraint firstItem="GpM-6M-qPB" firstAttribute="leading" secondItem="IHI-JN-9aw" secondAttribute="leading" id="9el-av-NXz"/>
                                     <constraint firstItem="gN9-De-X2i" firstAttribute="centerY" secondItem="BGv-ZS-eZj" secondAttribute="centerY" id="H7o-vo-w0W"/>
@@ -69,10 +69,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQM-en-e5J" userLabel="rightBtnsView">
-                                <rect key="frame" x="756.33333333333337" y="315.66666666666669" width="125.66666666666663" height="91.333333333333314"/>
+                                <rect key="frame" x="748" y="314.33333333333331" width="134" height="92.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jjb-t0-G1j" userLabel="Btn Kick">
-                                        <rect key="frame" x="1" y="34.666666666666629" width="56.666666666666664" height="56.666666666666657"/>
+                                        <rect key="frame" x="1" y="32.333333333333371" width="60.333333333333336" height="60.333333333333343"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="btnFoot"/>
                                         <connections>
@@ -80,10 +80,10 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnKick" translatesAutoresizingMaskIntoConstraints="NO" id="8Q1-qI-cyS" userLabel="Btn Kick View">
-                                        <rect key="frame" x="1" y="34.666666666666629" width="56.666666666666664" height="56.666666666666657"/>
+                                        <rect key="frame" x="1" y="32.333333333333371" width="60.333333333333336" height="60.333333333333343"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHt-uT-FOp" userLabel="Btn Punch">
-                                        <rect key="frame" x="69" y="0.0" width="56.666666666666657" height="56.666666666666664"/>
+                                        <rect key="frame" x="73.666666666666629" y="0.0" width="60.333333333333343" height="60.333333333333336"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="btnPunch"/>
                                         <connections>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnPunch" translatesAutoresizingMaskIntoConstraints="NO" id="vws-mx-XQ6" userLabel="Btn Punch View">
-                                        <rect key="frame" x="69" y="0.0" width="56.666666666666657" height="56.666666666666664"/>
+                                        <rect key="frame" x="73.666666666666629" y="0.0" width="60.333333333333343" height="60.333333333333336"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -151,8 +151,8 @@
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="Hgr-ah-Qf6"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="HwQ-O8-li0"/>
                             <constraint firstAttribute="trailing" secondItem="OEc-gn-UAy" secondAttribute="trailing" constant="20" id="J2R-5F-GYo"/>
-                            <constraint firstItem="IHI-JN-9aw" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.15" id="J4x-Og-efK"/>
-                            <constraint firstAttribute="bottom" secondItem="IHI-JN-9aw" secondAttribute="bottom" constant="21" id="MZV-Da-Qqn"/>
+                            <constraint firstItem="IHI-JN-9aw" firstAttribute="width" secondItem="4qk-I5-YsI" secondAttribute="width" multiplier="0.16" id="J4x-Og-efK"/>
+                            <constraint firstAttribute="bottom" secondItem="IHI-JN-9aw" secondAttribute="bottom" constant="18" id="MZV-Da-Qqn"/>
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="463" id="Qm0-de-pbf"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="height" secondItem="IHI-JN-9aw" secondAttribute="height" id="Viw-IT-y8r"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="44" id="aAD-5f-sJg"/>

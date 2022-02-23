@@ -21,7 +21,7 @@ class GameOverViewController: UIViewController {
         gameViewController = GameViewController()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         callbackClosure?(buttonClicked!)
     }
     

@@ -11,6 +11,8 @@ class UserData {
     let bestScore = "bestScore"
     let musicVolume = "musicVolume"
     let soundVolume = "soundVolume"
+    let character = "character"
+    
     let defaults = UserDefaults.standard
     
     init() {
@@ -19,6 +21,7 @@ class UserData {
                 "bestScore": 0,
                 "musicVolume": 0.6,
                 "soundVolume": 1.0,
+                "character": CharacterEnum.pam.rawValue,
             ]
         )
     }
@@ -50,5 +53,13 @@ class UserData {
     
     func getSoundVolume() -> Float {
         return defaults.float(forKey: soundVolume)
+    }
+    
+    func setCharacter(char: CharacterEnum) {
+        defaults.set(char.rawValue, forKey: character)
+    }
+    
+    func getCharacter() -> String? {
+        return defaults.string(forKey: character)
     }
 }

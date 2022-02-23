@@ -15,6 +15,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     
     var scene: GameScene!
     var homeViewController: HomeViewController!
+    var interstitial: GADInterstitialAd?
     
     var score = CGFloat(0.0)
     
@@ -39,6 +40,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        requestIntersticial()
         
         hideGameSettings()
         
@@ -67,9 +70,25 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         }
     }
     
+    func requestIntersticial() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-7234411944619676/1348617408",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            print("Ad adicionado")
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
+    }
+    
     func showAd() {
-        if homeViewController?.interstitial != nil {
-            homeViewController.interstitial!.present(fromRootViewController: self)
+        if interstitial != nil {
+            interstitial!.present(fromRootViewController: self)
         } else {
             resetScene()
         }
@@ -88,7 +107,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        homeViewController.requestIntersticial()
+        requestIntersticial()
         resetScene()
     }
     

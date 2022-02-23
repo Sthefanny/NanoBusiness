@@ -30,6 +30,9 @@
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
 		E54155C427BED0D600372C4E /* GameOver.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E54155C327BED0D600372C4E /* GameOver.storyboard */; };
 		E54155C627BED98D00372C4E /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54155C527BED98D00372C4E /* GameOverViewController.swift */; };
+		E56A586427C420A400756D28 /* CharacterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A586327C420A400756D28 /* CharacterEnum.swift */; };
+		E5905F1927C568EA00894276 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5905F1827C568EA00894276 /* Store.storyboard */; };
+		E5905F1B27C56CD500894276 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5905F1A27C56CD500894276 /* StoreViewController.swift */; };
 		E5923D7227AEB4720035BEDE /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5923D7127AEB4720035BEDE /* UserData.swift */; };
 		E5ADCF5827B58F6D00722239 /* GameCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5ADCF5727B58F6D00722239 /* GameCenter.swift */; };
 		E5B0B12427B0657B00F2599C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0B12327B0657B00F2599C /* Background.swift */; };
@@ -71,6 +74,9 @@
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		E54155C327BED0D600372C4E /* GameOver.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameOver.storyboard; sourceTree = "<group>"; };
 		E54155C527BED98D00372C4E /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		E56A586327C420A400756D28 /* CharacterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEnum.swift; sourceTree = "<group>"; };
+		E5905F1827C568EA00894276 /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
+		E5905F1A27C56CD500894276 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		E5923D7127AEB4720035BEDE /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		E5ADCF5727B58F6D00722239 /* GameCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenter.swift; sourceTree = "<group>"; };
 		E5B0B12327B0657B00F2599C /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 		E506443427A32CA40075EC5B /* cyberunner */ = {
 			isa = PBXGroup;
 			children = (
+				E5905F1727C568CF00894276 /* Store */,
 				E54155C227BEC70E00372C4E /* GameOver */,
 				E54155BD27BEC41700372C4E /* Home */,
 				E54155C027BEC47100372C4E /* Scenes */,
@@ -202,6 +209,7 @@
 		E54155C127BEC48B00372C4E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E56A586227C4207A00756D28 /* enums */,
 				E5923D7127AEB4720035BEDE /* UserData.swift */,
 				E5B0B13427B07DE200F2599C /* AudioManager.swift */,
 			);
@@ -215,6 +223,23 @@
 				E54155C527BED98D00372C4E /* GameOverViewController.swift */,
 			);
 			path = GameOver;
+			sourceTree = "<group>";
+		};
+		E56A586227C4207A00756D28 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				E56A586327C420A400756D28 /* CharacterEnum.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		E5905F1727C568CF00894276 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				E5905F1827C568EA00894276 /* Store.storyboard */,
+				E5905F1A27C56CD500894276 /* StoreViewController.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		E59EDE8D27ADBC7400298249 /* Frameworks */ = {
@@ -308,6 +333,7 @@
 				E5B0B12D27B07D9300F2599C /* punchWall.mp3 in Resources */,
 				E5B0B12E27B07D9300F2599C /* walkingDown.mp3 in Resources */,
 				E5B0B12F27B07D9300F2599C /* punchRat.mp3 in Resources */,
+				E5905F1927C568EA00894276 /* Store.storyboard in Resources */,
 				E506444127A32CA40075EC5B /* Main.storyboard in Resources */,
 				85A669CA27B6079600E091B6 /* Home.storyboard in Resources */,
 				E506443827A32CA40075EC5B /* GameScene.sks in Resources */,
@@ -390,10 +416,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56A586427C420A400756D28 /* CharacterEnum.swift in Sources */,
 				E504E57327A7F09E00253E54 /* AppUtility.swift in Sources */,
 				E506443C27A32CA40075EC5B /* GameScene.swift in Sources */,
 				E51744CE27A34B0200F8910C /* GameStatus.swift in Sources */,
 				E5923D7227AEB4720035BEDE /* UserData.swift in Sources */,
+				E5905F1B27C56CD500894276 /* StoreViewController.swift in Sources */,
 				E506444D27A32FF20075EC5B /* GameManager.swift in Sources */,
 				E506443E27A32CA40075EC5B /* GameViewController.swift in Sources */,
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
@@ -553,11 +581,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cyberunner/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Need tracking for analytics and to deliver custom ads";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Home;
@@ -572,7 +601,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sthefanny.cyberunner;
 				PRODUCT_NAME = cyberunner;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -588,10 +617,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = H7R4J57657;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = cyberunner/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Need tracking for analytics and to deliver custom ads";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Home;
@@ -606,7 +636,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sthefanny.cyberunner;
 				PRODUCT_NAME = cyberunner;
 				SWIFT_EMIT_LOC_STRINGS = YES;

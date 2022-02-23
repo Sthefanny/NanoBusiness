@@ -6,7 +6,8 @@ target 'cyberunner' do
   use_frameworks!
 
   # Pods for cyberunner
-  pod 'Firebase/Analytics'
+  #pod 'Firebase/Analytics'
+  pod 'Firebase/AnalyticsWithoutAdIdSupport'
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
   pod 'FBSDKCoreKit'
