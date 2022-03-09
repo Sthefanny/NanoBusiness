@@ -18,6 +18,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     var interstitial: GADInterstitialAd?
     
     var score = CGFloat(0.0)
+    var coin: Int = 0
     
     let userData = UserData()
     
@@ -37,6 +38,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
     @IBOutlet weak var rightBtnsView: UIView!
     @IBOutlet weak var scoreView: UIView!
     @IBOutlet weak var btnSettings: UIButton!
+    @IBOutlet weak var coinLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         hideGameSettings()
         
         scoreLabel.font = UIFont(name: "NicoMoji-Regular", size: 15)
+        coinLabel.font = UIFont(name: "NicoMoji-Regular", size: 15)
         
         AppUtility.lockOrientation(.landscape)
         
@@ -64,6 +67,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
             homeViewController = HomeViewController()
             
             scene.start()
+            
+            self.coin = userData.getCoin()
+            updateCoinLabel()
             
             //            view.showsFPS = true
             //            view.showsNodeCount = true
@@ -233,6 +239,17 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         let bestScore = userData.getBestScore()
         let scoreText = "SCORE: \(String(format: "%.0f", self.score)) | BEST SCORE: \(bestScore)"
         scoreLabel.text = scoreText
+    }
+    
+    func addCoin() {
+        self.coin += 1
+        userData.setCoin(value: self.coin)
+        updateCoinLabel()
+    }
+    
+    func updateCoinLabel() {
+        let coinText = "\(self.coin) "
+        coinLabel.text = coinText
     }
     
 }

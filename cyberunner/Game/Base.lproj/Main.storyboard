@@ -141,11 +141,34 @@
                                     <constraint firstItem="rjF-Xy-eXF" firstAttribute="leading" secondItem="Rhf-pO-sni" secondAttribute="trailing" constant="8" symbolic="YES" id="v3W-Wa-VJb"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vlm-4V-6Xz" userLabel="coinsView">
+                                <rect key="frame" x="43.999999999999993" y="19.999999999999996" width="97.333333333333314" height="45.666666666666657"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-yo-sYu" userLabel="coinLabel">
+                                        <rect key="frame" x="0.0" y="12.333333333333336" width="45.666666666666664" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.90588235294117647" green="1" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin1" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-gL-GYD">
+                                        <rect key="frame" x="45.666666666666671" y="-11.666666666666664" width="45.666666666666671" height="69"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="td4-yo-sYu" firstAttribute="centerY" secondItem="Vlm-4V-6Xz" secondAttribute="centerY" id="9aj-GQ-HLH"/>
+                                    <constraint firstItem="jHm-gL-GYD" firstAttribute="centerY" secondItem="Vlm-4V-6Xz" secondAttribute="centerY" id="KeV-wr-i86"/>
+                                    <constraint firstItem="td4-yo-sYu" firstAttribute="width" secondItem="Vlm-4V-6Xz" secondAttribute="height" multiplier="1:1" id="M6g-Ti-FVz"/>
+                                    <constraint firstItem="jHm-gL-GYD" firstAttribute="width" secondItem="Vlm-4V-6Xz" secondAttribute="height" multiplier="1:1" id="nn1-Je-zyV"/>
+                                    <constraint firstItem="jHm-gL-GYD" firstAttribute="leading" secondItem="td4-yo-sYu" secondAttribute="trailing" id="oCW-1l-Rvd"/>
+                                    <constraint firstItem="td4-yo-sYu" firstAttribute="leading" secondItem="Vlm-4V-6Xz" secondAttribute="leading" id="rat-C7-th5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="MQM-en-e5J" secondAttribute="bottom" constant="21" id="7aX-Cf-NBs"/>
+                            <constraint firstItem="Vlm-4V-6Xz" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="9IW-5r-KIR"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="BM5-mw-EyV"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="HQK-7V-hgC"/>
                             <constraint firstItem="Jjb-t0-G1j" firstAttribute="width" secondItem="GpM-6M-qPB" secondAttribute="width" id="Hgr-ah-Qf6"/>
@@ -156,8 +179,11 @@
                             <constraint firstItem="OEc-gn-UAy" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="463" id="Qm0-de-pbf"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="height" secondItem="IHI-JN-9aw" secondAttribute="height" id="Viw-IT-y8r"/>
                             <constraint firstItem="IHI-JN-9aw" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="44" id="aAD-5f-sJg"/>
+                            <constraint firstItem="Vlm-4V-6Xz" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="hIN-SS-67f"/>
+                            <constraint firstItem="Vlm-4V-6Xz" firstAttribute="centerY" secondItem="3se-qz-xqx" secondAttribute="centerY" multiplier="0.2" id="kBV-jP-fIe"/>
                             <constraint firstItem="qHt-uT-FOp" firstAttribute="height" secondItem="GpM-6M-qPB" secondAttribute="height" id="vPJ-SI-VDV"/>
                             <constraint firstItem="MQM-en-e5J" firstAttribute="width" secondItem="IHI-JN-9aw" secondAttribute="width" id="y91-Jc-Uc9"/>
+                            <constraint firstItem="Vlm-4V-6Xz" firstAttribute="centerX" secondItem="3se-qz-xqx" secondAttribute="centerX" multiplier="0.2" id="ymu-UG-SP6"/>
                             <constraint firstAttribute="trailing" secondItem="MQM-en-e5J" secondAttribute="trailing" constant="44" id="z7s-gM-eDk"/>
                         </constraints>
                     </view>
@@ -171,6 +197,7 @@
                         <outlet property="btnSettings" destination="rjF-Xy-eXF" id="2tV-gm-msS"/>
                         <outlet property="btnUp" destination="GpM-6M-qPB" id="8u0-fm-que"/>
                         <outlet property="btnUpView" destination="PaE-1k-Vre" id="Nb6-Mk-iML"/>
+                        <outlet property="coinLabel" destination="td4-yo-sYu" id="5C4-Ss-cpd"/>
                         <outlet property="leftBtnsView" destination="IHI-JN-9aw" id="S85-Bq-gBe"/>
                         <outlet property="rightBtnsView" destination="MQM-en-e5J" id="lBg-Di-zFq"/>
                         <outlet property="scoreLabel" destination="Rhf-pO-sni" id="iJC-A0-Fnm"/>
@@ -189,6 +216,7 @@
         <image name="btnKick" width="64" height="64"/>
         <image name="btnPunch" width="64" height="64"/>
         <image name="btnUp" width="64" height="64"/>
+        <image name="coin1" width="69" height="69"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <namedColor name="appBlue">
             <color red="0.22400000691413879" green="0.65499997138977051" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

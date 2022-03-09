@@ -30,6 +30,7 @@
 		E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51744D127A414D200F8910C /* ObstacleManager.swift */; };
 		E54155C427BED0D600372C4E /* GameOver.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E54155C327BED0D600372C4E /* GameOver.storyboard */; };
 		E54155C627BED98D00372C4E /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54155C527BED98D00372C4E /* GameOverViewController.swift */; };
+		E56127EF27C8010B001D9559 /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56127EE27C8010B001D9559 /* CoinManager.swift */; };
 		E56A586427C420A400756D28 /* CharacterEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56A586327C420A400756D28 /* CharacterEnum.swift */; };
 		E5905F1927C568EA00894276 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5905F1827C568EA00894276 /* Store.storyboard */; };
 		E5905F1B27C56CD500894276 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5905F1A27C56CD500894276 /* StoreViewController.swift */; };
@@ -74,6 +75,7 @@
 		E51744D127A414D200F8910C /* ObstacleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleManager.swift; sourceTree = "<group>"; };
 		E54155C327BED0D600372C4E /* GameOver.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GameOver.storyboard; sourceTree = "<group>"; };
 		E54155C527BED98D00372C4E /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		E56127EE27C8010B001D9559 /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
 		E56A586327C420A400756D28 /* CharacterEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEnum.swift; sourceTree = "<group>"; };
 		E5905F1827C568EA00894276 /* Store.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Store.storyboard; sourceTree = "<group>"; };
 		E5905F1A27C56CD500894276 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				E51744CF27A40E0100F8910C /* Player.swift */,
 				E51744D127A414D200F8910C /* ObstacleManager.swift */,
 				E5B0B12327B0657B00F2599C /* Background.swift */,
+				E56127EE27C8010B001D9559 /* CoinManager.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				E5905F1B27C56CD500894276 /* StoreViewController.swift in Sources */,
 				E506444D27A32FF20075EC5B /* GameManager.swift in Sources */,
 				E506443E27A32CA40075EC5B /* GameViewController.swift in Sources */,
+				E56127EF27C8010B001D9559 /* CoinManager.swift in Sources */,
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
 				E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */,
 				E5ADCF5827B58F6D00722239 /* GameCenter.swift in Sources */,

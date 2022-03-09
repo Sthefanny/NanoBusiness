@@ -12,6 +12,7 @@ class UserData {
     let musicVolume = "musicVolume"
     let soundVolume = "soundVolume"
     let character = "character"
+    let coin = "coin"
     
     let defaults = UserDefaults.standard
     
@@ -22,6 +23,7 @@ class UserData {
                 "musicVolume": 0.6,
                 "soundVolume": 1.0,
                 "character": CharacterEnum.pam.rawValue,
+                "coin" : 0,
             ]
         )
     }
@@ -61,5 +63,13 @@ class UserData {
     
     func getCharacter() -> String? {
         return defaults.string(forKey: character)
+    }
+    
+    func setCoin(value: Int) {
+        defaults.set(value, forKey: coin)
+    }
+    
+    func getCoin() -> Int {
+        return defaults.integer(forKey: coin)
     }
 }

@@ -34,7 +34,7 @@ class Player {
         body.allowsRotation = false
         body.categoryBitMask = 1
         body.collisionBitMask = 2
-        body.contactTestBitMask = 6
+        body.contactTestBitMask = 14
         body.restitution = 0
         
         node.physicsBody = body
