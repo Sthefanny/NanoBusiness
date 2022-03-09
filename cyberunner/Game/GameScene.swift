@@ -13,6 +13,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player!
     var obstacleManager: ObstacleManager!
+    var coinManager: CoinManager!
     var background: Background!
     
     var lastUpdate = TimeInterval(0)
@@ -41,6 +42,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let obstacleWall = childNode(withName: "obstacleWall")!
         let obstacleRat = childNode(withName: "obstacleRat")!
         obstacleManager = ObstacleManager(obstacleGround: obstacleGround, obstacleCeiling: obstacleCeiling, obstacleWall: obstacleWall, obstacleRat: obstacleRat, parent: self)
+        
+        let coin = childNode(withName: "coin")!
+        coinManager = CoinManager(coin: coin, parent: self)
     }
     
     func start() {
@@ -69,6 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .intro:
             GameManager.speed = CGFloat(100)
             obstacleManager.interval = TimeInterval(6)
+            coinManager.interval = TimeInterval(5)
         case .playing:
             playingUpdate(deltaTime: deltaTime)
         case .gameOver:
@@ -82,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameManager.speed += GameManager.speedUpdater
         player.update()
         obstacleManager.update(deltaTime: deltaTime)
+        coinManager.update(deltaTime: deltaTime)
         gameViewController.setScore(deltaTime: deltaTime)
         background.update(deltaTime: deltaTime)
     }
@@ -130,6 +136,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else if obstacleManager.obstacleStatus == .active {
                 gameOver()
             }
+        case "coin":
+            coinManager.pickCoin()
+            gameViewController.addCoin()
         default:
             player.land()
             gameViewController.setButton(button: .up, status: .untap)

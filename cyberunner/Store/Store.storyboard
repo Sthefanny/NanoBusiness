@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15S-1v-QV2">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAz-7V-j1A">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAz-7V-j1A" userLabel="Back Button">
                                         <rect key="frame" x="24.999999999999996" y="27.666666666666668" width="45.666666666666657" height="45.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="FAz-7V-j1A" secondAttribute="height" multiplier="1:1" id="p1n-Ek-iB9"/>
@@ -246,6 +246,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="FAz-7V-j1A" id="gTK-d2-yXE"/>
                         <outlet property="cardsCollection" destination="N63-dX-q5z" id="8IX-3l-i77"/>
                     </connections>
                 </viewController>

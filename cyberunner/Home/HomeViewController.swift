@@ -32,7 +32,6 @@ class HomeViewController: UIViewController, GKGameCenterControllerDelegate, GADF
         GameCenter.shared.gcVC.gameCenterDelegate = self
         
         audioPlayer.playBackgroundSound(sound: .backgroundSoundLoop)
-        userData.setCharacter(char: .pam)
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
