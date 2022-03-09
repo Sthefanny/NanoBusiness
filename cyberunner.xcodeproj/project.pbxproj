@@ -10,6 +10,9 @@
 		22C2036B0C8BD14DD6ACB18B /* Pods_cyberunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75587CAB2D9F2DEA75A01BB /* Pods_cyberunner.framework */; };
 		8530D1F127AD457200A6991A /* NicoMoji-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8530D1F027AD44DA00A6991A /* NicoMoji-Regular.ttf */; };
 		853BC19527B6F7BD0013B147 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853BC19427B6F7BD0013B147 /* SettingsViewController.swift */; };
+		858044B327C9505100B155BD /* HeroCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858044B227C9505000B155BD /* HeroCardCollectionViewCell.swift */; };
+		858044B527C9524D00B155BD /* Heros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858044B427C9524D00B155BD /* Heros.swift */; };
+		858044B727C9541E00B155BD /* HeroesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858044B627C9541E00B155BD /* HeroesList.swift */; };
 		85872E6727B6B1AC00A10CF4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85872E6627B6B1AC00A10CF4 /* Settings.storyboard */; };
 		859CBD4A27BC02D400F09122 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859CBD4927BC02D400F09122 /* AdSupport.framework */; };
 		859CBD4C27BC02EE00F09122 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859CBD4B27BC02EE00F09122 /* AppTrackingTransparency.framework */; };
@@ -54,6 +57,9 @@
 		8530D1F027AD44DA00A6991A /* NicoMoji-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NicoMoji-Regular.ttf"; sourceTree = "<group>"; };
 		8530D1F227AD99DA00A6991A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		853BC19427B6F7BD0013B147 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		858044B227C9505000B155BD /* HeroCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		858044B427C9524D00B155BD /* Heros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heros.swift; sourceTree = "<group>"; };
+		858044B627C9541E00B155BD /* HeroesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesList.swift; sourceTree = "<group>"; };
 		85872E6627B6B1AC00A10CF4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		859CBD4927BC02D400F09122 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		859CBD4B27BC02EE00F09122 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
@@ -240,7 +246,10 @@
 			isa = PBXGroup;
 			children = (
 				E5905F1827C568EA00894276 /* Store.storyboard */,
+				858044B227C9505000B155BD /* HeroCardCollectionViewCell.swift */,
 				E5905F1A27C56CD500894276 /* StoreViewController.swift */,
+				858044B427C9524D00B155BD /* Heros.swift */,
+				858044B627C9541E00B155BD /* HeroesList.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858044B327C9505100B155BD /* HeroCardCollectionViewCell.swift in Sources */,
 				E56A586427C420A400756D28 /* CharacterEnum.swift in Sources */,
 				E504E57327A7F09E00253E54 /* AppUtility.swift in Sources */,
 				E506443C27A32CA40075EC5B /* GameScene.swift in Sources */,
@@ -427,6 +437,7 @@
 				E5905F1B27C56CD500894276 /* StoreViewController.swift in Sources */,
 				E506444D27A32FF20075EC5B /* GameManager.swift in Sources */,
 				E506443E27A32CA40075EC5B /* GameViewController.swift in Sources */,
+				858044B727C9541E00B155BD /* HeroesList.swift in Sources */,
 				E56127EF27C8010B001D9559 /* CoinManager.swift in Sources */,
 				E51744D027A40E0100F8910C /* Player.swift in Sources */,
 				E506443627A32CA40075EC5B /* AppDelegate.swift in Sources */,
@@ -435,6 +446,7 @@
 				E51744D227A414D200F8910C /* ObstacleManager.swift in Sources */,
 				E5B0B13527B07DE200F2599C /* AudioManager.swift in Sources */,
 				E5B0B12427B0657B00F2599C /* Background.swift in Sources */,
+				858044B527C9524D00B155BD /* Heros.swift in Sources */,
 				85A669CC27B607C400E091B6 /* HomeViewController.swift in Sources */,
 				E54155C627BED98D00372C4E /* GameOverViewController.swift in Sources */,
 			);
